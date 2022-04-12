@@ -1,0 +1,128 @@
+{{ template "head"}}
+
+{{ template "header" .}}
+
+<main role="main" class="flex-shrink-0">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+
+        <form id="select-site-cliente" method="get" name="brand-select">
+
+          <div
+            class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2  border-bottom">
+            <h1 class="h2">Mapa Operacões </h1>
+            <div class="btn-toolbar mb-2 mb-md-0">
+
+
+              <div class="input-group px-2">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="inputGroupSelect01">SITE</label>
+                </div>
+                <select class="custom-select" id="site" name="site">
+                  <option selected="selected" hidden value=""></option>
+                  {{ range .Site}}
+                  <option  value="{{.IDSITE}}">{{.NOME}}</option>
+                  {{end}}
+                </select>
+              </div>
+
+              <div class="input-group px-2">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="inputGroupSelect01">CLIENTE</label>
+                </div>
+                <select class="custom-select" id="cliente" name="cliente">
+                  <option selected="selected" hidden value=""></option>
+
+                  {{ range .Cliente}}
+                  <option value="{{.IDCLIENTE}}">{{.NOME}}</option>
+                  {{end}}
+
+                </select>
+              </div>
+
+              <button type="submit" class="px-2 btn btn-sm btn-outline-secondary">Filtrar</button>
+        </form>
+      </div>
+    </div>
+    <div class="card mt-2">
+      <div class="col-lg-12">
+        <div class="card-body">
+          <h4 class="card-title mb-4">
+            <a href="/formulario/mapa"> <button type="button" class="btn btn-sm btn-outline-secondary">Adicionar</button></a> 
+            <br /> </h4>
+          <div class="table-responsive">
+            <table class="table table-centered" id="ticketList">
+              <thead>
+                <tr>
+                  <th scope="col">Site</th>
+                  <th scope="col">Cliente</th>
+                  <th scope="col">Operação</th>
+                  <th scope="col">VLAN Dados</th>
+                  <th scope="col">VLAN Voz</th>
+                  <th scope="col">DAC</th>
+                  <th scope="col">Config.</th>
+                  <th scope="col">Windows</th>
+                  <th scope="col">Domínio</th>
+                  <th scope="col">Template</th>
+                  <th scope="col">IMDB</th>
+                  <th scope="col">Gravador</th>
+                  <th scope="col">Observações</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                {{ range .MapaOperacional}}
+                <tr>
+                  <th scope="row">{{ .Site.NOME }}</th>
+                  <td>{{ .Cliente.NOME }}</td>
+                  <th scope="row">{{ .OPERACAO }}</th>
+                  <td>{{.VLAN_DADOS}}</td>
+                  <td>{{.VLAN_VOZ}}</td>
+                  <td>{{ .Dac.NOME }}</td>
+                  <td>{{ .CONFIG_CONTRATUAL }}</td>
+                  <td>{{ .VERSAO_WINDOWS }}</td>
+                  <td>{{ .Dominio.NOME }}</td>
+                  <td>{{ .TEMPLATE }}</td>
+                  <td>{{ .GRUPO_IMDB }}</td>
+                  <td>{{ .GRAVADOR }}</td>
+                  <td>{{ .OBSERVACOES }}</td>
+                  <td><a href="/mapa/operacoes/{{ .IDMAPA }}" class="btn btn-green-atento">Editar</a></td>
+                </tr>
+                {{else}}
+                <tr>
+                  <th scope="row">Nenhum resultado encontrado.</th>
+                  <td></td>
+                  <th scope="row"></th>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+
+
+               
+           
+                {{ end }}
+                
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </<main>
+    {{ template "footer"}}
+    {{ template "scripts"}}
+    </body>
+
+    </html>

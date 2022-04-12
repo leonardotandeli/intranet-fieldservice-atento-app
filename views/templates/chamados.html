@@ -1,0 +1,16 @@
+{{ define "chamados" }}
+
+
+
+<tr>
+    <th scope="row">{{.NUMERO_CHAMADO}}</th>
+    <td>teste</td>
+    <td>{{.DataEntrada.Format "02/01/2006 15:04" }}</td>
+    <td>{{.DataUpdate.Format "02/01/2006 15:04" }}</td>
+    <td>teste</td>
+    <td><a href="/chamados/{{.IDCHAMADO}}/editar" class="btn btn-green-atento">Editar</a></td>
+  </tr>
+
+
+
+{{end }}

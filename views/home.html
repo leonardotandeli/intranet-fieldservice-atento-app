@@ -1,0 +1,340 @@
+{{ template "head"}}
+{{ template "header" .}}
+
+
+
+<main role="main" class="flex-shrink-0">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 titulo-paginas">
+
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Bem vindo! </h1>
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <div class="btn-group mr-2">
+
+                            <!-- <span>18/03/2022 00:11</span> Incidente ambiente de e-mail Exchange 2013, Tsystems atuando.-->
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-3 links-home">
+
+  
+            
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Visão Geral Clientes</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <p>Copie o caminho da pasta na rede:</p>
+
+
+            <div class="input-group">
+                <input type="text" class="form-control"  id="myInput" value="\\atento.br\Administrativo\Tecnologia Informacao\Visao_Cliente" aria-describedby="button-addon4" disabled>
+                <div class="input-group-append" id="button-addon4">
+                  <button class="btn btn-outline-secondary" type="button" onclick="myFunction()">Copiar</button>
+                </div>
+              </div>
+
+
+<!-- The button used to copy the text -->
+
+        </div>
+  
+      </div>
+    </div>
+  </div>
+
+
+                <h6 class="home-link-title">Links Úteis</h6>
+                <ul class="list-unstyled">
+               
+                    <li>
+
+                   
+                        <a id="mylink" href="#" data-toggle="modal" data-target="#exampleModal"
+                            
+                            class="nav-link-atento">Visão Geral</a>
+                    </li> 
+                    <li>
+                        <a target="_blank"
+                            href="https://falcon.us-2.crowdstrike.com/login/?next=%2Fdashboards-v2%2Fdashboard%2F3AECDA3A-DEF2-4F17-B378-2A404A05C10B"
+                            class="nav-link-atento">Falcon</a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://journeyadmin.atento.com.br/Admin/Suporte/"
+                            class="nav-link-atento">Chat TI - Gestão</a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://journeyadmin.atento.com.br/Client/Suporte/Seguranca/Login"
+                            class="nav-link-atento">Chat TI - Atendimento</a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="https://a1.atento.com/br/documentos-normativos"
+                            class="nav-link-atento">Documentos Normativos</a>
+                    </li>
+                    <li>
+                        <a target="_blank" href="http://zabbix-tsbr.atento.br:3000/login"
+                            class="nav-link-atento">Zabbix</a>
+                    </li>
+                    <li>
+                        <a target="_blank"
+                            href="http://sharepointti.atento.net/sites/especialistas/Networking/projetos/SitePages/P%C3%A1gina Inicial.aspx"
+                            class="nav-link-atento">Topologias</a>
+                    </li>
+                    <li>
+                        <a target="_blank"
+                            href="http://10.158.2.50/Reports/report/ConfigMgr_BRA/AtentoBR_Reports/Workstations"
+                            class="nav-link-atento">SCCM Relatório Workstations</a>
+                    </li>
+                    <li>
+                        <a target="_blank"
+                            href="http://brsccmcas01/Reports/Pages/Report.aspx?ItemPath=%2fConfigMgr_CAS%2fADM+Servidores%2fSolicita%c3%a7%c3%b5es+-+Outros%2fBitLocker+(Itau)%2fBitlocker_Protected_vFinal&ViewMode=Detail"
+                            class="nav-link-atento">SCCM Relatório Bitlocker Itaú</a>
+                    </li>
+                </ul>
+
+                <h6 class="home-link-title">Relatórios Power BI</h6>
+                <ul class="list-unstyled">
+                    <li>
+                        <a target="_blank"
+                            href="https://app.powerbi.com/groups/me/reports/a960dafd-28b9-4eb6-b8f1-2e538ad0be9a/ReportSection?ctid=1356d054-fb0c-45c9-9663-087c278bbf18&openReportSource=ReportInvitation"
+                            class="nav-link-atento">BI Chamados</a>
+                    </li>
+                    <li>
+                        <a target="_blank"
+                            href="https://app.powerbi.com/groups/me/reports/a960dafd-28b9-4eb6-b8f1-2e538ad0be9a/ReportSection?ctid=1356d054-fb0c-45c9-9663-087c278bbf18&openReportSource=ReportInvitation"
+                            class="nav-link-atento">BI Mapa Head Count</a>
+                    </li>
+                    <li>
+                        <a target="_blank"
+                            href="https://app.powerbi.com/reportEmbed?reportId=28b04bd7-8d8e-4338-b45a-70c145506667&groupId=fb7b645e-82bc-4b43-9466-919e2436a395&autoAuth=true&ctid=1356d054-fb0c-45c9-9663-087c278bbf18&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLWJyYXppbC1zb3V0aC1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldC8ifQ%3D%3D"
+                            class="nav-link-atento">BI Banco de Horas</a>
+                    </li>
+                    <li>
+                        <a target="_blank"
+                            href="https://app.powerbi.com/groups/me/reports/7c2a0806-ddff-4530-89f1-07692cf3e076/ReportSectionac7dfa248079edc83b9c?ctid=1356d054-fb0c-45c9-9663-087c278bbf18&openReportSource=ReportInvitation"
+                            class="nav-link-atento">BI SISGAC</a>
+                    </li>
+                </ul>
+
+
+                <h6 class="home-link-title">Gestão de Insumos</h6>
+                <ul class="list-unstyled">
+                    <li>
+                        <a target="_blank"
+                            href="https://app.powerbi.com/view?r=eyJrIjoiNTJkMWMwNWItNzliNi00Y2QwLTk3YTUtNzkzN2I1ZWYyMzA2IiwidCI6IjEzNTZkMDU0LWZiMGMtNDVjOS05NjYzLTA4N2MyNzhiYmYxOCJ9"
+                            class="nav-link-atento">BI Insumos Field</a>
+                    </li>
+                    <li>
+                        <a target="_blank"
+                            href="https://atentoglobal.sharepoint.com/sites/BR-BR/SquadField/git/SitePages/Insumos-de-TI.aspx"
+                            class="nav-link-atento">Sharepoint Field</a>
+                    </li>
+                    <!--    <li>
+      <a target="_blank" href="#" class="nav-link-atento">Hardware por Operações</a> 
+          </li>
+        -->
+                </ul>
+
+
+                <script>
+
+                //    try {
+                 //     eval("async function _(){}")
+                 //   }
+                   // catch (e) {
+//
+                   //   console.error('This browser is not up-to-date')
+                  // }
+                    
+                    
+                            function myFunction() {
+                              var copyText = document.getElementById("myInput");
+                              copyText.select();
+                              copyText.setSelectionRange(0, 99999);
+                              navigator.clipboard.writeText(copyText.value);
+                              
+                              var tooltip = document.getElementById("myTooltip");
+                              tooltip.innerHTML = "Copied: " + copyText.value;
+                            }
+                            
+                            function outFunc() {
+                              var tooltip = document.getElementById("myTooltip");
+                              tooltip.innerHTML = "Copy to clipboard";
+                            }
+                
+                       //     a = document.getElementById('mylink');
+                      //   a.removeAttribute("data-target");
+
+               // a.setAttribute("href", "file:\\atento.br\Administrativo\Tecnologia Informacao\Visao_Cliente");
+                            </script>
+
+
+                <h6 class="home-link-title">Informações Úteis</h6>
+                <ul class="list-unstyled">
+                    <li>
+                        <a target="_blank"
+                            href="http://sharepointti.atento.net/sites/especialistas/Networking/projetos/_layouts/xlviewer.aspx?id=/sites/especialistas/Networking/projetos/Sites%20e%20Endereamentos/Sites%20e%20Endere%C3%A7amentos.xlsx&Source=http%3A%2F%2Fsharepointti%2Eatento%2Enet%2Fsites%2Fespecialistas%2FNetworking%2Fprojetos%2FSites%2520e%2520Endereamentos%2FForms%2FAllItems%2Easpx&DefaultItemOpen=1"
+                            class="nav-link-atento">VLAN Sites</a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+            <div class="col-md-9 order-first order-md-last">
+
+                <div class="padding-home row row-cols-1 row-cols-md-6 mb-6 text-center">
+
+                    <div class="col-6 col-sm-6 col-md-6 col-lg-4">
+                        <a target="_blank" href="http://timesheet.atento.com.br">
+                            <div class="core-features">
+                                <div class="circle">
+                                    <img src="/assets/images/icons/ts.png" alt="">
+                                </div>
+
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-6 col-sm-6 col-md-6 col-lg-4">
+                        <a target="_blank" href="http://servicedesk.atento.com.br">
+                            <div class="core-features">
+                                <div class="circle">
+                                    <img src="/assets/images/icons/sd.png" alt="">
+                                </div>
+
+                            </div>
+                        </a>
+
+
+                    </div>
+
+
+                    <div class="col-6 col-sm-4 col-md-4 col-lg-4">
+                        <a target="_blank" href="https://siga-atento.softexpert.com/softexpert/login">
+                            <div class="core-features">
+                                <div class="circle">
+                                    <img src="/assets/images/icons/siga.png" alt="">
+                                </div>
+
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-4 col-lg-3">
+                        <a target="_blank" href="https://pessoasonline.atento.com.br/pessoasonline">
+                            <div class="core-features">
+                                <div class="circle">
+                                    <img src="/assets/images/icons/po.png" alt="">
+                                </div>
+
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-4 col-lg-3">
+                        <a target="_blank"
+                            href="https://ejaj.login.la1.oraclecloud.com/oam/server/obrareq.cgi?encquery%3DViTvPsJG8LwHMjehDF%2F5VfVXBUbWv530O1qaItWcuvOV0TMKJHx4P2zQ6a4WE5thtW3Lnp4PbOM2D02%2BeLvJGcEsgofr8ArSwFdunKKdo%2BCRVW0SyL%2BjRNpFJ2HxbNhuUOJyQ%2BevpMi6feja%2FoQFL6NRZexx9tMk0Qky6dW8iXeTLGDaAxfWoOKwKDf5Jo4Ex4RzvSiz8e6jI7R9xScUIJ4L4Cv%2Bhka3jmmMIbF9GYZ7G1x8um%2Bf0dBWe9BcGfS3pffZHW7rhsTn6zS%2BMPB6JONtkrGBwPl1mv6unfXfV6wWzSLn2YufGQwmxvHkSQ99FmeSbLnKH5tWLI4f5q1VUNHR34tq0W2eXMjEE1If1gz%2FWp6okZ%2BQPzQYV2znCjJ159ME%2B0lKbR2%2Bi7ESDd0KX2wfsGX2oeKUYQLui10mqp1b3XXY0NeHfu2drp1FsoupE5WP2fE3J6cmH6yfiyMC%2BxO3jizcXoOYwJzq%2BXNzI9%2B%2F7tAb3VNtxAiRyPHBHmXV%20agentid%3DOraFusionApp_11AG%20ver%3D1%20crmethod%3D2%26cksum%3De39ded432240017f07048ad5afb816785baef225&ECID-Context=1.005i1QQmXqe6AT8LNiL6ie0005FJ0008yl%3BkXjE">
+                            <div class="core-features">
+                                <div class="circle">
+                                    <img src="/assets/images/icons/ttt.png" alt="">
+                                </div>
+
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-4 col-lg-3">
+                        <a target="_blank"
+                            href="http://atentopedianew.atento.com.br/es-es/calidad/Paginas/Calidad%20-%20Brasil.aspx">
+                            <div class="core-features">
+                                <div class="circle">
+                                    <img src="/assets/images/icons/ap.png" alt="">
+                                </div>
+
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-6 col-sm-4 col-md-4 col-lg-3">
+                        <a target="_blank"
+                            href="https://atentoglobal.sharepoint.com/sites/BR-BR/SquadField/trs/Troca%20de%20Senhas/Forms/AllItems.aspx">
+                            <div class="core-features">
+                                <div class="circle">
+                                    <img src="/assets/images/icons/spsenha.png" alt="">
+                                </div>
+
+                            </div>
+                        </a>
+                    </div>
+
+
+                    <div class="col-6 col-sm-4 col-md-4 col-lg-3">
+                        <a target="_blank" href="/contatos/field">
+                            <div class="core-features">
+                                <div class="circle">
+                                    <img src="/assets/images/icons/contatos-field.png" alt="">
+                                </div>
+
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-4 col-sm-4 col-md-4 col-lg-3">
+                        <a target="_blank" href="/contatos/tsystems">
+                            <div class="core-features">
+                                <div class="circle">
+                                    <img src="/assets/images/icons/tsystems.png" alt="">
+                                </div>
+
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-4 col-sm-4 col-md-4 col-lg-3">
+                        <a target="_blank" href="http://localhost:3000/assets/uploads/organograma.pdf">
+                            <div class="core-features">
+                                <div class="circle">
+                                    <img src="/assets/images/icons/organograma.png" alt="">
+                                </div>
+
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-4 col-sm-4 col-md-4 col-lg-3">
+                        <a target="_blank" href="/salas-crise">
+                            <div class="core-features">
+                                <div class="circle">
+                                    <img src="/assets/images/icons/sala-crise.png" alt="">
+                                </div>
+
+                            </div>
+                        </a>
+                    </div>
+
+
+
+
+
+                </div>
+
+
+            </div>
+        </div>
+
+        {{ template "footer"}}
+        {{ template "scripts"}}
+        </body>
+
+        </html>

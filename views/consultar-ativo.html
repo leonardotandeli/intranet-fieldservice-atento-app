@@ -1,0 +1,96 @@
+{{ template "head"}}
+
+{{ template "header" .}}
+
+
+<main role="main" class="flex-shrink-0">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 titulo-paginas">
+  
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2  border-bottom">
+      <h1 class="h2">Consulta GSA </h1>
+      <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group mr-2">
+  
+          <a target="_blank" href="http://almoxarifado.atento.com.br/appls/" class="px-2 btn btn-sm btn-outline-secondary">Clique para acessar o GSA </a>
+  
+        </div>
+  
+      </div>
+    </div>
+  </div>
+  </div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Consultar Ativo/Locador</h4>
+                <p class="card-title-desc">Informe o Ativo/Locador ou Número de Série do equipamento para realizar a busca.</p>
+    <form id="form-ativo">
+                    <div class="row">
+                        <div class="col-6 col-sm-2">
+                            <label><strong>Ativo/Locador:</strong></label>
+                             <input type="text" name="locador" maxlength="7" id="locador"  class="form-control">
+                        </div>
+                        <div class="col-6 col-sm-2">
+                            <label><strong>Número de Série:</strong></label>
+                            <input type="text" id="serie" class="form-control">
+                        </div>
+                        <div class="col-3">
+                            <p></p>
+                                 <button class="btn btn-consulta" type="submit">Consultar</button>
+                             </div>
+                    
+
+                    </div>
+                        
+               
+
+    
+
+<style>.esconde {
+        display: none!important;
+}
+.iframeHolder{
+    border: none;
+}
+</style>
+
+<div id="diframeHolder" class="esconde">
+    <p> </p>
+                   <iframe id="iframeHolder"  src="" class="iframeHolder" width="100%" height="600"></iframe>
+     
+
+                </div>
+
+
+
+                    <script>
+                    </script>
+
+
+                 
+            
+                </div>
+                   
+            
+
+
+
+                </form>
+       
+        </div>
+        <!-- end card -->
+    </div>
+   
+
+
+
+
+{{ template "footer"}}
+{{ template "scripts"}}
+
+</body>
+</html>

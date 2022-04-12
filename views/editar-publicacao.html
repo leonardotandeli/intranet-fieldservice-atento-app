@@ -1,0 +1,290 @@
+{{ template "head"}}
+
+
+<style>body {
+  font-size: .875rem;
+}
+
+.feather {
+  width: 16px;
+  height: 16px;
+  vertical-align: text-bottom;
+}
+
+/*
+ * Sidebar
+ */
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 100; /* Behind the navbar */
+  padding: 48px 0 0; /* Height of navbar */
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
+}
+
+@media (max-width: 767.98px) {
+  .sidebar {
+    top: 5rem;
+  }
+}
+
+.sidebar-sticky {
+  position: relative;
+  top: 0;
+  height: calc(100vh - 48px);
+  padding-top: .5rem;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+}
+
+@supports ((position: -webkit-sticky) or (position: sticky)) {
+  .sidebar-sticky {
+    position: -webkit-sticky;
+    position: sticky;
+  }
+}
+
+.sidebar .nav-link {
+  font-weight: 500;
+  color: #333;
+}
+
+.sidebar .nav-link .feather {
+  margin-right: 4px;
+  color: #999;
+}
+
+.sidebar .nav-link.active {
+  color: #007bff;
+}
+
+.sidebar .nav-link:hover .feather,
+.sidebar .nav-link.active .feather {
+  color: inherit;
+}
+
+.sidebar-heading {
+  font-size: .75rem;
+  text-transform: uppercase;
+}
+
+/*
+ * Navbar
+ */
+
+.navbar-brand {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  font-size: 1rem;
+  background-color: rgba(0, 0, 0, .25);
+  box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
+}
+
+.navbar .navbar-toggler {
+  top: .25rem;
+  right: 1rem;
+}
+
+.navbar .form-control {
+  padding: .75rem 1rem;
+  border-width: 0;
+  border-radius: 0;
+}
+
+.form-control-dark {
+  color: #fff;
+  background-color: rgba(255, 255, 255, .1);
+  border-color: rgba(255, 255, 255, .1);
+}
+
+.form-control-dark:focus {
+  border-color: transparent;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
+}
+.fat-content-small {
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+}
+
+</style>
+   
+<nav class=" sticky-top flex-md-nowrap p-0 shadow">
+  {{ template "header" .}}
+</nav>
+
+
+
+{{ template "sidebar-base" .}}
+
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Atualizar Post</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group mr-2">
+
+          
+              <button type="button" class="px-2 btn btn-sm btn-outline-danger" id="deletar-publicacao" data-publicacao-id="{{.Post.IDPOST}}" >Deletar</button>
+ <button type="button" id="atualizar-publicacao" data-publicacao-id="{{.Post.IDPOST}}" class="px-2 btn btn-sm btn-outline-secondary">Salvar</button>
+
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+<script src="/assets/js/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+
+tinymce.init({
+  selector:'#conteudo',
+  language: 'pt_BR',
+  images_upload_url: 'postAcceptor.php',
+  toolbar:
+    'insertfile a11ycheck undo redo | bold italic | forecolor backcolor | template codesample | alignleft aligncenter alignright alignjustify | bullist numlist | link image tinydrive',
+  height : "440",
+  plugins: [
+    'a11ychecker advcode advlist anchor autolink codesample fullscreen help image imagetools tinydrive',
+    ' lists link media noneditable powerpaste preview',
+    ' searchreplace table template tinymcespellchecker visualblocks wordcount'
+  ],
+    setup: function (editor) {
+        editor.on('change', function () {
+            editor.save();
+        });
+    }
+});
+</script>
+<script>
+
+    var nome = ""
+    
+    document.getElementById("navbarDarkDropdownMenuLink").innerHTML = nome.substring(0,8);
+    document.getElementById("nome_pagina").innerHTML = "";
+    
+    </script>
+
+
+
+
+  
+
+
+
+  <div class="card">
+    <div class="row">        
+    <div class="col-lg-12">
+        <div class="card-body">
+             
+          <div class="row mt-4">
+            <div class="col-12">
+              <div class="form-group">
+                  <label for="titulo">Título</label>
+                  <input type="text" value="{{.Post.TITULO}}" class="form-control mt-2" id="titulo" name="titulo" required>
+                </div>
+              </div>
+
+              <div class="col-6">
+                <div class="form-group">
+                    <label for="titulo">Categoria</label>
+                    <select id="id_categoria" name="id_categoria" class="form-control" required="">
+
+             
+                      {{ range .Categoria}}
+                      <option selected value="{{.IDCATEGORIA}}">{{.NOME}}</option>
+                      {{end}}
+                  </select>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                      <label for="titulo">Título</label>
+                      <select id="id_cliente" name="id_cliente" class="form-control" required="">
+
+             
+                        {{ range .Cliente}}
+                        <option selected value="{{.IDCLIENTE}}">{{.NOME}}</option>
+                        {{end}}
+                    </select>
+                    </div>
+                  </div>
+              <input type="hidden" name="id_site"  class="form-control" value="1" placeholder="Email" id="id_site">
+              <input type="hidden" name="id_usuario"  class="form-control" value="{{.UsuarioID}}" placeholder="Email" id="id_usuario">
+              <div class="col-12">
+                <div class="form-group">
+              <textarea id="conteudo" name="conteudo">{{.Post.CONTEUDO}}</textarea>
+            </div>
+          </div>
+<!-- Button trigger modal 
+<button type="button" class="btn btn-blue-atento" data-toggle="modal"  data-target="#exampleModal">
+  Fazer Upload de Arquivos
+</button>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">    
+        <div class="modal-header">
+      <h5 class="modal-title">Fazer Upload de Arquivos</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+ 
+      <div class="modal-body">
+        <iframe src="/upload" width="100%" height="265" style="border:none;">
+        </iframe>
+      </div>
+-->
+    </div>
+  </div>
+</div>
+
+<br/>
+<br/>
+           
+         
+            </div>
+
+
+
+
+
+           
+               
+                
+
+
+            </div>
+        </div>
+  
+  
+  
+  
+  
+  
+  
+             
+              
+    
+  
+  
+  
+  
+  </div>
+  </div>
+  </div>
+  </div>
+  
+                                {{ template "footer"}}
+                                {{ template "scripts"}}
+                                </body>
+                                </html>
+  

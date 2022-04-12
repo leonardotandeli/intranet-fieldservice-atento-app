@@ -1,0 +1,110 @@
+{{ template "head"}}
+{{ template "header" .}}
+
+
+
+<main role="main" class="flex-shrink-0">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 titulo-paginas">
+
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">Usuários </h1>
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <div class="btn-group mr-2">
+
+                            <!-- <span>18/03/2022 00:11</span> Incidente ambiente de e-mail Exchange 2013, Tsystems atuando.-->
+                            <a href="/criar-usuario" class="px-2 btn btn-sm btn-outline-secondary">Criar usuário </a>
+  
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+  <div class="row">    
+<div class="col-lg-12">
+
+  <div class="card card-body">
+    <h4 class="card-title mb-4"><span class="badge badge-atento"> s</span>  Usuarios </h4>           
+    <div class="table-responsive">
+       
+                      
+
+
+
+      <table class="table table-centered" >
+        <thead>
+          <tr>
+            <th scope="col">Nome</th>
+        
+        
+            <th scope="col">Login NT</th>
+
+        
+            <th scope="col">Perfil</th>
+
+            <th scope="col">Site</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+
+
+        </tr>
+        </thead>
+        <tbody>               
+
+  
+
+ 
+     
+
+          
+
+
+          {{ range .Usuarios}}
+
+          
+
+
+          
+
+
+          <tr>
+            <th scope="row">{{.NOME}}</th>
+            <td>{{.LOGIN_NT}}</td>
+            <td>{{.CARGO}}</td>
+            <td>{{.Site.NOME}}</td>
+            <td><a href="/usuarios/{{.IDUSUARIO}}/editar" class="btn btn-green-atento">Editar</a></td>
+            <td><a href="/usuarios/{{.IDUSUARIO}}/senha" class="btn btn-blue-atento">Alterar Senha</a></td>
+          </tr>
+        
+        
+          {{ end }}
+  
+
+        </tbody>
+              
+          </table>
+
+
+
+
+</div>
+</div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+                              {{ template "footer"}}
+                              {{ template "scripts"}}
+                              </body>
+                              </html>

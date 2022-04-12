@@ -1,0 +1,93 @@
+{{ template "head"}}
+
+{{ template "header" .}}
+
+
+
+<main role="main" class="flex-shrink-0">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 titulo-paginas">
+
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2  border-bottom">
+    <h1 class="h2">Impressoras </h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group mr-2">
+
+        <button type="button" class="px-2 btn btn-sm btn-outline-secondary">Adicionar nova impressora</button>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>
+
+
+<script>
+
+  var nome = "{{.Nome}}"
+  
+  document.getElementById("navbarDarkDropdownMenuLink").innerHTML = nome;
+  document.getElementById("nome_pagina").innerHTML = "{{ .Pagina }}";
+  
+  </script>
+<div class="card">
+  <div class="row">        
+  <div class="col-lg-12">
+      <div class="card-body">
+
+    <h4 class="card-title">Impressoras</h4>       
+    <p class="card-title-desc">Informações sobre as impressoras do site com monitoramento em tempo real.</p>    
+    <div class="table-responsive">
+       
+      
+      <a href="/impressoras/adicionar" class="btn btn-green-atento">Adicionar Impressora</a>
+<p></p>     
+      <table class="table table-centered" >
+        <thead>
+          <tr>
+            <th scope="col">Fila</th>
+            <th scope="col">Local</th>
+            <th scope="col">IP</th>
+            <th scope="col">IP Switch</th>
+            <th scope="col">Porta</th>
+            <th scope="col">Modelo</th>
+            <th scope="col">Número de Série</th>
+            <th scope="col">Status</th>
+            <th scope="col"></th>
+
+
+        </tr>
+        </thead>
+        <tbody>               
+
+     
+  
+          {{ range .Impressora}}
+          {{template "impressoras" . }}
+          {{ end }}
+
+    
+    
+        </tbody>
+              
+          </table>
+
+
+
+
+</div>
+</div>
+</div>
+</div>
+
+
+</div>
+
+
+
+                              {{ template "footer"}}
+                              {{ template "scripts"}}
+                              </body>
+                              </html>
