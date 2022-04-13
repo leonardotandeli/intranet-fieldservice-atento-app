@@ -48,6 +48,7 @@ func Salvar(w http.ResponseWriter, ID, token, NOME, LOGIN_NT, RE, CARGO, V_HOMEO
 		Value:    dadosCodificados,
 		Path:     "/",
 		HttpOnly: true,
+		MaxAge:   99999,
 	})
 	return nil
 }

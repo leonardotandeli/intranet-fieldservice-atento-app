@@ -9,8 +9,8 @@ var templates *template.Template
 
 //Carrega os arquivos HTML na variavel templates
 func CarregarTemplates() {
-	templates = template.Must(template.ParseGlob("views/*.html"))
-	templates = template.Must(templates.ParseGlob("views/templates/*.html"))
+	templates = template.Must(template.ParseGlob("tmpl/*.html"))
+	templates = template.Must(templates.ParseGlob("tmpl/includes/*.html"))
 }
 
 //Executar template, renderiza a página html

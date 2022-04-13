@@ -5,6 +5,31 @@ import (
 )
 
 // Publicacao representa uma publicação feita por um usuário
+type Dominio struct {
+	IDDOMINIO uint64 `json:"iddominio,omitempty"`
+	NOME      string `json:"nome,omitempty"`
+}
+
+// Publicacao representa uma publicação feita por um usuário
+type Dac struct {
+	IDDAC uint64 `json:"iddac,omitempty"`
+	NOME  string `json:"nome,omitempty"`
+}
+
+// Publicacao representa uma publicação feita por um usuário
+type Cliente struct {
+	IDCLIENTE uint64 `json:"idcliente,omitempty"`
+	NOME      string `json:"nome,omitempty"`
+}
+
+// Struct dos Gerentes
+type Site struct {
+	IDSITE     uint64 `json:"idsite,omitempty"`
+	NOME       string `json:"nome,omitempty"`
+	ID_USUARIO string `json:"id_usuario,omitempty"`
+}
+
+// Publicacao representa uma publicação feita por um usuário
 type MapaOperacional struct {
 	IDMAPA            uint64    `json:"idmapa,omitempty"`
 	OPERACAO          string    `json:"operacao,omitempty"`
