@@ -16,22 +16,22 @@
         <li class="nav-item">
           <a href="/home" class="nav-link px-2 menu-atento ">Início</a>
         </li>
-        {{ if eq .V_MAPA_OPERACIONAL "S" }}
+        {{ if eq .Cookies.V_MAPA_OPERACIONAL "S" }}
         <li class="nav-item">
           <a href="/mapa/operacoes" class="nav-link px-2 menu-atento ">Mapa Operações</a>
         </li>
         {{ end }}
-        {{ if eq .V_BDC_POSTS "S" }}
+        {{ if eq .Cookies.V_BDC_POSTS "S" }}
         <li class="nav-item">
           <a href="/base" class="nav-link px-2 menu-atento ">Base de Conhecimento</a>
         </li>
         {{ end }}
-        {{ if eq .V_IMDB "S" }}
+        {{ if eq .Cookies.V_IMDB "S" }}
         <li class="nav-item">
           <a href="/consulta/imdb" class="nav-link px-2 menu-atento ">IMDB</a>
         </li>
         {{ end }}
-        {{ if eq .V_GSA "S" }}
+        {{ if eq .Cookies.V_GSA "S" }}
         <li class="nav-item">
           <a href="/consulta/ativo" class="nav-link px-2 menu-atento ">GSA</a>
         </li>
@@ -45,14 +45,14 @@
       <div class="dropdown nav-item"><a id="dropdownMenuButton" aria-expanded="false" role="button" class="rounded-circle border-bottom-0 dt nav-link" tabindex="0" href="#"><div class="avatar avatar-md avatar-indicators avatar-online"></div></a></div>
    
       <div class="dropdown">
-        <button  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-sm btn-user"><img src="https://api-funcionario.atento.com.br/v3.0/funcionario/BRATE{{.RE}}/foto/url" alt="avatar" onerror="this.src='/assets/images/icons/user.png'" height="31" class="fade-user rounded-circle"></button>
+        <button  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-sm btn-user"><img src="https://api-funcionario.atento.com.br/v3.0/funcionario/BRATE{{.Cookies.RE}}/foto/url" alt="avatar" onerror="this.src='/assets/images/icons/user.png'" height="31" class="fade-user rounded-circle"></button>
 
 
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          {{ if eq .V_USUARIOS "S" }}
+          {{ if eq .Cookies.V_USUARIOS "S" }}
       <a class="dropdown-item" href="/usuarios">Usuarios</a>
       {{ end }}
-      <a class="dropdown-item" href="/usuarios/{{.UsuarioID}}/senha">Alterar Senha</a>
+      <a class="dropdown-item" href="/usuarios/{{.Cookies.UsuarioID}}/senha">Alterar Senha</a>
 
           <a class="dropdown-item" href="/deslogar">Deslogar</a>
 
