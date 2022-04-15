@@ -17,7 +17,6 @@ import (
 func CriarMapa(w http.ResponseWriter, r *http.Request) {
 
 	r.ParseForm()
-
 	mapa, erro := json.Marshal(map[string]string{
 		"operacao":          r.FormValue("operacao"),
 		"vlan_dados":        r.FormValue("vlan_dados"),
@@ -68,7 +67,6 @@ func AtualizarMapa(w http.ResponseWriter, r *http.Request) {
 	}
 
 	r.ParseForm()
-
 	mapa, erro := json.Marshal(map[string]string{
 		"operacao":          r.FormValue("operacao"),
 		"vlan_dados":        r.FormValue("vlan_dados"),

@@ -134,12 +134,7 @@ var rotasPaginas = []Rota{
 		Funcao:             controllers.CriarMapa,
 		RequerAutenticacao: true,
 	},
-	{
-		URI:                "/chamados/{chamadoId}",
-		Metodo:             http.MethodPut,
-		Funcao:             controllers.AtualizarChamado,
-		RequerAutenticacao: true,
-	},
+
 	{
 		URI:                "/mapa/operacoes/{mapaId}",
 		Metodo:             http.MethodPut,
