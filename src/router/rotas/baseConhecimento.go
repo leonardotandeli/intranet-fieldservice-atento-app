@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-var rotasBdc = []Rota{
+var rotasBaseDeConhecimento = []Rota{
 	{
 		URI:                "/base",
 		Metodo:             http.MethodGet,

@@ -1,0 +1,261 @@
+{{ template "head"}}
+
+{{ template "header" .}}
+
+
+
+
+
+
+
+<main role="main" class="flex-shrink-0">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2  border-bottom">
+    <h1 class="h2">Mapa Field Service</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group mr-2">
+
+         <!--    <strong>18/03/2022 00:11</strong> Incidente ambiente de e-mail Exchange 2013, Tsystems atuando.-->
+
+         <button type="button" class="px-2 btn btn-sm btn-outline-secondary">Impressoras</button>
+        <button type="button" class="px-2 btn btn-sm btn-outline-secondary">Catraca</button>
+        <button type="button" class="px-2 btn btn-sm btn-outline-secondary">Relogio de Ponto</button>
+
+        <button type="button" class="px-2 btn btn-sm btn-outline-secondary">Access Point</button>
+
+        <button type="button" class="px-2 btn btn-sm btn-outline-secondary">Portas/Controle de Acesso</button>
+
+        <button type="button" class="px-2 btn btn-sm btn-outline-secondary">Máquinas Café/Produtos</button>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>
+  
+<div class="card">
+  <div class="row">        
+  <div class="col-lg-12">
+      <div class="card-body">
+        <h4 class="card-title mb-4"> 
+          <button type="button" class="btn btn-sm btn-outline-secondary">Adicionar nova operação</button>
+          <br /> </h4>
+
+
+          <div class="table-responsive">
+
+                  <table class="table table-centered" id="ticketList">
+                                      <thead>
+                                        <tr>
+                                          <th scope="col">Site</th>
+                                          <th scope="col">Operação</th>
+                                          <th scope="col">VLAN Dados</th>
+                                          <th scope="col">VLAN Voz</th>
+                                          <th scope="col">DAC</th>
+                                          <th scope="col">Config.</th>
+                                          <th scope="col">Windows</th>
+                                          <th scope="col">Domínio</th>
+                                          <th scope="col">Template</th>
+                                          <th scope="col">Grupo IMDB</th>
+                                          <th scope="col">Gravador</th>
+                                          <th scope="col">Observações</th>
+                                          <th scope="col"></th>
+                                          <th scope="col"></th>
+                                      </tr>
+                                      </thead>
+                                      <tbody>               
+
+                                        <tr>
+                                          <th scope="row">SBE</th>
+                                          <th scope="row">Itaú</th>
+                                          <td>10.159.208.0/22</td>
+                                          <td>10.159.120/22</td>
+                                          <td>Cliente</td>
+                                          <td>Core2duo com 2GB Ram</td>
+                                          <td>Windows 7 Enterprise</td>
+                                          <td>ITAU.ATENTO.BR</td>
+                                          <td>ISBE_temp_ficcsc <br /> ISBE_temp_imob  <br /> ISBE_Temp_Consorcio</td>
+                                          <td>Sem grupo atrelado</td>
+                                          <td>Cliente</td>
+
+                                          <td>Maquinas no dominio ITAU (itau.atento.br) deve sempres conter Senha na Bios e Bitlocker Ativado</td>
+                                          <td><a href="/chamados/editar" class="btn btn-green-atento">Editar</a></td>
+                                        </tr>
+                                      
+                                   
+                                        <tr>
+                                          <th scope="row">SBE</th>
+                                          <th scope="row">Itaú</th>
+                                          <td>10.159.208.0/22</td>
+                                          <td>10.159.120/22</td>
+                                          <td>Cliente</td>
+                                          <td>Core2duo com 2GB Ram</td>
+                                          <td>Windows 7 Enterprise</td>
+                                          <td>ITAU.ATENTO.BR</td>
+                                          <td>ISBE_temp_ficcsc <br /> ISBE_temp_imob  <br /> ISBE_Temp_Consorcio</td>
+                                          <td>Sem grupo atrelado</td>
+                                          <td>Cliente</td>
+
+                                          <td>Maquinas no dominio ITAU (itau.atento.br) deve sempres conter Senha na Bios e Bitlocker Ativado</td>
+                                          <td><a href="/chamados/editar" class="btn btn-green-atento">Editar</a></td>
+                                        </tr>
+                                        
+                                        <tr>
+                                          <th scope="row">SBE</th>
+                                          <th scope="row">Itaú</th>
+                                          <td>10.159.208.0/22</td>
+                                          <td>10.159.120/22</td>
+                                          <td>Cliente</td>
+                                          <td>Core2duo com 2GB Ram</td>
+                                          <td>Windows 7 Enterprise</td>
+                                          <td>ITAU.ATENTO.BR</td>
+                                          <td>ISBE_temp_ficcsc <br /> ISBE_temp_imob  <br /> ISBE_Temp_Consorcio</td>
+                                          <td>Sem grupo atrelado</td>
+                                          <td>Cliente</td>
+
+                                          <td>Maquinas no dominio ITAU (itau.atento.br) deve sempres conter Senha na Bios e Bitlocker Ativado</td>
+                                          <td><a href="/chamados/editar" class="btn btn-green-atento">Editar</a></td>
+                                        </tr>
+                                        
+                                        <tr>
+                                          <th scope="row">SBE</th>
+                                          <th scope="row">Itaú</th>
+                                          <td>10.159.208.0/22</td>
+                                          <td>10.159.120/22</td>
+                                          <td>Cliente</td>
+                                          <td>Core2duo com 2GB Ram</td>
+                                          <td>Windows 7 Enterprise</td>
+                                          <td>ITAU.ATENTO.BR</td>
+                                          <td>ISBE_temp_ficcsc <br /> ISBE_temp_imob  <br /> ISBE_Temp_Consorcio</td>
+                                          <td>Sem grupo atrelado</td>
+                                          <td>Cliente</td>
+
+                                          <td>Maquinas no dominio ITAU (itau.atento.br) deve sempres conter Senha na Bios e Bitlocker Ativado</td>
+                                          <td><a href="/chamados/editar" class="btn btn-green-atento">Editar</a></td>
+                                        </tr>
+                                        
+                                        <tr>
+                                          <th scope="row">SBE</th>
+                                          <th scope="row">Itaú</th>
+                                          <td>10.159.208.0/22</td>
+                                          <td>10.159.120/22</td>
+                                          <td>Cliente</td>
+                                          <td>Core2duo com 2GB Ram</td>
+                                          <td>Windows 7 Enterprise</td>
+                                          <td>ITAU.ATENTO.BR</td>
+                                          <td>ISBE_temp_ficcsc <br /> ISBE_temp_imob  <br /> ISBE_Temp_Consorcio</td>
+                                          <td>Sem grupo atrelado</td>
+                                          <td>Cliente</td>
+
+                                          <td>Maquinas no dominio ITAU (itau.atento.br) deve sempres conter Senha na Bios e Bitlocker Ativado</td>
+                                          <td><a href="/chamados/editar" class="btn btn-green-atento">Editar</a></td>
+                                        </tr>
+                                        
+                                        <tr>
+                                          <th scope="row">SBE</th>
+                                          <th scope="row">Itaú</th>
+                                          <td>10.159.208.0/22</td>
+                                          <td>10.159.120/22</td>
+                                          <td>Cliente</td>
+                                          <td>Core2duo com 2GB Ram</td>
+                                          <td>Windows 7 Enterprise</td>
+                                          <td>ITAU.ATENTO.BR</td>
+                                          <td>ISBE_temp_ficcsc <br /> ISBE_temp_imob  <br /> ISBE_Temp_Consorcio</td>
+                                          <td>Sem grupo atrelado</td>
+                                          <td>Cliente</td>
+
+                                          <td>Maquinas no dominio ITAU (itau.atento.br) deve sempres conter Senha na Bios e Bitlocker Ativado</td>
+                                          <td><a href="/chamados/editar" class="btn btn-green-atento">Editar</a></td>
+                                        </tr>
+                                        
+                                        <tr>
+                                          <th scope="row">SBE</th>
+                                          <th scope="row">Itaú</th>
+                                          <td>10.159.208.0/22</td>
+                                          <td>10.159.120/22</td>
+                                          <td>Cliente</td>
+                                          <td>Core2duo com 2GB Ram</td>
+                                          <td>Windows 7 Enterprise</td>
+                                          <td>ITAU.ATENTO.BR</td>
+                                          <td>ISBE_temp_ficcsc <br /> ISBE_temp_imob  <br /> ISBE_Temp_Consorcio</td>
+                                          <td>Sem grupo atrelado</td>
+                                          <td>Cliente</td>
+
+                                          <td>Maquinas no dominio ITAU (itau.atento.br) deve sempres conter Senha na Bios e Bitlocker Ativado</td>
+                                          <td><a href="/chamados/editar" class="btn btn-green-atento">Editar</a></td>
+                                        </tr>
+                                        
+                                        <tr>
+                                          <th scope="row">SBE</th>
+                                          <th scope="row">Itaú</th>
+                                          <td>10.159.208.0/22</td>
+                                          <td>10.159.120/22</td>
+                                          <td>Cliente</td>
+                                          <td>Core2duo com 2GB Ram</td>
+                                          <td>Windows 7 Enterprise</td>
+                                          <td>ITAU.ATENTO.BR</td>
+                                          <td>ISBE_temp_ficcsc <br /> ISBE_temp_imob  <br /> ISBE_Temp_Consorcio</td>
+                                          <td>Sem grupo atrelado</td>
+                                          <td>Cliente</td>
+
+                                          <td>Maquinas no dominio ITAU (itau.atento.br) deve sempres conter Senha na Bios e Bitlocker Ativado</td>
+                                          <td><a href="/chamados/editar" class="btn btn-green-atento">Editar</a></td>
+                                        </tr>
+                                        
+                                        <tr>
+                                          <th scope="row">SBE</th>
+                                          <th scope="row">Itaú</th>
+                                          <td>10.159.208.0/22</td>
+                                          <td>10.159.120/22</td>
+                                          <td>Cliente</td>
+                                          <td>Core2duo com 2GB Ram</td>
+                                          <td>Windows 7 Enterprise</td>
+                                          <td>ITAU.ATENTO.BR</td>
+                                          <td>ISBE_temp_ficcsc <br /> ISBE_temp_imob  <br /> ISBE_Temp_Consorcio</td>
+                                          <td>Sem grupo atrelado</td>
+                                          <td>Cliente</td>
+
+                                          <td>Maquinas no dominio ITAU (itau.atento.br) deve sempres conter Senha na Bios e Bitlocker Ativado</td>
+                                          <td><a href="/chamados/editar" class="btn btn-green-atento">Editar</a></td>
+                                        </tr>
+                                        
+                                        <tr>
+                                          <th scope="row">SBE</th>
+                                          <th scope="row">Itaú</th>
+                                          <td>10.159.208.0/22</td>
+                                          <td>10.159.120/22</td>
+                                          <td>Cliente</td>
+                                          <td>Core2duo com 2GB Ram</td>
+                                          <td>Windows 7 Enterprise</td>
+                                          <td>ITAU.ATENTO.BR</td>
+                                          <td>ISBE_temp_ficcsc <br /> ISBE_temp_imob  <br /> ISBE_Temp_Consorcio</td>
+                                          <td>Sem grupo atrelado</td>
+                                          <td>Cliente</td>
+
+                                          <td>Maquinas no dominio ITAU (itau.atento.br) deve sempres conter Senha na Bios e Bitlocker Ativado</td>
+                                          <td><a href="/chamados/editar" class="btn btn-green-atento">Editar</a></td>
+                                        </tr>
+                                        
+
+                                      
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+
+                          </div>
+
+
+
+  
+                                {{ template "footer"}}
+                                {{ template "scripts"}}
+                                </body>
+                                </html>
