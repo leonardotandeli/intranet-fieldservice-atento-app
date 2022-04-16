@@ -783,3 +783,9 @@ h2.support-heading {
 .article-comment-second {
 	padding: 10px 10px 10px 90px;
 }
+
+img {
+
+  image-rendering: pixelated ;
+  image-rendering: -webkit-optimize-contrast;
+}
