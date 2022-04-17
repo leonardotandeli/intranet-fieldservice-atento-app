@@ -45,4 +45,10 @@ var rotasMapaOperacional = []Rota{
 		Funcao:             controllers.AtualizarMapa,
 		RequerAutenticacao: true,
 	},
+	{
+		URI:                "/mapa/operacoes/{mapaId}",
+		Metodo:             http.MethodDelete,
+		Funcao:             controllers.DeletarMapa,
+		RequerAutenticacao: true,
+	},
 }

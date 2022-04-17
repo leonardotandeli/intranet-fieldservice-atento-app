@@ -51,66 +51,56 @@
           <h4 class="card-title mb-4">
             <a href="/formulario/mapa"> <button type="button" class="btn btn-sm btn-outline-secondary">Adicionar</button></a> 
             <br /> </h4>
-          <div class="table-responsive">
-            <table class="table table-centered" id="ticketList">
-              <thead>
-                <tr>
-                  <th scope="col">Site</th>
-                  <th scope="col">Cliente</th>
-                  <th scope="col">Operação</th>
-                  <th scope="col">VLAN Dados</th>
-                  <th scope="col">VLAN Voz</th>
-                  <th scope="col">DAC</th>
-                  <th scope="col">Config.</th>
-                  <th scope="col">Windows</th>
-                  <th scope="col">Domínio</th>
-                  <th scope="col">Template</th>
-                  <th scope="col">IMDB</th>
-                  <th scope="col">Gravador</th>
-                  <th scope="col">Observações</th>
-                  <th scope="col"></th>
-                </tr>
-              </thead>
-              <tbody>
-                {{ range .MapaOperacional}}
-                <tr>
-                  <th scope="row">{{ .Site.NOME }}</th>
-                  <td>{{ .Cliente.NOME }}</td>
-                  <th scope="row">{{ .OPERACAO }}</th>
-                  <td>{{.VLAN_DADOS}}</td>
-                  <td>{{.VLAN_VOZ}}</td>
-                  <td>{{ .Dac.NOME }}</td>
-                  <td>{{ .CONFIG_CONTRATUAL }}</td>
-                  <td>{{ .VERSAO_WINDOWS }}</td>
-                  <td>{{ .Dominio.NOME }}</td>
-                  <td>{{ .TEMPLATE }}</td>
-                  <td>{{ .GRUPO_IMDB }}</td>
-                  <td>{{ .GRAVADOR }}</td>
-                  <td>{{ .OBSERVACOES }}</td>
-                  <td><a href="/mapa/operacoes/{{ .IDMAPA }}" class="btn btn-green-atento">Editar</a></td>
-                </tr>
-                {{else}}
-                <tr>
-                  <th scope="row">Nenhum resultado encontrado.</th>
-                  <td></td>
-                  <th scope="row"></th>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                </tr>
-
-
-               
-           
-                {{ end }}
+            <div class="table-responsive">
+              <table class="table table-centered" id="ticketList">
+                <thead>
+                  <tr>
+                    <th scope="col">Site</th>
+                    <th scope="col">Cliente</th>
+                    <th scope="col">VLAN</th>
+                    <th scope="col">Configuração</th>
+                    <th scope="col">Template</th>
+                    <th scope="col">Telefonia</th>
+                    <th scope="col">Observações</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {{ range .MapaOperacional}}
+                  <tr>
+                    <th scope="row">{{ .Site.NOME }}</th>
+                    <td><strong>Cliente:</strong> {{ .Cliente.NOME }} <br/> <strong>Operação:</strong> {{ .OPERACAO }} <br/> <strong>IMDB:</strong> {{ .GRUPO_IMDB }} <br/> <strong>Domínio:</strong> {{ .Dominio.NOME }}</td>
+                    <td><strong>Dados:</strong> {{.VLAN_DADOS}} <br/> <strong>Voz:</strong> {{.VLAN_VOZ}}</td>
+                    <td><strong>CPU:</strong> {{ .CONFIG_CONTRATUAL }} <br/> <strong>Versão:</strong> {{ .VERSAO_WINDOWS }} <br/> <strong>Imagem:</strong> {{.IMAGEM}}</td>
+                    <td>{{ .TEMPLATE }}</td>
+                    <td><strong>DAC:</strong> {{ .Dac.NOME }} <br/> <strong>Gravador:</strong> {{ .GRAVADOR }}</td>
+                    <td width="80px">{{ .OBSERVACOES }}</td>
+                    {{ if eq $.Cookies.V_MAPA_OPERACIONAL_ADM "S" }}
+                    <td><a href="/mapa/operacoes/{{ .IDMAPA }}" class="btn btn-sm btn-outline-secondary">Editar</a></td>
+  {{end}}
+                  </tr>
+                  {{else}}
+                  <tr>
+                    <th scope="row">Nenhum resultado encontrado.</th>
+                    <td></td>
+                    <th scope="row"></th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+  
+  
+                 
+             
+                  {{ end }}
                 
 
               </tbody>
