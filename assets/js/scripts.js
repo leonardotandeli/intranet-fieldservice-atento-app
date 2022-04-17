@@ -33,15 +33,13 @@ function fazerLogin(evento) {
     }).done(function() {
      window.location = "/home"
     }).fail(function(){
-        Swal.fire({
-            type: 'error',
-            title: 'Algo deu errado! Login ou senha incorretos!.',
-            showConfirmButton: false,
-            timer: 2500
-          })
+
+        $('#alertd').fadeIn(1000);
+        $('#alertd').text("Algo deu errado! O login ou a senha que você inseriu não estão corretos.");
 
         })
 }
+
 
 $('#formulario-impressora').on('submit', criarImpressora);
 $('#atualizar-impressora').on('click', atualizarImpressora);
@@ -146,8 +144,9 @@ function deletarImpressora(evento) {
     })
 }
 
-$('#formulario').on('submit', criarChamado)
-$('#formulario-mapa').on('submit', criarMapa)
+$('#formulario').on('submit', criarChamado);
+$('#formulario-mapa').on('submit', criarMapa);
+$('#deletar-mapa').on('click', DeletarMapa);
 $('#atualizar-chamado').on('click', atualizarChamado);
 $('#atualizar-mapa').on('click', atualizarMapa);
 $('#criar-usuario-usuario').on('click', criarUsuarioChamado);
@@ -204,8 +203,40 @@ function criarChamado(evento) {
     })
 }
 
+
+
+function DeletarMapa(evento) {
+    evento.preventDefault();
+    const mapaId = $(this).data('mapa-id');
+    Swal.fire({
+        title: "Atenção!",
+        text: "Tem certeza que deseja excluir essa operação? Essa ação é irreversível!",
+        cancelButtonText: "Cancelar",
+        showCancelButton: true,
+        icon: "warning"
+    }).then(function(confirmacao) {
+        if (!confirmacao.value) return;
+
+    
+        $.ajax({
+            url: '/mapa/operacoes/'+mapaId,
+            method: "DELETE"
+        }).done(function() {
+            window.location = '/mapa/operacoes';
+        }).fail(function() {
+            Swal.fire("Ops...", "Erro ao excluir a operação!", "error");
+        });
+    })
+}
+
+
 function criarMapa(evento) {
     evento.preventDefault();
+  
+  var textareaText = $('#template').val();
+  textareaText = textareaText.replace(/\r?\n/g, '<br />');
+
+
 
     $.ajax({
         url: "/formulario/mapa",
@@ -217,7 +248,7 @@ function criarMapa(evento) {
             config_contratual: $('#config_contratual').val(),
             versao_windows: $('#versao_windows').val(),
             imagem: $('#imagem').val(),
-            template: $('#template').val(),
+            template: textareaText,
             grupo_imdb: $('#grupo_imdb').val(),
             gravador: $('#gravador').val(),
             observacoes: $('#observacoes').val(),
@@ -238,7 +269,7 @@ function criarMapa(evento) {
         console.log(erro)
         Swal.fire({
             type: 'error',
-            title: 'Algo deu errado! Não foi possível enviar a solicitação.',
+            title: 'Algo deu errado! Verifique se todos os campos foram preenchidos.',
             showConfirmButton: false,
             timer: 1500
           })
@@ -246,12 +277,18 @@ function criarMapa(evento) {
 }
 
 
+
+
+
+
 function atualizarMapa() {
     $(this).prop('disabled', true);
 
     const mapaId = $(this).data('mapa-id');
     console.log(mapaId)
-
+    var textareaText = $('#template').val();
+    textareaText = textareaText.replace(/\r?\n/g, '<br />');
+    
     $.ajax({
         url: '/mapa/operacoes/'+mapaId,
         method: "PUT",
@@ -262,7 +299,7 @@ function atualizarMapa() {
             config_contratual: $('#config_contratual').val(),
             versao_windows: $('#versao_windows').val(),
             imagem: $('#imagem').val(),
-            template: $('#template').val(),
+            template: textareaText,
             grupo_imdb: $('#grupo_imdb').val(),
             gravador: $('#gravador').val(),
             observacoes: $('#observacoes').val(),
