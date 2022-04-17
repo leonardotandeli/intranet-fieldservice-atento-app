@@ -149,6 +149,7 @@ $('#formulario-mapa').on('submit', criarMapa);
 $('#deletar-mapa').on('click', DeletarMapa);
 $('#atualizar-chamado').on('click', atualizarChamado);
 $('#atualizar-mapa').on('click', atualizarMapa);
+$('#atualizar-categoria').on('click', atualizarCategoria);
 $('#criar-usuario-usuario').on('click', criarUsuarioChamado);
 function criarChamado(evento) {
     evento.preventDefault();
@@ -326,6 +327,43 @@ function atualizarMapa() {
         $('#atualizar-chamado').prop('disabled', false);
     })
 }
+
+
+
+
+
+function atualizarCategoria() {
+    $(this).prop('disabled', true);
+
+    const catId = $(this).data('cat-id');
+    console.log(catId)
+  
+    
+    $.ajax({
+        url: '/base/categorias/'+mapaId,
+        method: "PUT",
+        data: {
+            nome: $('#nome').val(),
+        }
+    }).done(function() {
+        Swal.fire({
+            type: 'success',
+            title: 'Informações atualizadas com sucesso!',
+            showConfirmButton: false,
+            timer: 2000
+          }).then(function() {window.location = '/categorias/'+catId+'/editar';})
+    }).fail(function() {
+        Swal.fire({
+            type: 'error',
+            title: 'Algo deu errado! Não foi possível enviar a solicitação.',
+            showConfirmButton: false,
+            timer: 1500
+          })
+    }).always(function() {
+        $('#atualizar-categoria').prop('disabled', false);
+    })
+}
+
 
 
 

@@ -13,6 +13,18 @@ var rotasBaseDeConhecimento = []Rota{
 		RequerAutenticacao: true,
 	},
 	{
+		URI:                "/formulario/base",
+		Metodo:             http.MethodGet,
+		Funcao:             controllers.CarregarTelaDeCriarPublicacao,
+		RequerAutenticacao: true,
+	},
+	{
+		URI:                "/formulario/categoria",
+		Metodo:             http.MethodGet,
+		Funcao:             controllers.CarregarTelaDeCriarCategoria,
+		RequerAutenticacao: true,
+	},
+	{
 		URI:                "/base/busca",
 		Metodo:             http.MethodGet,
 		Funcao:             controllers.CarregarPaginaBuscaCatOuCliente,
@@ -31,12 +43,6 @@ var rotasBaseDeConhecimento = []Rota{
 		RequerAutenticacao: true,
 	},
 	{
-		URI:                "/base/novo",
-		Metodo:             http.MethodGet,
-		Funcao:             controllers.CarregarTelaDeCriarPublicacao,
-		RequerAutenticacao: true,
-	},
-	{
 		URI:                "/base",
 		Metodo:             http.MethodPost,
 		Funcao:             controllers.CriarPublicacao,
@@ -52,6 +58,24 @@ var rotasBaseDeConhecimento = []Rota{
 		URI:                "/base/{publicacaoId}",
 		Metodo:             http.MethodDelete,
 		Funcao:             controllers.DeletarPublicacao,
+		RequerAutenticacao: true,
+	},
+	{
+		URI:                "/base/editar/categoria/{catId}",
+		Metodo:             http.MethodGet,
+		Funcao:             controllers.CarregarPaginaDeEdicaoDeCategorias,
+		RequerAutenticacao: true,
+	},
+	{
+		URI:                "/base/editar/cliente/{clienteId}",
+		Metodo:             http.MethodGet,
+		Funcao:             controllers.CarregarPaginaDeEdicaoDeClientes,
+		RequerAutenticacao: true,
+	},
+	{
+		URI:                "/upload",
+		Metodo:             http.MethodPost,
+		Funcao:             controllers.UploadFile,
 		RequerAutenticacao: true,
 	},
 }

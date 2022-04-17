@@ -108,11 +108,15 @@
     font-family: "Roboto", sans-serif;
     font-size: 20px;
   }
+.nav-link {
+  display: inline;
+    padding: 0.5rem 1rem;
+}
   
   </style>
   <div class="container-fluid">
     <div class="row">
-      <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+      <nav id="sidebarMenu" class="col-md-2 col-lg-2 d-md-block bg-light sidebar collapse">
         <div class="sidebar-sticky pt-3">
           <ul class="nav flex-column">
             <li class="nav-item">
@@ -124,13 +128,13 @@
               </a>
             </li>
   
-            
-  {{range .Categoria}}
+
+            {{range .Categoria}}
+
   <li class="nav-item">
-    <a class="nav-link" href="/base/busca?categoria={{.IDCATEGORIA}}">
-      <span data-feather="file"></span>
-     {{ .NOME }}
-    </a>
+
+    <a class="nav-link" href="/base/busca?categoria={{.IDCATEGORIA}}">{{ .NOME }}</a><a href="/base/editar/categoria/{{.IDCATEGORIA}}"><i style="color: black;" class="fa fa-pencil-alt" aria-hidden="true"></i></a>
+
   </li>
   {{end}}
   
@@ -149,10 +153,7 @@
   
   {{range .Cliente}}
             <li class="nav-item">
-              <a class="nav-link" href="/base/busca?cliente={{.IDCLIENTE}}">
-                <span data-feather="file"></span>
-               {{ .NOME }}
-              </a>
+              <a class="nav-link" href="/base/busca?cliente={{.IDCLIENTE}}">{{ .NOME }}</a><!--<a href="/base/editar/cliente/{{.IDCLIENTE}}"><i style="color: black;" class="fa fa-pencil-alt" aria-hidden="true"></i></a>-->
             </li>
   {{end}}
           

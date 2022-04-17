@@ -1,0 +1,59 @@
+{{ template "head"}}
+
+{{ template "header" .}}
+
+<main role="main" class="flex-shrink-0">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+      
+
+          
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2  border-bottom">
+      <h1 class="h2">Editar cliente</h1>
+      <div class="btn-toolbar mb-2 mb-md-0">
+    <!--
+        <div class="btn-group mr-2">
+  
+            <strong>18/03/2022 00:11</strong> Incidente ambiente de e-mail Exchange 2013, Tsystems atuando.-->
+  
+  
+          
+            
+          <button type="submit" id="deletar-mapa" data-mapa-id=""  class="mr-2 btn btn-sm btn-outline-danger">Deletar</button>
+          <button type="submit" id="atualizar-mapa" data-mapa-id="" class="mr-2 btn btn-sm btn-outline-secondary">Salvar</button>
+    
+    </div>
+  </div>
+  
+ 
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+        
+                        <div class="col-6">
+                            <label>Cliente:</label>
+                            <input type="text"  value="{{.Cliente.NOME}}" name="nome_categoria" id="nome_categoria" class="form-control" required="">
+                        </div>
+                        
+               
+                    </div>
+
+            </div>
+        </div>       
+
+
+        
+    </div>
+
+<br />
+
+
+
+
+
+                    {{   template "footer"}}
+                    {{   template "scripts"}}
+</body>
+</html>

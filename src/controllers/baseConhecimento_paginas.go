@@ -286,6 +286,81 @@ func CarregarTelaDeCriarPublicacao(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
+//Carrega tela do formulario de criação de publicação.
+func CarregarTelaDeCriarCategoria(w http.ResponseWriter, r *http.Request) {
+
+	// define urls das api
+	urlClientes := fmt.Sprintf("%s/clientes", config.APIURL)
+	urlCategorias := fmt.Sprintf("%s/categorias", config.APIURL)
+	urlSites := fmt.Sprintf("%s/sites", config.APIURL)
+
+	//requisição para a api dos clientes
+	responseClientes, erro := requisicoes.FazerRequisicaoComAutenticacao(r, http.MethodGet, urlClientes, nil)
+	if erro != nil {
+		respostas.JSON(w, http.StatusInternalServerError, respostas.ErroAPI{Erro: erro.Error()})
+		return
+	}
+	if responseClientes.StatusCode >= 400 {
+		respostas.TratarStatusCodeDeErro(w, responseClientes)
+		return
+	}
+	var cliente []modelos.Cliente
+	if erro = json.NewDecoder(responseClientes.Body).Decode(&cliente); erro != nil {
+		respostas.JSON(w, http.StatusUnprocessableEntity, respostas.ErroAPI{Erro: erro.Error()})
+		return
+	}
+
+	//requisição para a api das categorias
+	responseCategorias, erro := requisicoes.FazerRequisicaoComAutenticacao(r, http.MethodGet, urlCategorias, nil)
+	if erro != nil {
+		respostas.JSON(w, http.StatusInternalServerError, respostas.ErroAPI{Erro: erro.Error()})
+		return
+	}
+	if responseCategorias.StatusCode >= 400 {
+		respostas.TratarStatusCodeDeErro(w, responseCategorias)
+		return
+	}
+	var categoria []modelos.Post_Categoria
+	if erro = json.NewDecoder(responseCategorias.Body).Decode(&categoria); erro != nil {
+		respostas.JSON(w, http.StatusUnprocessableEntity, respostas.ErroAPI{Erro: erro.Error()})
+		return
+	}
+
+	//requisição para a api dos Sites
+	responseSites, erro := requisicoes.FazerRequisicaoComAutenticacao(r, http.MethodGet, urlSites, nil)
+	if erro != nil {
+		respostas.JSON(w, http.StatusInternalServerError, respostas.ErroAPI{Erro: erro.Error()})
+		return
+	}
+	if responseSites.StatusCode >= 400 {
+		respostas.TratarStatusCodeDeErro(w, responseSites)
+		return
+	}
+	var site []modelos.Site
+	if erro = json.NewDecoder(responseSites.Body).Decode(&site); erro != nil {
+		respostas.JSON(w, http.StatusUnprocessableEntity, respostas.ErroAPI{Erro: erro.Error()})
+		return
+	}
+
+	//função para inserir dados dos cookies armazenados durante o login
+	cookies, _ := cookies.InserirDadosNaPagina(r)
+
+	utils.ExecutarTemplate(w, "criar-categoria.html", struct {
+		Cliente   []modelos.Cliente
+		Categoria []modelos.Post_Categoria
+		Site      []modelos.Site
+		Cookies   modelos.PageCookies
+		Pagina    string
+	}{
+
+		Cliente:   cliente,
+		Categoria: categoria,
+		Site:      site,
+		Cookies:   cookies,
+		Pagina:    "Mapa Operações",
+	})
+}
+
 //Carrega pagina de edição
 func CarregarPaginaDePublicacao(w http.ResponseWriter, r *http.Request) {
 	//recebe id através da url
@@ -486,5 +561,93 @@ func CarregarPaginaDeEdicaoDePublicacao(w http.ResponseWriter, r *http.Request) 
 		Site:      site,
 		Cookies:   cookies,
 		Pagina:    "Página GSA",
+	})
+}
+
+//Carrega pagina de edição
+func CarregarPaginaDeEdicaoDeCategorias(w http.ResponseWriter, r *http.Request) {
+	//recebe id através da url
+	parametros := mux.Vars(r)
+	catID, erro := strconv.ParseUint(parametros["catId"], 10, 64)
+	if erro != nil {
+		respostas.JSON(w, http.StatusBadRequest, respostas.ErroAPI{Erro: erro.Error()})
+		return
+	}
+
+	// define urls da api
+	url := fmt.Sprintf("%s/categorias/%d", config.APIURL, catID)
+	response, erro := requisicoes.FazerRequisicaoComAutenticacao(r, http.MethodGet, url, nil)
+	if erro != nil {
+		respostas.JSON(w, http.StatusInternalServerError, respostas.ErroAPI{Erro: erro.Error()})
+		return
+	}
+	var categoria modelos.Post_Categoria
+	defer response.Body.Close()
+
+	if response.StatusCode >= 400 {
+		respostas.TratarStatusCodeDeErro(w, response)
+		return
+	}
+
+	if erro = json.NewDecoder(response.Body).Decode(&categoria); erro != nil {
+		respostas.JSON(w, http.StatusUnprocessableEntity, respostas.ErroAPI{Erro: erro.Error()})
+		return
+	}
+
+	//função para inserir dados dos cookies armazenados durante o login
+	cookies, _ := cookies.InserirDadosNaPagina(r)
+
+	utils.ExecutarTemplate(w, "editar-categoria.html", struct {
+		Categoria modelos.Post_Categoria
+		Cookies   modelos.PageCookies
+		Pagina    string
+	}{
+		Categoria: categoria,
+		Cookies:   cookies,
+		Pagina:    "Página GSA",
+	})
+}
+
+//Carrega pagina de edição
+func CarregarPaginaDeEdicaoDeClientes(w http.ResponseWriter, r *http.Request) {
+	//recebe id através da url
+	parametros := mux.Vars(r)
+	catID, erro := strconv.ParseUint(parametros["clienteId"], 10, 64)
+	if erro != nil {
+		respostas.JSON(w, http.StatusBadRequest, respostas.ErroAPI{Erro: erro.Error()})
+		return
+	}
+
+	// define urls da api
+	url := fmt.Sprintf("%s/clientes/%d", config.APIURL, catID)
+	response, erro := requisicoes.FazerRequisicaoComAutenticacao(r, http.MethodGet, url, nil)
+	if erro != nil {
+		respostas.JSON(w, http.StatusInternalServerError, respostas.ErroAPI{Erro: erro.Error()})
+		return
+	}
+	var cliente modelos.Cliente
+	defer response.Body.Close()
+
+	if response.StatusCode >= 400 {
+		respostas.TratarStatusCodeDeErro(w, response)
+		return
+	}
+
+	if erro = json.NewDecoder(response.Body).Decode(&cliente); erro != nil {
+		respostas.JSON(w, http.StatusUnprocessableEntity, respostas.ErroAPI{Erro: erro.Error()})
+		return
+	}
+
+	//função para inserir dados dos cookies armazenados durante o login
+	cookies, _ := cookies.InserirDadosNaPagina(r)
+
+	utils.ExecutarTemplate(w, "editar-cliente.html", struct {
+		Cliente modelos.Cliente
+		Cookies modelos.PageCookies
+		Pagina  string
+	}{
+		Cliente: cliente,
+		Cookies: cookies,
+		Pagina:  "Página GSA",
 	})
 }
