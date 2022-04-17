@@ -61,7 +61,7 @@ func FazerLogin(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if erro = cookies.Salvar(w, dadosAutenticacao.ID, dadosAutenticacao.Token, dadosAutenticacao.NOME, dadosAutenticacao.LOGIN_NT, dadosAutenticacao.RE, dadosAutenticacao.CARGO, dadosAutenticacao.V_HOMEOFFICE, dadosAutenticacao.V_HOMEOFFICE_CHAMADOS, dadosAutenticacao.V_HOMEOFFICE_CHAMADOS_MUDAR_ANALISTA, dadosAutenticacao.V_USUARIOS, dadosAutenticacao.V_IMPRESSORAS, dadosAutenticacao.V_BDC_POSTS, dadosAutenticacao.V_BDC_ADM, dadosAutenticacao.V_IMDB, dadosAutenticacao.V_GSA, dadosAutenticacao.V_CATRACA, dadosAutenticacao.V_BH, dadosAutenticacao.V_CEP, dadosAutenticacao.V_MAPA_OPERACIONAL, dadosAutenticacao.Site.NOME); erro != nil {
+	if erro = cookies.Salvar(w, dadosAutenticacao.ID, dadosAutenticacao.Token, dadosAutenticacao.NOME, dadosAutenticacao.LOGIN_NT, dadosAutenticacao.RE, dadosAutenticacao.CARGO, dadosAutenticacao.V_HOMEOFFICE, dadosAutenticacao.V_HOMEOFFICE_CHAMADOS, dadosAutenticacao.V_HOMEOFFICE_CHAMADOS_MUDAR_ANALISTA, dadosAutenticacao.V_USUARIOS, dadosAutenticacao.V_IMPRESSORAS, dadosAutenticacao.V_BDC_POSTS, dadosAutenticacao.V_BDC_ADM, dadosAutenticacao.V_IMDB, dadosAutenticacao.V_GSA, dadosAutenticacao.V_CATRACA, dadosAutenticacao.V_BH, dadosAutenticacao.V_CEP, dadosAutenticacao.V_MAPA_OPERACIONAL, dadosAutenticacao.V_MAPA_OPERACIONAL_ADM, dadosAutenticacao.Site.NOME); erro != nil {
 		respostas.JSON(w, http.StatusUnprocessableEntity, respostas.ErroAPI{Erro: erro.Error()})
 		return
 	}

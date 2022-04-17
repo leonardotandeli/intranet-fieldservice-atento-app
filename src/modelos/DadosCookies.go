@@ -18,6 +18,7 @@ type PageCookies struct {
 	V_CATRACA                            string
 	V_BH                                 string
 	V_MAPA_OPERACIONAL                   string
+	V_MAPA_OPERACIONAL_ADM               string
 	SiteNome                             string
 	Pagina                               string
 }

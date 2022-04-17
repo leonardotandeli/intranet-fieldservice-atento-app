@@ -24,6 +24,7 @@ type Usuario struct {
 	V_BH                                 string    `json:"v_bh,omitempty"`
 	V_CEP                                string    `json:"v_cep,omitempty"`
 	V_MAPA_OPERACIONAL                   string    `json:"v_mapa_operacional,omitempty"`
+	V_MAPA_OPERACIONAL_ADM               string    `json:"v_mapa_operacional_adm,omitempty"`
 	ID_SITE                              string    `json:"id_site,omitempty"`
 	DATA_CRIACAO                         time.Time `json:"data_criacao,omitempty"`
 	Site                                 Site
