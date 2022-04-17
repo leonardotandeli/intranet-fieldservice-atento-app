@@ -7,8 +7,11 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"io"
 	"net/http"
+	"os"
 	"strconv"
+	"time"
 
 	"github.com/gorilla/mux"
 )
@@ -115,4 +118,43 @@ func DeletarPublicacao(w http.ResponseWriter, r *http.Request) {
 	}
 
 	respostas.JSON(w, response.StatusCode, nil)
+}
+
+func UploadFile(w http.ResponseWriter, r *http.Request) {
+	//	fmt.Println("Chamada para o upload de arquivos")
+
+	// limita o upload para menos de 10mb
+	r.ParseMultipartForm(10 << 20)
+
+	// recebe o arquivo através do formulário
+	file, handler, err := r.FormFile("file")
+	if err != nil {
+		fmt.Println("Erro ao obter o arquivo.")
+		fmt.Println(err)
+		return
+	}
+	defer file.Close()
+
+	//fmt.Printf("Nome do arquivo: %+v\n", handler.Filename)
+	//fmt.Printf("Tamanho do arquivo: %+v\n", handler.Size)
+	//fmt.Printf("MIME Header: %+v\n", handler.Header)
+
+	// variavel que junta o horário em unixnano com o nome do arquivo
+	var nameFile = fmt.Sprintf("./assets/uploads/%d%s", time.Now().UnixNano(), handler.Filename)
+
+	// função que cria o arquivo.
+	dst, err := os.Create(nameFile)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	defer dst.Close()
+
+	// Copia o arquivo enviado para a pasta
+	if _, err := io.Copy(dst, file); err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	// retorna uma mensagem em json para o tinymce omitindo o primeiro caracter [.]
+	json.NewEncoder(w).Encode(map[string]string{"location": "" + nameFile[1:]})
 }

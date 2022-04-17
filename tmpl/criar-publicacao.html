@@ -32,24 +32,6 @@
 
 <main role="main" class="flex-shrink-0">
   <div class="container-fluid">
-<script src="/assets/js/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
-<script>
-
-tinymce.init({
-  selector:'#conteudo',
-  plugins: 'image code',
- // images_upload_url: 'localhost:8000/postAcceptor.php',
-//  images_upload_base_path: '/img',
- // images_upload_credentials: true,
-  height : "440",
-  toolbar: 'undo redo | image code',
-    setup: function (editor) {
-        editor.on('change', function () {
-            editor.save();
-        });
-    }
-});
-</script>
 
 
 
@@ -62,14 +44,7 @@ tinymce.init({
       window.location.href = "/docs";
     }
     </script>
-<script>
 
-    var nome = ""
-    
-    document.getElementById("navbarDarkDropdownMenuLink").innerHTML = nome.substring(0,8);
-    document.getElementById("nome_pagina").innerHTML = "{{ .Pagina }}";
-    
-    </script>
 
 
 
@@ -86,11 +61,11 @@ tinymce.init({
                 </div>
               </div>
 
-              <div class="col-4">
+              <div class="col-3">
                 <div class="form-group">
                     <label for="titulo">Categoria</label>
                     <select id="id_categoria" name="id_categoria" class="form-control" required="">
-                      <option selected>Escolha...</option>
+                      <option value="" selected >Escolha...</option>
   
                       {{ range .Categoria}}
                       <option value="{{.IDCATEGORIA}}">{{.NOME}}</option>
@@ -98,11 +73,11 @@ tinymce.init({
                   </select>
                   </div>
                 </div>
-                <div class="col-4">
+                <div class="col-3">
                   <div class="form-group">
                       <label for="titulo">Cliente</label>
                       <select id="id_cliente" name="id_cliente" class="form-control" required="">
-                        <option selected>Escolha...</option>
+                        <option value="" selected>Escolha...</option>
     
                         {{ range .Cliente}}
                         <option value="{{.IDCLIENTE}}">{{.NOME}}</option>
@@ -111,7 +86,7 @@ tinymce.init({
                     </div>
                   </div>
               <input type="hidden" name="id_site"  class="form-control" value="1" placeholder="Email" id="id_site">
-              <input type="hidden" name="id_usuario"  class="form-control" value="{{.UsuarioID}}" placeholder="Email" id="id_usuario">
+              <input type="hidden" name="id_usuario"  class="form-control" value="{{.Cookies.UsuarioID}}" placeholder="Email" id="id_usuario">
             
 
 <!-- Button trigger modal -->
@@ -146,12 +121,12 @@ tinymce.init({
 <div class="col-12">
  
                 
-                  <textarea id="conteudo" name="conteudo" ></textarea>
+                  <textarea id="conteudo" name="conteudo" required ></textarea>
 
 
 <hr>
 
-<button onclick="criarPublicacao()" class="btn btn-block btn-formulario">
+<button onclick="criarPublicacao()" class="btn btn-block btn-outline-secondary">
   Criar Publicação
 </button>
 </form>
@@ -167,8 +142,7 @@ tinymce.init({
         </div>
   
   
-  
-  
+
   
   
   
@@ -177,13 +151,30 @@ tinymce.init({
     
   
   
-  
-  
   </div>
   </div>
   </div>
   </div>
-  
+  <script src="/assets/js/tinymce/tinymce.min.js"></script>
+<script>
+
+tinymce.init({
+  selector:'#conteudo',
+  plugins: 'image code',
+  language: 'pt_BR',
+  images_upload_url: '/upload',
+//  images_upload_base_path: '/img',
+ // images_upload_credentials: true,
+  height : "440",
+  toolbar: 'undo redo | image code',
+    setup: function (editor) {
+        editor.on('change', function () {
+            editor.save();
+        });
+    }
+});
+</script>
+
                                 {{ template "footer"}}
                                 {{ template "scripts"}}
                                 </body>
