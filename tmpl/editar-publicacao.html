@@ -18,8 +18,8 @@
           <div class="btn-group mr-2">
 
           
-              <button type="button" class="px-2 btn btn-sm btn-outline-danger" id="deletar-publicacao" data-publicacao-id="{{.Post.IDPOST}}" >Deletar</button>
- <button type="button" id="atualizar-publicacao" data-publicacao-id="{{.Post.IDPOST}}" class="px-2 btn btn-sm btn-outline-secondary">Salvar</button>
+              <button type="button" class="mr-2 btn btn-sm btn-outline-danger" id="deletar-publicacao" data-publicacao-id="{{.Post.IDPOST}}" >Deletar</button>
+ <button type="button" id="atualizar-publicacao" data-publicacao-id="{{.Post.IDPOST}}" class="mr-2 btn btn-sm btn-outline-secondary">Salvar</button>
 
           </div>
         </div>
@@ -31,38 +31,7 @@
 
 
 
-
-<script src="/assets/js/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
-<script>
-
-tinymce.init({
-  selector:'#conteudo',
-  language: 'pt_BR',
-  images_upload_url: 'postAcceptor.php',
-  toolbar:
-    'insertfile a11ycheck undo redo | bold italic | forecolor backcolor | template codesample | alignleft aligncenter alignright alignjustify | bullist numlist | link image tinydrive',
-  height : "440",
-  plugins: [
-    'a11ychecker advcode advlist anchor autolink codesample fullscreen help image imagetools tinydrive',
-    ' lists link media noneditable powerpaste preview',
-    ' searchreplace table template tinymcespellchecker visualblocks wordcount'
-  ],
-    setup: function (editor) {
-        editor.on('change', function () {
-            editor.save();
-        });
-    }
-});
-</script>
-<script>
-
-    var nome = ""
-    
-    document.getElementById("navbarDarkDropdownMenuLink").innerHTML = nome.substring(0,8);
-    document.getElementById("nome_pagina").innerHTML = "";
-    
-    </script>
-
+   
 
 
 
@@ -97,7 +66,7 @@ tinymce.init({
                 </div>
                 <div class="col-6">
                   <div class="form-group">
-                      <label for="titulo">Título</label>
+                      <label for="titulo">Cliente</label>
                       <select id="id_cliente" name="id_cliente" class="form-control" required="">
 
              
@@ -108,7 +77,7 @@ tinymce.init({
                     </div>
                   </div>
               <input type="hidden" name="id_site"  class="form-control" value="1" placeholder="Email" id="id_site">
-              <input type="hidden" name="id_usuario"  class="form-control" value="{{.UsuarioID}}" placeholder="Email" id="id_usuario">
+              <input type="hidden" name="id_usuario"  class="form-control" value="{{.Cookies.UsuarioID}}" placeholder="Email" id="id_usuario">
               <div class="col-12">
                 <div class="form-group">
               <textarea id="conteudo" name="conteudo">{{.Post.CONTEUDO}}</textarea>
@@ -174,7 +143,28 @@ tinymce.init({
   </div>
   </div>
   </div>
+  <script src="/assets/js/tinymce/tinymce.min.js"></script>
+  <script>
   
+  tinymce.init({
+    selector:'#conteudo',
+    convert_urls: false,
+    plugins: 'image code',
+    language: 'pt_BR',
+    images_upload_url: '/upload',
+  //  images_upload_base_path: '/img',
+   // images_upload_credentials: true,
+    height : "440",
+    toolbar: 'undo redo | image code',
+      setup: function (editor) {
+          editor.on('change', function () {
+              editor.save();
+          });
+      }
+  });
+  </script>
+
+s
                                 {{ template "footer"}}
                                 {{ template "scripts"}}
                                 </body>
