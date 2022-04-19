@@ -2,7 +2,9 @@ package cookies
 
 import (
 	"app/src/config"
+	"app/src/modelos"
 	"net/http"
+	"strconv"
 	"time"
 
 	"github.com/gorilla/securecookie"
@@ -16,7 +18,7 @@ func Configurar() {
 }
 
 //registra autenticacao
-func Salvar(w http.ResponseWriter, ID, token, NOME, LOGIN_NT, RE, CARGO, V_HOMEOFFICE, V_HOMEOFFICE_CHAMADOS, V_HOMEOFFICE_CHAMADOS_MUDAR_ANALISTA, V_USUARIOS, V_IMPRESSORAS, V_BDC_POSTS, V_BDC_ADM, V_IMDB, V_GSA, V_CATRACA, V_BH, V_CEP, V_MAPA_OPERACIONAL, Site string) error {
+func Salvar(w http.ResponseWriter, ID, token, NOME, LOGIN_NT, RE, CARGO, V_HOMEOFFICE, V_HOMEOFFICE_CHAMADOS, V_HOMEOFFICE_CHAMADOS_MUDAR_ANALISTA, V_USUARIOS, V_IMPRESSORAS, V_BDC_POSTS, V_BDC_ADM, V_IMDB, V_GSA, V_CATRACA, V_BH, V_CEP, V_MAPA_OPERACIONAL, V_MAPA_OPERACIONAL_ADM, Site string) error {
 	dados := map[string]string{
 		"id":                                   ID,
 		"token":                                token,
@@ -37,40 +39,71 @@ func Salvar(w http.ResponseWriter, ID, token, NOME, LOGIN_NT, RE, CARGO, V_HOMEO
 		"v_bh":                                 V_BH,
 		"v_cep":                                V_CEP,
 		"v_mapa_operacional":                   V_MAPA_OPERACIONAL,
+		"v_mapa_operacional_adm":               V_MAPA_OPERACIONAL_ADM,
 		"Site":                                 Site,
 	}
-	dadosCodificados, erro := s.Encode("dadosCookie", dados)
+	dadosCodificados, erro := s.Encode("IntraFieldCookie", dados)
 	if erro != nil {
 		return erro
 	}
 	http.SetCookie(w, &http.Cookie{
-		Name:     "dadosCookie",
+		Name:     "IntraFieldCookie",
 		Value:    dadosCodificados,
 		Path:     "/",
 		HttpOnly: true,
+		MaxAge:   43150, //definido para 12 horas
 	})
 	return nil
 }
 
 //Ler retorna valores armazenados no cookie
 func Ler(r *http.Request) (map[string]string, error) {
-	cookie, erro := r.Cookie("dadosCookie")
+	cookie, erro := r.Cookie("IntraFieldCookie")
 	if erro != nil {
 		return nil, erro
 	}
 
 	valores := make(map[string]string)
-	if erro = s.Decode("dadosCookie", cookie.Value, &valores); erro != nil {
+	if erro = s.Decode("IntraFieldCookie", cookie.Value, &valores); erro != nil {
 		return nil, erro
 	}
 	return valores, nil
 }
 func Deletar(w http.ResponseWriter) {
 	http.SetCookie(w, &http.Cookie{
-		Name:     "dadosCookie",
+		Name:     "IntraFieldCookie",
 		Value:    "",
 		Path:     "/",
 		HttpOnly: true,
 		Expires:  time.Unix(0, 0),
 	})
+}
+
+//InserirDadosNaPagina faz a leitura e insere os dados armazenados na página através do struct PageCookies
+func InserirDadosNaPagina(r *http.Request) (modelos.PageCookies, error) {
+
+	cookie, _ := Ler(r)
+	var c modelos.PageCookies
+
+	c.UsuarioID, _ = strconv.ParseUint(cookie["id"], 10, 64)
+	c.Nome = cookie["nome"]
+	c.Login_NT = cookie["login_nt"]
+	c.RE = cookie["re"]
+	c.Cargo = cookie["cargo"]
+	c.V_HOMEOFFICE = cookie["v_homeoffice"]
+	c.V_HOMEOFFICE_CHAMADOS = cookie["v_homeoffice_chamados"]
+	c.V_HOMEOFFICE_CHAMADOS_MUDAR_ANALISTA = cookie["v_homeoffice_chamados_mudar_analista"]
+	c.V_USUARIOS = cookie["v_usuarios"]
+	c.V_IMPRESSORAS = cookie["v_impressoras"]
+	c.V_BDC_POSTS = cookie["v_bdc_posts"]
+	c.V_BDC_ADM = cookie["v_bdc_adm"]
+	c.V_IMDB = cookie["v_imdb"]
+	c.V_GSA = cookie["v_gsa"]
+	c.V_CATRACA = cookie["v_catraca"]
+	c.V_BH = cookie["v_bh"]
+	c.V_MAPA_OPERACIONAL = cookie["v_mapa_operacional"]
+	c.V_MAPA_OPERACIONAL_ADM = cookie["v_mapa_operacional_adm"]
+	c.SiteNome = cookie["Site"]
+
+	return c, nil
 }

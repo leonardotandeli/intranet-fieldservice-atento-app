@@ -1,0 +1,247 @@
+{{ template "head" .}}
+{{ template "header" .}}
+
+
+
+<main role="main" class="flex-shrink-0">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 titulo-paginas">
+
+        <div
+          class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 border-bottom">
+          <h1 class="h2">Usuários </h1>
+          <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group mr-2">
+
+              <!-- <span>18/03/2022 00:11</span> Incidente ambiente de e-mail Exchange 2013, Tsystems atuando.-->
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="row">
+      <div class="col-lg-12">
+
+        <div class="card card-body">
+          <h4 class="card-title mb-4">Dados do usuário</h4>
+          <form id="formulario-cadastro" >
+
+
+      <div class="row">
+        <div class="col-lg-4">
+          <label>Nome</label>
+          <div class="form-label-group">
+            <input type="text" name="nome" class="form-control" value="" id="nome" required>
+          </div>
+        </div>
+
+
+
+
+
+        <div class="col-lg-4">
+          <label>RE</label>
+          <div class="form-label-group">
+            <input type="text" name="re" class="form-control" value="" id="re" required>
+          </div>
+        </div>
+
+
+        <div class="col-lg-4">
+          <div class="form-label-group">
+            <label>Cargo</label>
+            <select class="custom-select" id="cargo" name="cargo">
+              <option selected="selected" hidden value=""></option>
+              <option value="ADM">ADM</option>
+              <option value="M3">M3</option>
+              <option value="M2">M2</option>
+              <option value="M1">M1</option>
+              <option value="P4">P4</option>
+              <option value="P3">P3</option>
+              <option value="P2">P2</option>
+              <option value="P1">P1</option>
+              <option value="N2">N2</option>
+
+            </select>
+
+          </div>
+        </div>
+
+        <div class="col-lg-4 mt-1">
+          <label>Login NT</label>
+          <div class="form-label-group">
+            <input type="text" name="login_nt" class="form-control" value=""
+              placeholder="Login NT" id="login_nt" required>
+
+          </div>
+        </div>
+
+        <div class="col-lg-4 mt-1">
+          <label>Email</label>
+          <div class="form-label-group">
+            <input type="email" name="email" class="form-control" value="" placeholder="Email"
+              id="email" required>
+          </div>
+
+        </div>
+
+
+
+
+
+        <div class="col-lg-4 mt-1">
+          <div class="form-label-group">
+            <label>Site</label>
+            <select class="custom-select" id="id_site" name="id_site">
+
+              {{ range .Site}}
+              <option value="{{.IDSITE}}">{{.NOME}}</option>
+              {{end}}
+            </select>
+
+          </div>
+        </div>
+
+
+      </div>
+      <hr>
+
+      <div class="row">   
+
+
+
+
+        <div class="col-lg-4">
+
+          <div class="form-label-group">
+            <label>Permitir Gerenciamento de Usuários</label>
+            <select class="custom-select" id="v_usuarios" name="v_usuarios">
+              <option value="S">SIM</option>
+              <option value="N">NÃO</option>
+            </select>
+
+          </div>
+        </div>
+
+
+        <div class="col-lg-4">
+          <div class="form-label-group">
+            <label>Permitir acesso a Base de Conhecimento</label>
+            <select class="custom-select" id="v_bdc_posts" name="v_bdc_posts">
+              <option value="S">SIM</option>
+              <option value="N">NÃO</option>
+            </select>
+
+          </div>
+        </div>
+
+
+        <div class="col-lg-4">
+          <div class="form-label-group">
+            <label>Administrador da Base de Conhecimento</label>
+            <select class="custom-select" id="v_bdc_adm" name="v_bdc_adm">
+              <option value="S">SIM</option>
+              <option value="N">NÃO</option>
+            </select>
+
+          </div>
+        </div>
+
+
+        <div class="col-lg-3 mt-2">
+          <div class="form-label-group">
+            <label>Permitir acesso ao IMDB</label>
+            <select class="custom-select" id="v_imdb" name="v_imdb">
+              <option value="S">SIM</option>
+              <option value="N">NÃO</option>
+            </select>
+
+          </div>
+        </div>
+
+
+
+        <div class="col-lg-3 mt-2">
+          <div class="form-label-group">
+            <label>Permitir acesso ao GSA</label>
+            <select class="custom-select" id="v_gsa" name="v_gsa">
+              <option value="S">SIM</option>
+              <option value="N">NÃO</option>
+            </select>
+
+          </div>
+        </div>
+
+
+        <div class="col-lg-3 mt-2">
+          <div class="form-label-group">
+            <label>Permitir acesso ao Mapa Operacional</label>
+            <select class="custom-select" id="v_mapa_operacional" name="v_mapa_operacional">
+              <option value="S">SIM</option>
+              <option value="N">NÃO</option>
+            </select>
+
+          </div>
+        </div>
+
+
+        <div class="col-lg-3 mt-2">
+          <div class="form-label-group">
+            <label>Administrador do Mapa Operacional</label>
+            <select class="custom-select" id="v_mapa_operacional_adm" name="v_mapa_operacional_adm">
+              <option value="S">SIM</option>
+              <option value="N">NÃO</option>
+            </select>
+
+          </div>
+        </div>
+
+      </div>
+      <hr>
+      <div class="row">   
+
+
+
+<div class="col-lg-6 mt-1">
+  <label>Senha</label>
+<div class="form-label-group">
+    <input type="password" name="senha"  class="form-control"  id="senha" required>
+
+</div>
+</div>
+
+<div class="col-lg-6 mt-1">
+  <label>Confirmar Senha</label>
+<div class="form-label-group">
+  <input type="password" name="confirmar-senha"  class="form-control"  id="confirmar-senha" required>
+
+</div>
+</div>
+
+
+</div>
+
+
+      <hr>
+
+    <button class="btn btn-block btn-outline-secondary" type="submit">Criar</button>
+  
+  </form>
+</div></div>
+
+</div>
+
+
+                              {{ template "footer"}}
+                              {{ template "scripts"}}
+                              <script src="/assets/js/cadastro.js"></script>
+                              </body>
+                              </html>
+

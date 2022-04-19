@@ -1,0 +1,174 @@
+{{ template "head" .}}
+
+
+
+   
+<nav class="fixed-top flex-md-nowrap p-0 shadow">
+  {{ template "header" .}}
+</nav>
+
+
+
+{{ template "sidebar-base" .}}
+
+    <main role="main" class="col-md-9 ml-sm-auto mt-5 col-lg-10 ">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 mt-3 border-bottom">
+        <h1 class="h2">Atualizar Post</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group mr-2">
+
+          
+              <button type="button" class="mr-2 btn btn-sm btn-outline-danger" id="deletar-publicacao" data-publicacao-id="{{.Post.IDPOST}}" >Deletar</button>
+ <button type="button" id="atualizar-publicacao" data-publicacao-id="{{.Post.IDPOST}}" class="mr-2 btn btn-sm btn-outline-secondary">Salvar</button>
+
+          </div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+   
+
+
+
+  
+
+
+
+  <div class="card">
+    <div class="row">        
+    <div class="col-lg-12">
+        <div class="card-body">
+             
+          <div class="row mt-4">
+            <div class="col-12">
+              <div class="form-group">
+                  <label for="titulo">Título</label>
+                  <input type="text" value="{{.Post.TITULO}}" class="form-control mt-2" id="titulo" name="titulo" required>
+                </div>
+              </div>
+
+              <div class="col-6">
+                <div class="form-group">
+                    <label for="titulo">Categoria</label>
+                    <select id="id_categoria" name="id_categoria" class="form-control" required="">
+
+                      <option selected="selected" style="display:none;" value="{{.Post.Categoria.IDCATEGORIA}}">{{.Post.Categoria.NOME}}</option>
+             
+                      {{ range .Categoria}}
+
+                      <option value="{{.IDCATEGORIA}}">{{.NOME}}</option>
+                      {{end}}
+                  </select>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <div class="form-group">
+                      <label for="titulo">Cliente</label>
+                      <select id="id_cliente" name="id_cliente" class="form-control" required="">
+        
+                        <option selected="selected" style="display:none;" value="{{.Post.Cliente.IDCLIENTE}}">{{.Post.Cliente.NOME}}</option>
+                        {{ range .Cliente}}
+                        <option value="{{.IDCLIENTE}}">{{.NOME}}</option>
+                        {{end}}
+                    </select>
+                    </div>
+                  </div>
+              <input type="hidden" name="id_site"  class="form-control" value="1" placeholder="Email" id="id_site">
+              <input type="hidden" name="id_usuario"  class="form-control" value="{{.Cookies.UsuarioID}}" placeholder="Email" id="id_usuario">
+              <div class="col-12">
+                <div class="form-group">
+              <textarea id="conteudo" name="conteudo">{{.Post.CONTEUDO}}</textarea>
+            </div>
+          </div>
+<!-- Button trigger modal 
+<button type="button" class="btn btn-blue-atento" data-toggle="modal"  data-target="#exampleModal">
+  Fazer Upload de Arquivos
+</button>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">    
+        <div class="modal-header">
+      <h5 class="modal-title">Fazer Upload de Arquivos</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+ 
+      <div class="modal-body">
+        <iframe src="/upload" width="100%" height="265" style="border:none;">
+        </iframe>
+      </div>
+-->
+    </div>
+  </div>
+</div>
+
+<br/>
+<br/>
+           
+         
+            </div>
+
+
+
+
+
+           
+               
+                
+
+
+            </div>
+        </div>
+  
+  
+  
+  
+  
+  
+  
+             
+              
+    
+  
+  
+  
+  
+  </div>
+  </div>
+  </div>
+  </div>
+  <script src="/assets/js/tinymce/tinymce.min.js"></script>
+  <script>
+  
+  tinymce.init({
+    selector:'#conteudo',
+    convert_urls: false,
+    plugins: 'image code',
+    language: 'pt_BR',
+    images_upload_url: '/upload',
+  //  images_upload_base_path: '/img',
+   // images_upload_credentials: true,
+    height : "440",
+    toolbar: 'undo redo | image code',
+      setup: function (editor) {
+          editor.on('change', function () {
+              editor.save();
+          });
+      }
+  });
+  </script>
+
+s
+                                {{ template "footer"}}
+                                {{ template "scripts"}}
+                                </body>
+                                </html>
+  

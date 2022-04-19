@@ -5,12 +5,11 @@ import (
 	"net/http"
 )
 
-var rotaHome = []Rota{
-
+var rotasSalaDeCrise = []Rota{
 	{
-		URI:                "/home",
+		URI:                "/salas-crise",
 		Metodo:             http.MethodGet,
-		Funcao:             controllers.CarregarPaginaPrincipal,
+		Funcao:             controllers.CarregarPaginaDeSalasDeCrise,
 		RequerAutenticacao: true,
 	},
 }

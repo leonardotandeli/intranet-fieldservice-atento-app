@@ -1,0 +1,125 @@
+{{ template "head" .}}
+
+
+   
+<nav class="fixed-top flex-md-nowrap p-0 shadow">
+  {{ template "header" .}}
+</nav>
+
+
+
+{{ template "sidebar-base" .}}
+
+    <main role="main" class="col-md-1 ml-sm-auto mt-5 col-lg-10 ">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 mt-3 border-bottom">
+        <h1 class="h2">Base de Conhecimento</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group mr-2">
+            {{ if eq .Cookies.V_BDC_ADM "S" }}
+            <a href="/formulario/categoria">  <button type="button" class="ml-2 btn btn-sm btn-outline-secondary">Adicionar Categoria</button></a>
+         <a href="/formulario/base">  <button type="button" class="ml-2 btn btn-sm btn-outline-secondary">Adicionar Post</button></a>
+ {{end}}
+          </div>
+        </div>
+      </div>
+      
+      <div class="row mt-2">        
+        <div class="col-lg-12">
+        <!--  <form class=" my-2 my-lg-0" action="/buscar" method="GET">
+            <input class="form-control mr-sm-2" type="search" placeholder="Digite para buscar" value="" id="a"
+                name="a" required="required">
+          </form>-->
+    </div>
+  </div>
+
+      <div class="row mt-2">        
+        <div class="col-lg-12">
+          
+            <div class="card-body">
+              <div class="col-md-12">
+ 
+  
+                <div class="row">
+
+
+
+                  <div class="col-md-12 margin-bottom-20">
+                    <div class="fat-heading-abb">
+                       
+
+
+                    </div>
+                    <div class="fat-content-small padding-left-30">
+                        <ul>
+                          {{range .Posts}}
+
+
+         
+                            <li>
+                                <a href="/base/{{.IDPOST}}">
+                                     <i class="fas fa-file-alt"></i> {{.TITULO}}</a>
+                            </li>
+                            {{ else }}
+                   
+                            <p>Nenhum resultado...</p>
+                     {{end}}
+                      
+                        </ul>
+                    </div>
+                </div>
+
+  
+
+
+      
+
+
+            
+                  
+
+
+
+
+
+
+
+
+            
+                </div>
+            </div>
+      <!--
+              {{ range .Posts}}
+
+             
+              <li>
+                  <a class="base-links" href="/docs/{{.IDPOST}}">
+                      <i class="fas fa-file-alt"></i> {{.TITULO}}</a> 
+              </li>
+            
+              {{end}}
+      -->
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+ 
+
+
+      
+
+
+      
+      </div>
+    </main>
+
+
+
+
+
+
+                              {{ template "footer"}}
+                              {{ template "scripts"}}
+                              </body>
+                              </html>

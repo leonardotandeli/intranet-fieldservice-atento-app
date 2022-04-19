@@ -11,6 +11,8 @@ import (
 var (
 	// representa url da api
 	APIURL = ""
+	// representa url da aplicação
+	APPURL = ""
 	//porta da api
 	Porta = 0
 	//utilizado para autenticar o cookie
@@ -31,6 +33,7 @@ func Carregar() {
 		log.Fatal(erro)
 	}
 	APIURL = os.Getenv("API_URL")
+	APPURL = os.Getenv("APP_URL")
 	HashKey = []byte(os.Getenv("HASH_KEY"))
 	BlockKey = []byte(os.Getenv("BLOCK_KEY"))
 }

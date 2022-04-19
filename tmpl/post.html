@@ -1,0 +1,66 @@
+{{ template "head" .}}
+
+   
+<nav class="fixed-top flex-md-nowrap p-0 shadow">
+  {{ template "header" .}}
+</nav>
+
+
+
+{{ template "sidebar-base" .}}
+
+    <main role="main" class="col-md-9 ml-sm-auto mt-5 col-lg-10 ">
+      <div class="container-fluid">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 mt-3 border-bottom">
+        <h1 class="h2">{{ .Post.TITULO }}</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group mr-2">
+  
+            {{ if eq .Cookies.V_BDC_ADM "S" }}
+         <a href="/base/{{ .Post.IDPOST }}/editar">  <button type="button" class="px-2 btn btn-sm btn-outline-secondary">Editar</button></a>
+         {{end}}
+          </div>
+        </div>
+      </div>
+
+
+
+<style>.bg-blue-atento { background-color: #003760; }
+
+  .lh-100 { line-height: 1; }
+  .lh-125 { line-height: 1.25; }
+  .lh-150 { line-height: 1.5; }</style>
+      
+
+
+          <div class="card ">
+            <div class="row">        
+                <div class="card-body">  
+    <div class="col-lg-12">
+      <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-blue-atento rounded shadow-sm">
+        <img class="mr-3" src="/assets/images/logo-knowledgebase.jpg" alt="" width="48" height="48">
+        <div class="lh-100">
+          <h5 class="mb-0 text-white lh-100">{{.Post.Categoria.NOME}}</h5>
+          <h6>{{.Post.Cliente.NOME}}</h6>
+          <small>Autor: {{.Post.Usuario.NOME}}</small>
+
+        </div>
+      </div>
+
+
+                {{ .Post.CONTEUDO }}
+  
+
+  </div>
+  </div>
+  </div>
+  </div>
+  
+</div>        
+
+</main>
+{{ template "footer"}}
+                                {{ template "scripts"}}
+                                </body>
+                                </html>
+  

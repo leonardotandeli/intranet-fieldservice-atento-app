@@ -16,15 +16,14 @@ type Rota struct {
 
 func Configurar(router *mux.Router) *mux.Router {
 	rotas := rotasLogin
+	rotas = append(rotas, rotaHome...)
 	rotas = append(rotas, rotasUsuarios...)
-	rotas = append(rotas, rotaPaginaPrincipal)
-	rotas = append(rotas, rotasHomeOffice...)
-	rotas = append(rotas, rotaDeslogar)
-	rotas = append(rotas, rotasBdc...)
-	rotas = append(rotas, rotasBdcPaginas...)
-	rotas = append(rotas, rotasConfiguracao...)
-	rotas = append(rotas, rotasUpload...)
-	rotas = append(rotas, rotasFerramentas...)
+	rotas = append(rotas, rotasBaseDeConhecimento...)
+	rotas = append(rotas, rotasMapaOperacional...)
+	rotas = append(rotas, rotasSalaDeCrise...)
+	rotas = append(rotas, rotasConsultas...)
+	rotas = append(rotas, rotasContatos...)
+
 	for _, rota := range rotas {
 
 		if rota.RequerAutenticacao {
