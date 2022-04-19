@@ -57,9 +57,11 @@
                     <label for="titulo">Categoria</label>
                     <select id="id_categoria" name="id_categoria" class="form-control" required="">
 
+                      <option selected="selected" style="display:none;" value="{{.Post.Categoria.IDCATEGORIA}}">{{.Post.Categoria.NOME}}</option>
              
                       {{ range .Categoria}}
-                      <option selected value="{{.IDCATEGORIA}}">{{.NOME}}</option>
+
+                      <option value="{{.IDCATEGORIA}}">{{.NOME}}</option>
                       {{end}}
                   </select>
                   </div>
@@ -68,10 +70,10 @@
                   <div class="form-group">
                       <label for="titulo">Cliente</label>
                       <select id="id_cliente" name="id_cliente" class="form-control" required="">
-
-             
+        
+                        <option selected="selected" style="display:none;" value="{{.Post.Cliente.IDCLIENTE}}">{{.Post.Cliente.NOME}}</option>
                         {{ range .Cliente}}
-                        <option selected value="{{.IDCLIENTE}}">{{.NOME}}</option>
+                        <option value="{{.IDCLIENTE}}">{{.NOME}}</option>
                         {{end}}
                     </select>
                     </div>

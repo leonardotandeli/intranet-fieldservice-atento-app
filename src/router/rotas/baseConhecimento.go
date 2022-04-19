@@ -67,11 +67,30 @@ var rotasBaseDeConhecimento = []Rota{
 		RequerAutenticacao: true,
 	},
 	{
+		URI:                "/base/editar/categoria/{catId}",
+		Metodo:             http.MethodPut,
+		Funcao:             controllers.AtualizarCategoria,
+		RequerAutenticacao: true,
+	},
+	{
+		URI:                "/base/editar/categoria/{catId}",
+		Metodo:             http.MethodDelete,
+		Funcao:             controllers.DeletarCategoria,
+		RequerAutenticacao: true,
+	},
+	{
+		URI:                "/base/editar/categoria",
+		Metodo:             http.MethodPost,
+		Funcao:             controllers.CriarCategoria,
+		RequerAutenticacao: true,
+	},
+	{
 		URI:                "/base/editar/cliente/{clienteId}",
 		Metodo:             http.MethodGet,
 		Funcao:             controllers.CarregarPaginaDeEdicaoDeClientes,
 		RequerAutenticacao: true,
 	},
+
 	{
 		URI:                "/upload",
 		Metodo:             http.MethodPost,

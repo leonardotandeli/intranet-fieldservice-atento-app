@@ -1,40 +1,40 @@
 {{ template "head"}}
 
-{{ template "header" .}}
 
-<main role="main" class="flex-shrink-0">
+
+   
+
+  {{ template "header" .}}
+
+
+  <main role="main" class="flex-shrink-0">
     <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-      
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center  pb-2 mb-3 border-bottom">
+        <h1 class="h2">Atualizar Categoria</h1>
+        <div class="btn-toolbar mb-2 mb-md-0">
+          <div class="btn-group mr-2">
 
           
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2  border-bottom">
-      <h1 class="h2">Editar categoria</h1>
-      <div class="btn-toolbar mb-2 mb-md-0">
-    <!--
-        <div class="btn-group mr-2">
-  
-            <strong>18/03/2022 00:11</strong> Incidente ambiente de e-mail Exchange 2013, Tsystems atuando.-->
-  
-  
-          
-            
-          <button type="submit" id="deletar-cat" data-mapa-id="{{.Categoria.IDCATEGORIA}}"  class="mr-2 btn btn-sm btn-outline-danger">Deletar</button>
-          <button type="submit" id="atualizar-cat" data-mapa-id="{{.Categoria.IDCATEGORIA}}" class="mr-2 btn btn-sm btn-outline-secondary">Salvar</button>
-    
-    </div>
-  </div>
-  
- 
+            <button type="submit" id="atualizar-categoria" data-cat-id="{{.Categoria.IDCATEGORIA}}" class="mr-2 btn btn-sm btn-outline-secondary">Salvar</button>
+             
+          </div>
+        </div>
+      </div>
 
-            <div class="card">
-                <div class="card-body">
+
+
+      <div class="card">
+        <div class="row">        
+        <div class="col-lg-12">
+            <div class="card-body">
+                 
+  
+   
                     <div class="row">
         
-                        <div class="col-6">
+                        <div class="col-3">
                             <label>Categoria:</label>
-                            <input type="text"  value="{{.Categoria.NOME}}" name="nome_categoria" id="nome_categoria" class="form-control" required="">
+                            <input type="text"  value="{{.Categoria.NOME}}" name="nome" id="nome" class="form-control" required="">
                         </div>
                         
                
@@ -47,7 +47,7 @@
         
     </div>
 
-<br />
+
 
 
 

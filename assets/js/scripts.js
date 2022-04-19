@@ -151,6 +151,7 @@ $('#atualizar-chamado').on('click', atualizarChamado);
 $('#atualizar-mapa').on('click', atualizarMapa);
 $('#atualizar-categoria').on('click', atualizarCategoria);
 $('#criar-usuario-usuario').on('click', criarUsuarioChamado);
+$('#criar-categoria').on('submit', criarCategoria);
 function criarChamado(evento) {
     evento.preventDefault();
 
@@ -315,7 +316,7 @@ function atualizarMapa() {
             title: 'Informações atualizadas com sucesso!',
             showConfirmButton: false,
             timer: 2000
-          }).then(function() {window.location = '/chamados/'+chamadoId+'/editar';})
+          }).then(function() {$('#atualizar-chamado').prop('disabled', false); window.location = '/mapa/operacoes';})
     }).fail(function() {
         Swal.fire({
             type: 'error',
@@ -323,8 +324,6 @@ function atualizarMapa() {
             showConfirmButton: false,
             timer: 1500
           })
-    }).always(function() {
-        $('#atualizar-chamado').prop('disabled', false);
     })
 }
 
@@ -340,7 +339,7 @@ function atualizarCategoria() {
   
     
     $.ajax({
-        url: '/base/categorias/'+mapaId,
+        url: '/base/editar/categoria/'+catId,
         method: "PUT",
         data: {
             nome: $('#nome').val(),
@@ -351,7 +350,7 @@ function atualizarCategoria() {
             title: 'Informações atualizadas com sucesso!',
             showConfirmButton: false,
             timer: 2000
-          }).then(function() {window.location = '/categorias/'+catId+'/editar';})
+          }).then(function() {window.location = '/base';})
     }).fail(function() {
         Swal.fire({
             type: 'error',
@@ -401,6 +400,35 @@ function criarUsuarioChamado(evento) {
           })
     })
 }
+
+function criarCategoria(evento) {
+    evento.preventDefault();
+
+    $.ajax({
+        url: "/base/editar/categoria",
+        method: "POST",
+        data: {
+            nome: $('#nome').val()
+        }
+    }).done(function() {
+        Swal.fire({
+            type: 'success',
+            title: 'Categoria criada com sucesso!',
+            showConfirmButton: false,
+            timer: 1500
+          }).then(function() {window.location = '/base';})
+     
+    }).fail(function(erro){
+        console.log(erro)
+        Swal.fire({
+            type: 'error',
+            title: 'Algo deu errado! Não foi possível enviar a solicitação.',
+            showConfirmButton: false,
+            timer: 1500
+          })
+    })
+}
+
 
 
 function atualizarChamado() {
