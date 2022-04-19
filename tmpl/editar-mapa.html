@@ -1,4 +1,4 @@
-{{ template "head"}}
+{{ template "head" .}}
 
 {{ template "header" .}}
 <main role="main" class="flex-shrink-0">
@@ -117,7 +117,7 @@
                         </div>
                         <div class="col-3 mt-3">
                             <label>Domínio:</label>
-                            <select selected id="id_dominio" name="id_dominio" value="{{.MapaOperacional.ID_DOMINIO}}" class="form-control">
+                            <select selected="selected" id="id_dominio" name="id_dominio" value="{{.MapaOperacional.ID_DOMINIO}}" class="form-control">
                              <!--        <option selected="selected" style="display:none;" value="{{.MapaOperacional.Dominio.IDDOMINIO}}">{{.MapaOperacional.Dominio.NOME}}</option> -->
              
                                 {{ range .Dominio}}

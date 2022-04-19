@@ -51,15 +51,39 @@ func CarregarPaginaDeEdicaoDeSenha(w http.ResponseWriter, r *http.Request) {
 	//função para inserir dados dos cookies armazenados durante o login
 	cookies, _ := cookies.InserirDadosNaPagina(r)
 
-	utils.ExecutarTemplate(w, "editar-senha-usuario.html", struct {
-		Usuario modelos.Usuario
-		Cookies modelos.PageCookies
-		Pagina  string
-	}{
-		Usuario: usuario,
-		Cookies: cookies,
-		Pagina:  "Mapa Operações",
-	})
+	//condicional de acesso a página
+	if usuariocID == cookies.UsuarioID {
+
+		utils.ExecutarTemplate(w, "editar-senha-usuario.html", struct {
+			Usuario modelos.Usuario
+			Cookies modelos.PageCookies
+			Pagina  string
+		}{
+			Usuario: usuario,
+			Cookies: cookies,
+			Pagina:  "Alterar Senha",
+		})
+	} else if cookies.V_USUARIOS == "S" {
+		utils.ExecutarTemplate(w, "editar-senha-usuario.html", struct {
+			Usuario modelos.Usuario
+			Cookies modelos.PageCookies
+			Pagina  string
+		}{
+			Usuario: usuario,
+			Cookies: cookies,
+			Pagina:  "Alterar Senha",
+		})
+	} else {
+
+		utils.ExecutarTemplate(w, "acesso-negado.html", struct {
+			Cookies modelos.PageCookies
+			Pagina  string
+		}{
+			Cookies: cookies,
+			Pagina:  "Página Inicial",
+		})
+	}
+
 }
 
 //Carrega página de usuários
@@ -87,16 +111,31 @@ func CarregarPaginaDeUsuarios(w http.ResponseWriter, r *http.Request) {
 	//função para inserir dados dos cookies armazenados durante o login
 	cookies, _ := cookies.InserirDadosNaPagina(r)
 
-	utils.ExecutarTemplate(w, "usuarios.html", struct {
-		Usuarios []modelos.Usuario
-		Cookies  modelos.PageCookies
-		SiteNome string
-		Pagina   string
-	}{
-		Usuarios: usuarios,
-		Cookies:  cookies,
-		Pagina:   "Mapa Operações",
-	})
+	//condicional de acesso a página
+	if cookies.V_USUARIOS == "S" {
+		utils.ExecutarTemplate(w, "usuarios.html", struct {
+			Usuarios []modelos.Usuario
+			Cookies  modelos.PageCookies
+			SiteNome string
+			Pagina   string
+		}{
+			Usuarios: usuarios,
+			Cookies:  cookies,
+			Pagina:   "Usuários",
+		})
+
+	} else {
+
+		utils.ExecutarTemplate(w, "acesso-negado.html", struct {
+			Cookies modelos.PageCookies
+			Pagina  string
+		}{
+			Cookies: cookies,
+			Pagina:  "Página Inicial",
+		})
+
+	}
+
 }
 
 //Carrega pagina de edição
@@ -151,18 +190,33 @@ func CarregarPaginaDeEdicaoDeUsuarios(w http.ResponseWriter, r *http.Request) {
 	//função para inserir dados dos cookies armazenados durante o login
 	cookies, _ := cookies.InserirDadosNaPagina(r)
 
-	utils.ExecutarTemplate(w, "editar-usuario.html", struct {
-		Usuario modelos.Usuario
-		Site    []modelos.Site
-		Cookies modelos.PageCookies
-		Pagina  string
-	}{
-		Usuario: usuario,
-		Site:    site,
-		Cookies: cookies,
-		Pagina:  "Mapa Operações",
-		//Pagina:    "Chamado: " + chamado.Chamado,
-	})
+	//condicional de acesso a página
+	if cookies.V_USUARIOS == "S" {
+
+		utils.ExecutarTemplate(w, "editar-usuario.html", struct {
+			Usuario modelos.Usuario
+			Site    []modelos.Site
+			Cookies modelos.PageCookies
+			Pagina  string
+		}{
+			Usuario: usuario,
+			Site:    site,
+			Cookies: cookies,
+			Pagina:  "Alterar Usuário",
+			//Pagina:    "Chamado: " + chamado.Chamado,
+		})
+
+	} else {
+		utils.ExecutarTemplate(w, "acesso-negado.html", struct {
+			Cookies modelos.PageCookies
+			Pagina  string
+		}{
+			Cookies: cookies,
+			Pagina:  "Página Inicial",
+		})
+
+	}
+
 }
 
 //Carrega página de usuario
@@ -190,14 +244,28 @@ func CarregarPaginaDeCadastroDeUsuarios(w http.ResponseWriter, r *http.Request) 
 	//função para inserir dados dos cookies armazenados durante o login
 	cookies, _ := cookies.InserirDadosNaPagina(r)
 
-	utils.ExecutarTemplate(w, "criar-usuario.html", struct {
-		Site    []modelos.Site
-		Cookies modelos.PageCookies
-		Pagina  string
-	}{
+	//condicional de acesso a página
+	if cookies.V_USUARIOS == "S" {
 
-		Site:    site,
-		Cookies: cookies,
-		Pagina:  "Mapa Operações",
-	})
+		utils.ExecutarTemplate(w, "criar-usuario.html", struct {
+			Site    []modelos.Site
+			Cookies modelos.PageCookies
+			Pagina  string
+		}{
+
+			Site:    site,
+			Cookies: cookies,
+			Pagina:  "Criar novo usuário",
+		})
+
+	} else {
+		utils.ExecutarTemplate(w, "acesso-negado.html", struct {
+			Cookies modelos.PageCookies
+			Pagina  string
+		}{
+			Cookies: cookies,
+			Pagina:  "Página Inicial",
+		})
+
+	}
 }

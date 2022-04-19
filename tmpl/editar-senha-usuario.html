@@ -1,4 +1,4 @@
-{{ template "head"}}
+{{ template "head" .}}
 {{ template "header" .}}
 
 
@@ -10,7 +10,7 @@
             <div class="col-md-12 titulo-paginas">
 
                 <div
-                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 border-bottom">
                     <h1 class="h2">Alterar Senha </h1>
                     <div class="btn-toolbar mb-2 mb-md-0">
                         <div class="btn-group mr-2">
@@ -68,8 +68,8 @@
 
 
         </div>    <br />      
-              <button id="atualizar-senha" data-usuario-id="{{.Usuario.IDUSUARIO}}" class="btn btn-block-atento btn-lg btn-block">
-Editar Usuário
+              <button id="atualizar-senha" data-usuario-id="{{.Usuario.IDUSUARIO}}" class="btn btn-block btn-outline-secondary">
+Alterar Senha
   </button>
 
 

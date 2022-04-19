@@ -20,7 +20,7 @@ func CarregarPaginaDeConsultaDeIMDB(w http.ResponseWriter, r *http.Request) {
 			Pagina  string
 		}{
 			Cookies: cookies,
-			Pagina:  "Página GSA",
+			Pagina:  "Consulta IMDB",
 		})
 	} else {
 

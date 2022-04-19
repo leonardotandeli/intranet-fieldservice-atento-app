@@ -1,4 +1,4 @@
-{{ template "head"}}
+{{ template "head" .}}
 {{ template "header" .}}
 
 
@@ -10,7 +10,7 @@
       <div class="col-md-12 titulo-paginas">
 
         <div
-          class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+          class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 border-bottom">
           <h1 class="h2">Usuários </h1>
           <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group mr-2">
@@ -119,7 +119,7 @@
             <div class="col-lg-4">
 
               <div class="form-label-group">
-                <label>Gerenciamento de Usuários</label>
+                <label>Permitir Gerenciamento de Usuários</label>
                 <select class="custom-select" id="v_usuarios" name="v_usuarios">
                   <option value="S">SIM</option>
                   <option value="N">NÃO</option>
@@ -131,7 +131,7 @@
 
             <div class="col-lg-4">
               <div class="form-label-group">
-                <label>Base de Conhecimento</label>
+                <label>Permitir acesso a Base de Conhecimento</label>
                 <select class="custom-select" id="v_bdc_posts" name="v_bdc_posts">
                   <option value="S">SIM</option>
                   <option value="N">NÃO</option>
@@ -153,9 +153,9 @@
             </div>
 
 
-            <div class="col-lg-4 mt-1">
+            <div class="col-lg-3 mt-2">
               <div class="form-label-group">
-                <label>Página IMDB</label>
+                <label>Permitir acesso ao IMDB</label>
                 <select class="custom-select" id="v_imdb" name="v_imdb">
                   <option value="S">SIM</option>
                   <option value="N">NÃO</option>
@@ -166,9 +166,9 @@
 
 
 
-            <div class="col-lg-4 mt-1">
+            <div class="col-lg-3 mt-2">
               <div class="form-label-group">
-                <label>Página GSA</label>
+                <label>Permitir acesso ao GSA</label>
                 <select class="custom-select" id="v_gsa" name="v_gsa">
                   <option value="S">SIM</option>
                   <option value="N">NÃO</option>
@@ -178,9 +178,9 @@
             </div>
 
 
-            <div class="col-lg-4 mt-1">
+            <div class="col-lg-3 mt-2">
               <div class="form-label-group">
-                <label>Página Mapa Operacional</label>
+                <label>Permitir acesso ao Mapa Operacional</label>
                 <select class="custom-select" id="v_mapa_operacional" name="v_mapa_operacional">
                   <option value="S">SIM</option>
                   <option value="N">NÃO</option>
@@ -189,6 +189,30 @@
               </div>
             </div>
 
+            
+        <div class="col-lg-3 mt-2">
+          <div class="form-label-group">
+            <label>Administrador do Mapa Operacional</label>
+            <select class="custom-select" id="v_mapa_operacional_adm" name="v_mapa_operacional_adm">
+              <option value="S">SIM</option>
+              <option value="N">NÃO</option>
+            </select>
+
+          </div>
+        </div>
+
+
+<br>
+<div class="col-lg-12 mt-2">
+  <div class="form-label-group">
+    <br/>
+    <button id="atualizar-cadastro" data-usuario-id="{{.Usuario.IDUSUARIO}}"
+    class="btn btn-block btn-outline-secondary">
+  Alterar
+    </button>
+
+  </div>
+</div>
 
 
 
@@ -208,11 +232,7 @@
 
 
 
-        <br />
-        <button id="atualizar-cadastro" data-usuario-id="{{.Usuario.IDUSUARIO}}"
-          class="btn btn-block-atento btn-lg btn-block">
-          Editar Usuário
-        </button>
+
 
 
 

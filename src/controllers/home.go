@@ -21,6 +21,6 @@ func CarregarPaginaPrincipal(w http.ResponseWriter, r *http.Request) {
 	}{
 		PrimeiroNome: primeiroNome[0],
 		Cookies:      cookies,
-		Pagina:       "Mapa Operações",
+		Pagina:       "Home",
 	})
 }

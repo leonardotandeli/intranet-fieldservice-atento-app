@@ -17,6 +17,6 @@ func CarregarPaginaDeConsultaDeCatraca(w http.ResponseWriter, r *http.Request) {
 		Pagina  string
 	}{
 		Cookies: cookies,
-		Pagina:  "Página Inicial",
+		Pagina:  "Consultar Catraca",
 	})
 }

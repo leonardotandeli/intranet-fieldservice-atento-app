@@ -108,8 +108,7 @@ func CarregarPaginaInicialBase(w http.ResponseWriter, r *http.Request) {
 		Cliente:   cliente,
 		Categoria: categoria,
 		Cookies:   cookies,
-		Pagina:    "Página GSA",
-		//Pagina:    "Chamado: " + chamado.Chamado,
+		Pagina:    "Base de Conhecimento",
 	})
 }
 
@@ -206,8 +205,7 @@ func CarregarPaginaBuscaCatOuCliente(w http.ResponseWriter, r *http.Request) {
 		Cliente:   cliente,
 		Categoria: categoria,
 		Cookies:   cookies,
-		Pagina:    "Página GSA",
-		//Pagina:    "Chamado: " + chamado.Chamado,
+		Pagina:    "Busca",
 	})
 }
 
@@ -282,7 +280,7 @@ func CarregarTelaDeCriarPublicacao(w http.ResponseWriter, r *http.Request) {
 		Categoria: categoria,
 		Site:      site,
 		Cookies:   cookies,
-		Pagina:    "Mapa Operações",
+		Pagina:    "Criar nova postagem",
 	})
 }
 
@@ -357,7 +355,7 @@ func CarregarTelaDeCriarCategoria(w http.ResponseWriter, r *http.Request) {
 		Categoria: categoria,
 		Site:      site,
 		Cookies:   cookies,
-		Pagina:    "Mapa Operações",
+		Pagina:    "Criar nova categoria",
 	})
 }
 
@@ -458,7 +456,7 @@ func CarregarPaginaDePublicacao(w http.ResponseWriter, r *http.Request) {
 		Cliente:   cliente,
 		Categoria: categoria,
 		Cookies:   cookies,
-		Pagina:    "Página GSA",
+		Pagina:    post.TITULO,
 	})
 }
 
@@ -560,7 +558,7 @@ func CarregarPaginaDeEdicaoDePublicacao(w http.ResponseWriter, r *http.Request) 
 		Categoria: categoria,
 		Site:      site,
 		Cookies:   cookies,
-		Pagina:    "Página GSA",
+		Pagina:    "Edição de postagem",
 	})
 }
 
@@ -604,7 +602,7 @@ func CarregarPaginaDeEdicaoDeCategorias(w http.ResponseWriter, r *http.Request) 
 	}{
 		Categoria: categoria,
 		Cookies:   cookies,
-		Pagina:    "Página GSA",
+		Pagina:    "Edição de categoria",
 	})
 }
 

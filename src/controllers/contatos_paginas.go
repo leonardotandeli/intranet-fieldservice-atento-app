@@ -22,7 +22,7 @@ func CarregarPaginaDeContatosField(w http.ResponseWriter, r *http.Request) {
 		}{
 
 			Cookies: cookies,
-			Pagina:  "Mapa Operações",
+			Pagina:  "Contatos",
 		})
 	} else {
 
@@ -50,7 +50,7 @@ func CarregarPaginaDeContatosTsystems(w http.ResponseWriter, r *http.Request) {
 			Pagina  string
 		}{
 			Cookies: cookies,
-			Pagina:  "Mapa Operações",
+			Pagina:  "Contatos T-Systems",
 		})
 	} else {
 

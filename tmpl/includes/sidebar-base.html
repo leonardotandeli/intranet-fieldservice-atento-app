@@ -133,8 +133,10 @@
 
   <li class="nav-item">
 
-    <a class="nav-link" href="/base/busca?categoria={{.IDCATEGORIA}}">{{ .NOME }}</a><a href="/base/editar/categoria/{{.IDCATEGORIA}}"><i style="color: black;" class="fa fa-pencil-alt" aria-hidden="true"></i></a>
-
+    <a class="nav-link" href="/base/busca?categoria={{.IDCATEGORIA}}">{{ .NOME }}</a>
+    {{ if eq $.Cookies.V_BDC_ADM "S" }}
+    <a href="/base/editar/categoria/{{.IDCATEGORIA}}"><i style="color: black;" class="fa fa-pencil-alt" aria-hidden="true"></i></a>
+{{end}}
   </li>
   {{end}}
   

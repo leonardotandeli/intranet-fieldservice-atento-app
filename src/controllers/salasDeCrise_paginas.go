@@ -21,7 +21,7 @@ func CarregarPaginaDeSalasDeCrise(w http.ResponseWriter, r *http.Request) {
 		}{
 
 			Cookies: cookies,
-			Pagina:  "Mapa Operações",
+			Pagina:  "Salas de Crise",
 		})
 	} else {
 

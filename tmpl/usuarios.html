@@ -1,4 +1,4 @@
-{{ template "head"}}
+{{ template "head" .}}
 {{ template "header" .}}
 
 
@@ -10,7 +10,7 @@
             <div class="col-md-12 titulo-paginas">
 
                 <div
-                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 border-bottom">
                     <h1 class="h2">Usuários </h1>
                     <div class="btn-toolbar mb-2 mb-md-0">
                         <div class="btn-group mr-2">
@@ -67,8 +67,8 @@
            <td>{{.LOGIN_NT}}</td>
             <td>{{.EMAIL}}</td>
             <td>{{.Site.NOME}}</td>
-            <td><a href="/usuarios/{{.IDUSUARIO}}/editar" class="btn btn-green-atento">Editar</a></td>
-            <td><a href="/usuarios/{{.IDUSUARIO}}/senha" class="btn btn-blue-atento">Alterar Senha</a></td>
+            <td><a href="/usuarios/{{.IDUSUARIO}}/editar" class="btn btn-sm btn-outline-secondary">Alterar</a></td>
+            <td><a href="/usuarios/{{.IDUSUARIO}}/senha" class="btn btn-sm btn-outline-primary">Alterar Senha</a></td>
           </tr>
         
         

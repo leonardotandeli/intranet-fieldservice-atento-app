@@ -186,7 +186,7 @@ func CarregarPaginaMapaString(w http.ResponseWriter, r *http.Request) {
 			Cliente:         cliente,
 			Cookies:         cookies,
 
-			Pagina: "Mapa Operações",
+			Pagina: "Busca Mapa Operações",
 		})
 		//executa template da página de acesso negado.
 	} else {
@@ -288,7 +288,7 @@ func CarregarTelaDoFormularioMapa(w http.ResponseWriter, r *http.Request) {
 		Dac:     dac,
 		Dominio: dominio,
 		Cookies: cookies,
-		Pagina:  "Mapa Operações",
+		Pagina:  "Criar nova operação",
 	})
 }
 
@@ -411,6 +411,6 @@ func CarregarPaginaDeEdicaoMapa(w http.ResponseWriter, r *http.Request) {
 		Dac:             dac,
 		Dominio:         dominio,
 		Cookies:         cookies,
-		Pagina:          "Mapa Operações",
+		Pagina:          "Edição de Operação",
 	})
 }

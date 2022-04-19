@@ -666,6 +666,8 @@ function consultaIMDB(evento) {
         
         function criarUsuario(evento) {
             evento.preventDefault();
+
+            console.log($('#v_mapa_operacional_adm').val());
         
             if ($('#senha').val() != $('#confirmar-senha').val()) {
                 Swal.fire({
@@ -692,8 +694,10 @@ function consultaIMDB(evento) {
                     v_imdb: $('#v_imdb').val(),
                     v_gsa: $('#v_gsa').val(),
                     v_mapa_operacional: $('#v_mapa_operacional').val(),
+                    v_mapa_operacional_adm: $('#v_mapa_operacional_adm').val(),
                     id_site: $('#id_site').val(),
-                    senha: $('#senha').val(),
+                    senha: $('#senha').val()
+                    
                 }
             }).done(function() {
                 Swal.fire({
@@ -735,6 +739,7 @@ function consultaIMDB(evento) {
                     v_imdb: $('#v_imdb').val(),
                     v_gsa: $('#v_gsa').val(),
                     v_mapa_operacional: $('#v_mapa_operacional').val(),
+                    v_mapa_operacional_adm: $('#v_mapa_operacional_adm').val(),
                     id_site: $('#id_site').val(),
                 }
             }).done(function() {

@@ -20,7 +20,7 @@ func CarregarPaginaMapaField(w http.ResponseWriter, r *http.Request) {
 			Pagina  string
 		}{
 			Cookies: cookies,
-			Pagina:  "Página GSA",
+			Pagina:  "Mapeamento Field",
 		})
 	} else {
 

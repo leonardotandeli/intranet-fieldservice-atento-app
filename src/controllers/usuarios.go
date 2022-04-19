@@ -19,19 +19,20 @@ func CriarUsuario(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 
 	usuario, erro := json.Marshal(map[string]string{
-		"nome":               r.FormValue("nome"),
-		"login_nt":           r.FormValue("login_nt"),
-		"re":                 r.FormValue("re"),
-		"cargo":              r.FormValue("cargo"),
-		"email":              r.FormValue("email"),
-		"v_usuarios":         r.FormValue("v_usuarios"),
-		"v_bdc_posts":        r.FormValue("v_bdc_posts"),
-		"v_bdc_adm":          r.FormValue("v_bdc_adm"),
-		"v_imdb":             r.FormValue("v_imdb"),
-		"v_gsa":              r.FormValue("v_gsa"),
-		"v_mapa_operacional": r.FormValue("v_mapa_operacional"),
-		"id_site":            r.FormValue("id_site"),
-		"senha":              r.FormValue("senha"),
+		"nome":                   r.FormValue("nome"),
+		"login_nt":               r.FormValue("login_nt"),
+		"re":                     r.FormValue("re"),
+		"cargo":                  r.FormValue("cargo"),
+		"email":                  r.FormValue("email"),
+		"v_usuarios":             r.FormValue("v_usuarios"),
+		"v_bdc_posts":            r.FormValue("v_bdc_posts"),
+		"v_bdc_adm":              r.FormValue("v_bdc_adm"),
+		"v_imdb":                 r.FormValue("v_imdb"),
+		"v_gsa":                  r.FormValue("v_gsa"),
+		"v_mapa_operacional":     r.FormValue("v_mapa_operacional"),
+		"v_mapa_operacional_adm": r.FormValue("v_mapa_operacional_adm"),
+		"id_site":                r.FormValue("id_site"),
+		"senha":                  r.FormValue("senha"),
 	})
 
 	if erro != nil {
@@ -70,18 +71,19 @@ func AtualizarUsuario(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 
 	usuario, erro := json.Marshal(map[string]string{
-		"nome":               r.FormValue("nome"),
-		"login_nt":           r.FormValue("login_nt"),
-		"re":                 r.FormValue("re"),
-		"cargo":              r.FormValue("cargo"),
-		"email":              r.FormValue("email"),
-		"v_usuarios":         r.FormValue("v_usuarios"),
-		"v_bdc_posts":        r.FormValue("v_bdc_posts"),
-		"v_bdc_adm":          r.FormValue("v_bdc_adm"),
-		"v_imdb":             r.FormValue("v_imdb"),
-		"v_gsa":              r.FormValue("v_gsa"),
-		"v_mapa_operacional": r.FormValue("v_mapa_operacional"),
-		"id_site":            r.FormValue("id_site"),
+		"nome":                   r.FormValue("nome"),
+		"login_nt":               r.FormValue("login_nt"),
+		"re":                     r.FormValue("re"),
+		"cargo":                  r.FormValue("cargo"),
+		"email":                  r.FormValue("email"),
+		"v_usuarios":             r.FormValue("v_usuarios"),
+		"v_bdc_posts":            r.FormValue("v_bdc_posts"),
+		"v_bdc_adm":              r.FormValue("v_bdc_adm"),
+		"v_imdb":                 r.FormValue("v_imdb"),
+		"v_gsa":                  r.FormValue("v_gsa"),
+		"v_mapa_operacional":     r.FormValue("v_mapa_operacional"),
+		"v_mapa_operacional_adm": r.FormValue("v_mapa_operacional_adm"),
+		"id_site":                r.FormValue("id_site"),
 	})
 	if erro != nil {
 		respostas.JSON(w, http.StatusBadRequest, respostas.ErroAPI{Erro: erro.Error()})

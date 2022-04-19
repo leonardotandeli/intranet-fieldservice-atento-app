@@ -1,4 +1,4 @@
-{{ template "head"}}
+{{ template "head" .}}
 
 
    
@@ -15,10 +15,10 @@
         <h1 class="h2">Base de Conhecimento</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group mr-2">
-  
+            {{ if eq .Cookies.V_BDC_ADM "S" }}
             <a href="/formulario/categoria">  <button type="button" class="ml-2 btn btn-sm btn-outline-secondary">Adicionar Categoria</button></a>
          <a href="/formulario/base">  <button type="button" class="ml-2 btn btn-sm btn-outline-secondary">Adicionar Post</button></a>
- 
+ {{end}}
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-{{ template "head"}}
+{{ template "head" .}}
 
 
 <style>body {
@@ -124,8 +124,10 @@
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group mr-2">
   
-      
-         <a href="/base/novo">  <button type="button" class="px-2 btn btn-sm btn-outline-secondary">Adicionar Procedimentos</button></a>
+            {{ if eq .Cookies.V_BDC_ADM "S" }}
+            <a href="/formulario/categoria">  <button type="button" class="ml-2 btn btn-sm btn-outline-secondary">Adicionar Categoria</button></a>
+         <a href="/formulario/base">  <button type="button" class="ml-2 btn btn-sm btn-outline-secondary">Adicionar Post</button></a>
+ {{end}}
           </div>
         </div>
       </div>
