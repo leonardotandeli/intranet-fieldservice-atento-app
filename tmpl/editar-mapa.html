@@ -1,40 +1,32 @@
 {{ template "head"}}
 
 {{ template "header" .}}
-
 <main role="main" class="flex-shrink-0">
     <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-      
+        <div class="row">
+            <div class="col-md-12 titulo-paginas">
 
-          
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2  border-bottom">
-      <h1 class="h2">{{.MapaOperacional.OPERACAO}} </h1>
-      <div class="btn-toolbar mb-2 mb-md-0">
-    <!--
-        <div class="btn-group mr-2">
-  
-            <strong>18/03/2022 00:11</strong> Incidente ambiente de e-mail Exchange 2013, Tsystems atuando.-->
-  
-  
-          
-            
-          <button type="submit" id="deletar-mapa" data-mapa-id="{{ .MapaOperacional.IDMAPA }}"  class="mr-2 btn btn-sm btn-outline-danger">Deletar</button>
-          <button type="submit" id="atualizar-mapa" data-mapa-id="{{ .MapaOperacional.IDMAPA }}" class="mr-2 btn btn-sm btn-outline-secondary">Salvar</button>
-    
-    </div>
-  </div>
-  
+                <div
+                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2  border-bottom">
+                    <h1 class="h2">{{.MapaOperacional.OPERACAO}} </h1>
+                    <div class="btn-toolbar mb-2 mb-md-0">
+                        <div class="btn-group mr-2">
 
+                            <button type="submit" id="deletar-mapa" data-mapa-id="{{ .MapaOperacional.IDMAPA }}"  class="mr-2 btn btn-sm btn-outline-danger">Deletar</button>
+                            <button type="submit" id="atualizar-mapa" data-mapa-id="{{ .MapaOperacional.IDMAPA }}" class="mr-2 btn btn-sm btn-outline-secondary">Salvar</button>
+                        </div>
 
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="row">
+                <div class="col-lg-12">
 
+                    <div class="card-body">
 
-
-
-            <div class="card">
-                <div class="card-body">
-                    <div class="row">
+                        <div class="row">
                         <div class="col-3">
                             <label>Site:</label>
                             <select id="id_site" name="id_site" class="form-control">
@@ -59,43 +51,15 @@
                         </div>
 
                         <div class="col-3">
-                            <label>Operação:</label>
+                            <label>Nome da Operação:</label>
                             <input type="text"  value="{{.MapaOperacional.OPERACAO}}" name="operacao" id="operacao" class="form-control" required="">
                         </div>
                         <div class="col-3">
-                            <label>Imagem:</label>
-                            <input type="text" value="{{.MapaOperacional.IMAGEM}}"  name="imagem" id="imagem" class="form-control" required="">
-                        </div>
-                        <div class="col-3 mt-3">
-                            <label>Vlan Dados:</label>
-                            <input type="text" value="{{.MapaOperacional.VLAN_DADOS}}"  name="vlan_dados" id="vlan_dados" class="form-control" required="">
-                        </div>
-                        <div class="col-3 mt-3">
-                            <label>Vlan Voz:</label>
-                            <input type="text" value="{{.MapaOperacional.VLAN_VOZ}}"  name="vlan_voz" id="vlan_voz" class="form-control" required="">
-                        </div>
-
-                        <div class="col-3 mt-3">
-                            <label>DAC:</label>
-
-                            <select id="id_dac" name="id_dac" class="form-control">
-                                   <!--        <option  selected="selected" style="display:none;" value="{{.MapaOperacional.Dac.IDDAC}}">{{.MapaOperacional.Dac.NOME}}</option>-->
-             
-                                {{ range .Dac}}
-                                <option value="{{.IDDAC}}">{{.NOME}}</option>
-                                {{end}}
-                            </select>
-
-                        </div>
-                       
-             
-            
-                        <div class="col-3 mt-3">
                             <label>Config. CPU:</label>
 
                             <select id="config_contratual" name="config_contratual" class="form-control" value="{{.MapaOperacional.CONFIG_CONTRATUAL}}">
 
-                         <!--       <option  selected="selected" style="display:none;" value="{{.MapaOperacional.CONFIG_CONTRATUAL}}">{{.MapaOperacional.CONFIG_CONTRATUAL}}</option>-->
+                 <option  selected="selected" style="display:none;" value="{{.MapaOperacional.CONFIG_CONTRATUAL}}">{{.MapaOperacional.CONFIG_CONTRATUAL}}</option>
              
                                 <option>CPU: Core 2 Duo | 4GB RAM | HD</option>
                                 <option>CPU: Core 2 Duo | 8GB RAM | HD</option>
@@ -143,19 +107,17 @@
                             </select>
 
                         </div>
-
-                  
                         <div class="col-3 mt-3">
-                            <label>IMDB:</label>
+                            <label>Nome da Imagem:</label>
+                            <input type="text" value="{{.MapaOperacional.IMAGEM}}"  name="imagem" id="imagem" class="form-control" required="">
+                        </div>
+                        <div class="col-3 mt-3">
+                            <label>Nome do Grupo no IMDB:</label>
                             <input type="text" value="{{.MapaOperacional.GRUPO_IMDB}}" name="grupo_imdb" id="grupo_imdb" class="form-control" required="">
                         </div>
                         <div class="col-3 mt-3">
-                            <label>Gravador:</label>
-                            <input type="text" value="{{.MapaOperacional.GRAVADOR}}" name="gravador" id="gravador" class="form-control" required="">
-                        </div>
-                        <div class="col-3 mt-3">
                             <label>Domínio:</label>
-                            <select id="id_dominio" name="id_dominio" value="{{.MapaOperacional.ID_DOMINIO}}" class="form-control">
+                            <select selected id="id_dominio" name="id_dominio" value="{{.MapaOperacional.ID_DOMINIO}}" class="form-control">
                              <!--        <option selected="selected" style="display:none;" value="{{.MapaOperacional.Dominio.IDDOMINIO}}">{{.MapaOperacional.Dominio.NOME}}</option> -->
              
                                 {{ range .Dominio}}
@@ -163,6 +125,53 @@
                                 {{end}}
                             </select>
                         </div>
+
+                        <div class="col-md-4 mt-3">
+                            <label for="username">Vlan de Dados*</label>
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text">VLAN DADOS</span>
+                              </div>
+                              <input type="text" value="{{.MapaOperacional.VLAN_DADOS}}" maxlength="25" name="vlan_dados" id="vlan_dados" class="form-control" required="">
+                              <div class="invalid-feedback" style="width: 100%;">
+                                A VLAN de dados é obrigatória.
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-4 mt-3">
+                            <label for="username">Vlan de Voz*</label>
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text">VLAN VOZ</span>
+                              </div>
+                              <input type="text" value="{{.MapaOperacional.VLAN_VOZ}}" maxlength="25" name="vlan_voz" id="vlan_voz" class="form-control" required="">
+                              <div class="invalid-feedback" style="width: 100%;">
+                                A VLAN de VOZ é obrigatória.
+                              </div>
+                            </div>
+                          </div>
+
+
+                        <div class="col-2 mt-3">
+                            <label>DAC:</label>
+
+                            <select id="id_dac" name="id_dac" class="form-control">
+                                   <!--        <option  selected="selected" style="display:none;" value="{{.MapaOperacional.Dac.IDDAC}}">{{.MapaOperacional.Dac.NOME}}</option>-->
+             
+                                {{ range .Dac}}
+                                <option value="{{.IDDAC}}">{{.NOME}}</option>
+                                {{end}}
+                            </select>
+
+                        </div>
+                       
+            
+
+                        <div class="col-2 mt-3">
+                            <label>Gravador:</label>
+                            <input type="text" value="{{.MapaOperacional.GRAVADOR}}" name="gravador" id="gravador" class="form-control" required="">
+                        </div>
+
                         <div class="col-6 mt-3">
                             <label>Templates:</label>
                             <textarea class="form-control" placeholder="Insira um template por linha" maxlength="150" id="template" name="template" rows="3" required="" >{{.MapaOperacional.TEMPLATE}}</textarea>
@@ -171,7 +180,7 @@
                         </div>
                         <div class="col-6 mt-3">
                             <label>Observações:</label>
-                            <textarea class="form-control" id="observacoes" maxlength="25" name="observacoes" rows="3">{{.MapaOperacional.OBSERVACOES}}</textarea>
+                            <textarea class="form-control" id="observacoes" maxlength="80" name="observacoes" rows="3">{{.MapaOperacional.OBSERVACOES}}</textarea>
                         </div>
                     </div>
 
