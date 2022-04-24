@@ -705,7 +705,7 @@ function consultaIMDB(evento) {
                     title: 'Usuário criado com sucesso!!',
                     showConfirmButton: false,
                     timer: 1500
-                  })
+                  }).then(function() {window.location = '/usuarios'})
             }).fail(function(erro){
                 console.log(erro)
                 Swal.fire({
