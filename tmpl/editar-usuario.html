@@ -119,8 +119,9 @@
               <div class="form-label-group">
                 <label>Permitir Gerenciamento de Usuários</label>
                 <select class="custom-select" id="v_usuarios" name="v_usuarios">
-                  <option value="S">SIM</option>
-                  <option value="N">NÃO</option>
+                  <option selected="selected" style="display:none;" value="{{.Usuario.V_USUARIOS}}">{{.Usuario.V_USUARIOS}}</option>
+                  <option value="S">S</option>
+                  <option value="N">N</option>
                 </select>
 
               </div>
@@ -131,8 +132,9 @@
               <div class="form-label-group">
                 <label>Permitir acesso a Base de Conhecimento</label>
                 <select class="custom-select" id="v_bdc_posts" name="v_bdc_posts">
-                  <option value="S">SIM</option>
-                  <option value="N">NÃO</option>
+                  <option selected="selected" style="display:none;" value="{{.Usuario.V_BDC_POSTS}}">{{.Usuario.V_BDC_POSTS}}</option>
+                  <option value="S">S</option>
+                  <option value="N">N</option>
                 </select>
 
               </div>
@@ -143,8 +145,9 @@
               <div class="form-label-group">
                 <label>Administrador da Base de Conhecimento</label>
                 <select class="custom-select" id="v_bdc_adm" name="v_bdc_adm">
-                  <option value="S">SIM</option>
-                  <option value="N">NÃO</option>
+                  <option selected="selected" style="display:none;" value="{{.Usuario.V_BDC_ADM}}">{{.Usuario.V_BDC_ADM}}</option>
+                  <option value="S">S</option>
+                  <option value="N">N</option>
                 </select>
 
               </div>
@@ -155,8 +158,9 @@
               <div class="form-label-group">
                 <label>Permitir acesso ao IMDB</label>
                 <select class="custom-select" id="v_imdb" name="v_imdb">
-                  <option value="S">SIM</option>
-                  <option value="N">NÃO</option>
+                  <option selected="selected" style="display:none;" value="{{.Usuario.V_IMDB}}">{{.Usuario.V_IMDB}}</option>
+                  <option value="S">S</option>
+                  <option value="N">N</option>
                 </select>
 
               </div>
@@ -168,8 +172,9 @@
               <div class="form-label-group">
                 <label>Permitir acesso ao GSA</label>
                 <select class="custom-select" id="v_gsa" name="v_gsa">
-                  <option value="S">SIM</option>
-                  <option value="N">NÃO</option>
+                  <option selected="selected" style="display:none;" value="{{.Usuario.V_GSA}}">{{.Usuario.V_GSA}}</option>
+                  <option value="S">S</option>
+                  <option value="N">N</option>
                 </select>
 
               </div>
@@ -180,8 +185,9 @@
               <div class="form-label-group">
                 <label>Permitir acesso ao Mapa Operacional</label>
                 <select class="custom-select" id="v_mapa_operacional" name="v_mapa_operacional">
-                  <option value="S">SIM</option>
-                  <option value="N">NÃO</option>
+                  <option selected="selected" style="display:none;" value="{{.Usuario.V_MAPA_OPERACIONAL}}">{{.Usuario.V_MAPA_OPERACIONAL}}</option>
+                  <option value="S">S</option>
+                  <option value="N">N</option>
                 </select>
 
               </div>
@@ -192,8 +198,9 @@
           <div class="form-label-group">
             <label>Administrador do Mapa Operacional</label>
             <select class="custom-select" id="v_mapa_operacional_adm" name="v_mapa_operacional_adm">
-              <option value="S">SIM</option>
-              <option value="N">NÃO</option>
+              <option selected="selected" style="display:none;" value="{{.Usuario.V_MAPA_OPERACIONAL_ADM}}">{{.Usuario.V_MAPA_OPERACIONAL_ADM}}</option>
+              <option value="S">S</option>
+              <option value="N">N</option>
             </select>
 
           </div>
