@@ -70,7 +70,7 @@
                   <div class="form-group">
                       <label for="titulo">Cliente</label>
                       <select id="id_cliente" name="id_cliente" class="form-control" required="">
-        
+                        
                         <option selected="selected" style="display:none;" value="{{.Post.Cliente.IDCLIENTE}}">{{.Post.Cliente.NOME}}</option>
                         {{ range .Cliente}}
                         <option value="{{.IDCLIENTE}}">{{.NOME}}</option>
@@ -78,8 +78,8 @@
                     </select>
                     </div>
                   </div>
-              <input type="hidden" name="id_site"  class="form-control" value="1" placeholder="Email" id="id_site">
-              <input type="hidden" name="id_usuario"  class="form-control" value="{{.Cookies.UsuarioID}}" placeholder="Email" id="id_usuario">
+              <input type="hidden" name="id_site"  class="form-control" value="1"  id="id_site">
+              <input type="hidden" name="id_usuario"  class="form-control" value="{{.Post.ID_USUARIO}}"  id="id_usuario">
               <div class="col-12">
                 <div class="form-group">
               <textarea id="conteudo" name="conteudo">{{.Post.CONTEUDO}}</textarea>
