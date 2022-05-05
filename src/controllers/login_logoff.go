@@ -36,7 +36,9 @@ func FazerLogin(w http.ResponseWriter, r *http.Request) {
 	})
 
 	if erro != nil {
-		respostas.JSON(w, http.StatusBadRequest, respostas.ErroAPI{Erro: erro.Error()})
+		//respostas.JSON(w, http.StatusInternalServerError, respostas.ErroAPI{Erro: erro.Error()})
+		println("message falha")
+		http.Redirect(w, r, "/login"+"?message=testefa", http.StatusFound)
 		return
 	}
 
@@ -44,20 +46,24 @@ func FazerLogin(w http.ResponseWriter, r *http.Request) {
 
 	response, erro := http.Post(url, "application/json", bytes.NewBuffer(usuario))
 	if erro != nil {
-		respostas.JSON(w, http.StatusInternalServerError, respostas.ErroAPI{Erro: erro.Error()})
+		//respostas.JSON(w, http.StatusInternalServerError, respostas.ErroAPI{Erro: erro.Error()})
+		println("message falha api")
+		http.Redirect(w, r, "/login"+"?message=Algo deu errado! O sistema está indponível no momento. Retorne daqui alguns minutos...", http.StatusFound)
 		return
 	}
 
 	defer response.Body.Close()
 
 	if response.StatusCode >= 400 {
-		respostas.TratarStatusCodeDeErro(w, response)
+		http.Redirect(w, r, "/login"+"?message=Algo deu errado! O login ou a senha que você inseriu não estão corretos.", http.StatusFound)
+		println("message falha login")
 		return
 	}
 
 	var dadosAutenticacao modelos.DadosAutenticacao
 	if erro = json.NewDecoder(response.Body).Decode(&dadosAutenticacao); erro != nil {
 		respostas.JSON(w, http.StatusUnprocessableEntity, respostas.ErroAPI{Erro: erro.Error()})
+
 		return
 	}
 
@@ -65,7 +71,7 @@ func FazerLogin(w http.ResponseWriter, r *http.Request) {
 		respostas.JSON(w, http.StatusUnprocessableEntity, respostas.ErroAPI{Erro: erro.Error()})
 		return
 	}
-	respostas.JSON(w, http.StatusOK, nil)
+	http.Redirect(w, r, "/home", http.StatusFound)
 
 }
 
