@@ -1,16 +1,16 @@
 
 body {
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  
   font-size: 14px;
   line-height: 1.5;
-  color: #1b2e4b;
+  color: #003760;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   line-height: 1.5;
   text-rendering: optimizeLegibility;
   text-align: left;
-  background-color: #f8f9fa;
+  background-color: #f3f5f7;
 }
 
 /*HOME*/
@@ -187,15 +187,20 @@ margin-bottom: 3px;
 
  
 .card {
-  word-wrap: break-word;
-  background-clip: border-box;
-  background-color: #fff;
-  border: 1px solid #edf2f9;
-  border-radius: 0.5rem;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
   min-width: 0;
-  position: relative;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 0 solid #f6f6f6;
+  border-radius: 0.25rem;
 }
 *, :after, :before {
   box-sizing: border-box;
@@ -232,13 +237,17 @@ div {
 }
 
 .table thead th {
-    background-color: #fafafa;
+
     color: #959ac9;
+    vertical-align: bottom;
+    border-bottom: 2px solid #eff2f7;
+    border-top: 0px solid #dee2e6; 
     font-size: .8125rem;
     font-weight: 600;
     letter-spacing: .08em;
     text-transform: uppercase;
 }
+
 
 .card-title {
   font-size: 15px;
@@ -265,14 +274,20 @@ div {
 
 
 .btn-consulta {
-  background-color: #28A745;   
+  background-color: #fff;   
   font-size: 16px;
-  font-family: "Nunito", sans-serif;
-  font-weight: bold;
-  color: #fff;
+  border-color: #6c757d;
+  color: #6c757d;
   margin-top: 11px;
 }
 
+.btn-consulta:hover {
+  background-color: #6c757d;   
+  font-size: 16px;
+  border-color: #6c757d;
+  color: #fff;
+  margin-top: 11px;
+}
 .table {
   width: 100%;
   margin-bottom: 1rem;
@@ -280,10 +295,7 @@ div {
   border-spacing: 2px;
   border-color: grey;
 }
-.table thead th {
-  vertical-align: bottom;
-  border-bottom: 2px solid #eff2f7;
-}
+
 
 main > .container {
   padding: 30px 15px 0;
@@ -333,7 +345,7 @@ main > .container {
 
 
 .form label {
-  font-family: "Roboto", sans-serif;
+  
   font-weight: bold;
 }
 
@@ -345,14 +357,14 @@ main > .container {
 }
 
 .nome_pagina {
-  font-family: "Roboto", sans-serif;
+  
   font-weight: bold;
   color: #00416A;
   padding-left: 6px;
 }
 
 .status_pagina {
-  font-family: "Roboto", sans-serif;
+  
   font-weight: bold;
   color: #00416A;
   padding-left: 14px;
@@ -364,7 +376,7 @@ margin-top: -20px;
 }
 
 .text-sidebar {
-  font-family: "Roboto", sans-serif;
+  
   font-weight: bold;
   color: #00416A;
   margin-top: -17px;
@@ -373,7 +385,7 @@ margin-top: -20px;
   margin-top: 25px;
   color: #fff;
   background-color: #00416A;
-  font-family: "Roboto", sans-serif;
+  
   border-color: #00416A ;
 
 }
@@ -381,7 +393,7 @@ margin-top: -20px;
   margin-top: 25px;
   color: #fff;
   background-color: #003353;
-  font-family: "Roboto", sans-serif;
+  
   border-color: #00416A ;
 }
 .btn-editar-danger {
@@ -389,7 +401,7 @@ margin-top: -20px;
   color: #fff;
   margin-right: 3px;
   background-color: #d61b1b;
-  font-family: "Roboto", sans-serif;
+  
   border-color: #a51313 ;
 
 }
@@ -398,33 +410,33 @@ margin-top: -20px;
   color: #fff;
   background-color: #b30000;
   margin-right: 3px;
-  font-family: "Roboto", sans-serif;
+  
   border-color: #6a0000 ;
 }
 
 .servicedesk-link a {
   color: #fff;
-  font-family: "Roboto", sans-serif;
+  
   text-decoration: none;
   font-weight: bold;
 }
 
 .base-links {
-  font-family: "Roboto", sans-serif;
+  
   text-decoration: none;
   font-weight: bold;
   color: #00416A ;
 }
 
 .base-links:hover {
-  font-family: "Roboto", sans-serif;
+  
   text-decoration: none;
   font-weight: bold;
   color: #00558a ;
 }
 .card-title-h3 {
   font-size: 25px;
-  font-family: "Roboto", sans-serif;
+  
   text-decoration: none;
   font-weight: bold;
   margin: 0 0 7px 0;
@@ -434,7 +446,7 @@ margin-top: -20px;
 .btn-user {
   color: #fff;
  /* background-color: #00416A;*/
-  font-family: "Roboto", sans-serif;
+  
   /*border-color: #00416A;*/
   margin-left: 37px;
 
@@ -442,7 +454,7 @@ margin-top: -20px;
 .btn-user:hover {
   color: #fff;
   background-color: #003353;
-  font-family: "Roboto", sans-serif;
+  
   border-color: #00416A ;
   margin-left: 37px;
 }
@@ -455,7 +467,7 @@ margin-top: -20px;
 .card-title-docs a {
   color: #00416A;
   font-size: 20px;
-  font-family: "Roboto", sans-serif;
+  
   text-decoration:none
 }
 .categoria {
