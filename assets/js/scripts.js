@@ -40,6 +40,21 @@ function fazerLogin(evento) {
         })
 }
 
+const urlParams = new URLSearchParams(window.location.search);
+const message = urlParams.get('message');
+
+
+if (message == null) {
+    console.log("nenhuma mensagem impressa")
+} else {
+    console.log("imprime mensagem")
+    $('#alertd').fadeIn(1000);
+    $('#alertd').text(message);
+}
+
+
+
+
 
 $('#formulario-impressora').on('submit', criarImpressora);
 $('#atualizar-impressora').on('click', atualizarImpressora);
@@ -705,7 +720,7 @@ function consultaIMDB(evento) {
                     title: 'Usuário criado com sucesso!!',
                     showConfirmButton: false,
                     timer: 1500
-                  })
+                  }).then(function() {window.location = '/usuarios'})
             }).fail(function(erro){
                 console.log(erro)
                 Swal.fire({

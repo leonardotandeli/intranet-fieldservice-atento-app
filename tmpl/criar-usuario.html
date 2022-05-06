@@ -57,17 +57,15 @@
         <div class="col-lg-4">
           <div class="form-label-group">
             <label>Cargo</label>
-            <select class="custom-select" id="cargo" name="cargo">
-              <option selected="selected" hidden value=""></option>
-              <option value="ADM">ADM</option>
-              <option value="M3">M3</option>
-              <option value="M2">M2</option>
-              <option value="M1">M1</option>
-              <option value="P4">P4</option>
-              <option value="P3">P3</option>
-              <option value="P2">P2</option>
-              <option value="P1">P1</option>
-              <option value="N2">N2</option>
+            <select class="custom-select" id="cargo" name="cargo" required="">
+              <option selected="selected" value="">Escolha...</option>
+              <option value="M3">Gerente (M3)</option>
+              <option value="M2">Gestor (M2)</option>
+              <option value="P4">Consultor (P4)</option>
+              <option value="P3">Analista SR (P3)</option>
+              <option value="P2">Analista PL (P2)</option>
+              <option value="P1">Analista JR (P1)</option>
+              <option value="N2">Aprendiz (N2)</option>
 
             </select>
 
@@ -111,7 +109,12 @@
 
 
       </div>
-      <hr>
+
+
+
+    <hr>
+    <h4 class="card-title mb-4">Permissões de acesso </h4>
+    
 
       <div class="row">   
 
@@ -123,8 +126,8 @@
           <div class="form-label-group">
             <label>Permitir Gerenciamento de Usuários</label>
             <select class="custom-select" id="v_usuarios" name="v_usuarios">
-              <option value="S">SIM</option>
-              <option value="N">NÃO</option>
+              <option value="S">S</option>
+              <option value="N">N</option>
             </select>
 
           </div>
@@ -135,8 +138,8 @@
           <div class="form-label-group">
             <label>Permitir acesso a Base de Conhecimento</label>
             <select class="custom-select" id="v_bdc_posts" name="v_bdc_posts">
-              <option value="S">SIM</option>
-              <option value="N">NÃO</option>
+              <option value="S">S</option>
+              <option value="N">N</option>
             </select>
 
           </div>
@@ -147,8 +150,8 @@
           <div class="form-label-group">
             <label>Administrador da Base de Conhecimento</label>
             <select class="custom-select" id="v_bdc_adm" name="v_bdc_adm">
-              <option value="S">SIM</option>
-              <option value="N">NÃO</option>
+              <option value="S">S</option>
+              <option value="N">N</option>
             </select>
 
           </div>
@@ -159,8 +162,8 @@
           <div class="form-label-group">
             <label>Permitir acesso ao IMDB</label>
             <select class="custom-select" id="v_imdb" name="v_imdb">
-              <option value="S">SIM</option>
-              <option value="N">NÃO</option>
+              <option value="S">S</option>
+              <option value="N">N</option>
             </select>
 
           </div>
@@ -172,8 +175,8 @@
           <div class="form-label-group">
             <label>Permitir acesso ao GSA</label>
             <select class="custom-select" id="v_gsa" name="v_gsa">
-              <option value="S">SIM</option>
-              <option value="N">NÃO</option>
+              <option value="S">S</option>
+              <option value="N">N</option>
             </select>
 
           </div>
@@ -184,8 +187,8 @@
           <div class="form-label-group">
             <label>Permitir acesso ao Mapa Operacional</label>
             <select class="custom-select" id="v_mapa_operacional" name="v_mapa_operacional">
-              <option value="S">SIM</option>
-              <option value="N">NÃO</option>
+              <option value="S">S</option>
+              <option value="N">N</option>
             </select>
 
           </div>
@@ -196,8 +199,8 @@
           <div class="form-label-group">
             <label>Administrador do Mapa Operacional</label>
             <select class="custom-select" id="v_mapa_operacional_adm" name="v_mapa_operacional_adm">
-              <option value="S">SIM</option>
-              <option value="N">NÃO</option>
+              <option value="S">S</option>
+              <option value="N">N</option>
             </select>
 
           </div>
