@@ -12,15 +12,16 @@
           <div
             class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2  border-bottom">
             <h1 class="h2">Mapa Operacões </h1>
+        
             <div class="btn-toolbar mb-2 mb-md-0">
 
 
               <div class="input-group px-2">
                 <div class="input-group-prepend">
-                  <label class="input-group-text" for="inputGroupSelect01">SITE</label>
+                  <label class="input-group-text" for="inputGroupSelect01"><i class="bi bi-geo-fill"></i> SITE</label>
                 </div>
                 <select class="custom-select" id="site" name="site">
-                  <option selected="selected" hidden value=""></option>
+                  <option selected="selected" value="">Escolha...</option>
                   {{ range .Site}}
                   <option  value="{{.IDSITE}}">{{.NOME}}</option>
                   {{end}}
@@ -29,10 +30,10 @@
 
               <div class="input-group px-2">
                 <div class="input-group-prepend">
-                  <label class="input-group-text" for="inputGroupSelect01">CLIENTE</label>
+                  <label class="input-group-text" for="inputGroupSelect01"><i class="bi bi-box-seam"></i> CLIENTE</label>
                 </div>
                 <select class="custom-select" id="cliente" name="cliente">
-                  <option selected="selected" hidden value=""></option>
+                  <option selected="selected" value="">Escolha...</option>
 
                   {{ range .Cliente}}
                   <option value="{{.IDCLIENTE}}">{{.NOME}}</option>
@@ -41,18 +42,21 @@
                 </select>
               </div>
 
-              <button type="submit" class="px-2 btn btn-sm btn-outline-secondary">Filtrar</button>
+              <button type="submit" class="px-2 btn btn-md btn-outline-secondary"><i class="bi bi-arrow-right-square"></i> Filtrar</button>
+              
+              {{ if eq .Cookies.V_MAPA_OPERACIONAL_ADM "S" }}
+
+                <a href="/formulario/mapa"> <button type="button" class="mx-2 btn btn-md btn-outline-secondary"><i class="bi bi-plus-square"></i> Adicionar</button></a> 
+        
+                {{ end }}
         </form>
       </div>
     </div>
+
     <div class="card mt-4">
       <div class="col-lg-12">
         <div class="card-body">
-          {{ if eq .Cookies.V_MAPA_OPERACIONAL_ADM "S" }}
-          <h4 class="card-title mb-4">
-            <a href="/formulario/mapa"> <button type="button" class="btn btn-sm btn-outline-secondary">Adicionar</button></a> 
-            <br /> </h4>
-            {{ end }}
+          
           <div class="table-responsive">
             <table class="table table-centered" id="ticketList">
               <thead>
@@ -71,14 +75,14 @@
                 {{ range .MapaOperacional}}
                 <tr>
                   <th scope="row">{{ .Site.NOME }}</th>
-                  <td><strong>Cliente:</strong> {{ .Cliente.NOME }} <br/> <strong>Operação:</strong> {{ .OPERACAO }} <br/> <strong>IMDB:</strong> {{ .GRUPO_IMDB }} <br/> <strong>Domínio:</strong> {{ .Dominio.NOME }}</td>
-                  <td><strong>Dados:</strong> {{.VLAN_DADOS}} <br/> <strong>Voz:</strong> {{.VLAN_VOZ}}</td>
-                  <td><strong>CPU:</strong> {{ .CONFIG_CONTRATUAL }} <br/> <strong>Versão:</strong> {{ .VERSAO_WINDOWS }} <br/> <strong>Imagem:</strong> {{.IMAGEM}}</td>
-                  <td>{{ .TEMPLATE }}</td>
-                  <td><strong>DAC:</strong> {{ .Dac.NOME }} <br/> <strong>Gravador:</strong> {{ .GRAVADOR }}</td>
-                  <td width="80px">{{ .OBSERVACOES }}</td>
+                  <td><i class="bi bi-box-seam"></i> <strong>Cliente:</strong> {{ .Cliente.NOME }} <br/><i class="bi bi-boxes"></i>  <strong>Operação:</strong> {{ .OPERACAO }} <br/><i class="bi bi-wifi"></i> <strong>IMDB:</strong> {{ .GRUPO_IMDB }} <br/><i class="bi bi-globe"></i> <strong>Domínio:</strong> {{ .Dominio.NOME }}</td>
+                  <td><strong><i class="bi bi-ethernet"></i> Dados:</strong> {{.VLAN_DADOS}} <br/><i class="bi bi-volume-up"></i> <strong>Voz:</strong> {{.VLAN_VOZ}}</td>
+                  <td><i class="bi bi-hdd"></i> <strong>CPU:</strong> {{ .CONFIG_CONTRATUAL }} <br/> <i class="bi bi-windows"></i> <strong>Versão:</strong> {{ .VERSAO_WINDOWS }} <br/><i class="bi bi-window-dock"></i> <strong>Imagem:</strong> {{.IMAGEM}}</td>
+                  <td> {{ .TEMPLATE }}</td>
+                  <td><i class="bi bi-telephone-outbound"></i> <strong>DAC:</strong> {{ .Dac.NOME }} <br/><i class="bi bi-vinyl"></i> <strong>Gravador:</strong> {{ .GRAVADOR }}</td>
+                  <td width="80px"> {{ .OBSERVACOES }}</td>
                   {{ if eq $.Cookies.V_MAPA_OPERACIONAL_ADM "S" }}
-                  <td><a href="/mapa/operacoes/{{ .IDMAPA }}" class="btn btn-sm btn-outline-secondary">Editar</a></td>
+                  <td><a href="/mapa/operacoes/{{ .IDMAPA }}" class="btn btn-md btn-outline-secondary"><i class="bi bi-pencil-square"></i></a></td>
 {{end}}
                 </tr>
                 {{else}}
