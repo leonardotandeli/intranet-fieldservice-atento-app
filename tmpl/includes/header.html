@@ -14,7 +14,7 @@
     <div class="collapse navbar-collapse" id="navbarsExample07XL">
       <ul class="navbar-nav mr-auto space-menu">
         <li class="nav-item">
-          <a href="/home" class="nav-link px-2 menu-atento ">Início</a>
+          <a href="/home" class="nav-link px-2 menu-atento ">Home</a>
         </li>
         {{ if eq .Cookies.V_MAPA_OPERACIONAL "S" }}
         <li class="nav-item">
@@ -36,13 +36,17 @@
           <a href="/consulta/ativo" class="nav-link px-2 menu-atento ">GSA</a>
         </li>
         {{ end }}
-       
+
+        
     
         </li>
 
       </ul>
 
-      <div class="dropdown nav-item"><a id="dropdownMenuButton" aria-expanded="false" role="button" class="rounded-circle border-bottom-0 dt nav-link" tabindex="0" href="#"><div class="avatar avatar-md avatar-indicators avatar-online"></div></a></div>
+      <div class="col-4 nav-item">
+
+        
+      </div>
    
       <div class="dropdown">
         <button  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-sm btn-user"><img src="https://api-funcionario.atento.com.br/v3.0/funcionario/BRATE{{.Cookies.RE}}/foto/url" alt="avatar" onerror="this.src='/assets/images/icons/user.png'" height="31" class="fade-user rounded-circle"></button>
@@ -50,11 +54,11 @@
 
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           {{ if eq .Cookies.V_USUARIOS "S" }}
-      <a class="dropdown-item" href="/usuarios">Usuarios</a>
+      <a class="dropdown-item" href="/usuarios"><i class="bi-people"></i> Usuarios</a>
       {{ end }}
-      <a class="dropdown-item" href="/usuarios/{{.Cookies.UsuarioID}}/senha">Alterar Senha</a>
-
-          <a class="dropdown-item" href="/deslogar">Deslogar</a>
+      <a class="dropdown-item" href="/usuarios/{{.Cookies.UsuarioID}}/senha"><i class="bi-lock"></i> Alterar Senha</a>
+      <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/deslogar"><i class="bi-power"></i> Deslogar</a>
 
 
 
