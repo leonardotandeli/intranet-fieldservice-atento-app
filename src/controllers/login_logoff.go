@@ -37,8 +37,8 @@ func FazerLogin(w http.ResponseWriter, r *http.Request) {
 
 	if erro != nil {
 		//respostas.JSON(w, http.StatusInternalServerError, respostas.ErroAPI{Erro: erro.Error()})
-		println("message falha")
-		http.Redirect(w, r, "/login"+"?message=testefa", http.StatusFound)
+		fmt.Println("falha")
+		http.Redirect(w, r, "/login", http.StatusFound)
 		return
 	}
 
@@ -47,7 +47,6 @@ func FazerLogin(w http.ResponseWriter, r *http.Request) {
 	response, erro := http.Post(url, "application/json", bytes.NewBuffer(usuario))
 	if erro != nil {
 		//respostas.JSON(w, http.StatusInternalServerError, respostas.ErroAPI{Erro: erro.Error()})
-		println("message falha api")
 		http.Redirect(w, r, "/login"+"?message=Algo deu errado! O sistema está indponível no momento. Retorne daqui alguns minutos...", http.StatusFound)
 		return
 	}
@@ -56,7 +55,6 @@ func FazerLogin(w http.ResponseWriter, r *http.Request) {
 
 	if response.StatusCode >= 400 {
 		http.Redirect(w, r, "/login"+"?message=Algo deu errado! O login ou a senha que você inseriu não estão corretos.", http.StatusFound)
-		println("message falha login")
 		return
 	}
 
