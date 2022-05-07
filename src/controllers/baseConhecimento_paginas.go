@@ -104,7 +104,7 @@ func CarregarPaginaInicialBase(w http.ResponseWriter, r *http.Request) {
 		Cookies    modelos.PageCookies
 		Pagina     string
 	}{
-		PostsLimit: posts[0:25],
+		PostsLimit: posts,
 		Cliente:    cliente,
 		Categoria:  categoria,
 		Cookies:    cookies,

@@ -2,7 +2,7 @@
 {{ define "header"}}
 
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-atento shadow">
+<nav class="navbar navbar-expand-lg navbar-dark bg-atento fixed-top flex-md-nowrap shadow">
   <div class="container-xl">
      <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
         <img src="/assets/images/logo-light.png" height="25"></img>
@@ -44,7 +44,18 @@
       </ul>
 
       <div class="col-4 nav-item">
+        <form class=" my-2 my-lg-0" action="/base/busca" method="GET">
 
+
+          <div class="input-group">
+            <input type="text" class="form-control mr-sm-2" id="myInput" name="busca"  placeholder="Digite para buscar" aria-describedby="button-addon4"  required="required">
+        
+          </div>
+
+
+
+
+          </form>
         
       </div>
    
