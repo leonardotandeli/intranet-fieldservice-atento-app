@@ -47,14 +47,14 @@ func FazerLogin(w http.ResponseWriter, r *http.Request) {
 	response, erro := http.Post(url, "application/json", bytes.NewBuffer(usuario))
 	if erro != nil {
 		//respostas.JSON(w, http.StatusInternalServerError, respostas.ErroAPI{Erro: erro.Error()})
-		http.Redirect(w, r, "/login"+"?message=Algo deu errado! O sistema está indponível no momento. Retorne daqui alguns minutos...", http.StatusFound)
+		http.Redirect(w, r, "/login"+"?message=Algo deu errado! Retorne daqui alguns minutos...", http.StatusFound)
 		return
 	}
 
 	defer response.Body.Close()
 
 	if response.StatusCode >= 400 {
-		http.Redirect(w, r, "/login"+"?message=Algo deu errado! O login ou a senha que você inseriu não estão corretos.", http.StatusFound)
+		http.Redirect(w, r, "/login"+"?message=Algo deu errado! Verifique seu login e senha e tente novamente.", http.StatusFound)
 		return
 	}
 
