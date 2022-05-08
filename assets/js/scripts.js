@@ -34,24 +34,11 @@ function fazerLogin(evento) {
      window.location = "/home"
     }).fail(function(){
 
-        $('#alertd').fadeIn(1);
-        $('#alertd').text("Algo deu errado! O login ou a senha que você inseriu não estão corretos.");
+        $('#alertd').fadeIn(1000);
+        $('#alertd').text(message);
 
         })
 }
-
-const urlParams = new URLSearchParams(window.location.search);
-const message = urlParams.get('message');
-
-
-if (message == null) {
-    console.log("nenhuma mensagem impressa")
-} else {
-    console.log("imprime mensagem")
-    $('#alertd').fadeIn(1000);
-    $('#alertd').text(message);
-}
-
 
 
 
@@ -553,23 +540,8 @@ function GetURLParameter(sParam)
 var site = GetURLParameter('site');
 var cliente = GetURLParameter('cliente');
 
-if (site == null) {
-
-
-} else {
-    $('#site').val(site);  
-
-}
-if (cliente == null) {
-
-
-} else {
-    $('#cliente').val(cliente);   
-
-}
-
-console.log(site)
-    
+$('#site').val(site);  
+$('#cliente').val(cliente);   
 
 
 

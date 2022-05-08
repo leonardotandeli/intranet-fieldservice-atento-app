@@ -20,25 +20,24 @@ body {
   margin-top: 40px;
 }
 
-.core-features {
-  background-color: #0f4d72;
+.icons-atento {
   border-radius: 5px;
   box-shadow: 0px 5px 30px 0px rgba(0, 0, 30, 0.15);
   margin-bottom: 30px;
   text-align: center;
   transition: all 0.1s;
-  border: 1px solid #0f4d72;
+  border: none;
 }
 
-.core-features:hover {
+.icons-atento:hover {
   transition: all 0.1s;
   transform: scale(1.1);
 }
 
-.core-features circle {
+.icons-atento icons-img-atento {
 margin-bottom: 3px;
 }
-.core-features .circle img {
+.icons-atento .icons-img-atento img {
   display: table;
   margin: 0 auto;
   border-radius: 5px;
@@ -556,30 +555,32 @@ margin-top: -14px;
 .fat-content-tags a {
 	margin-top: 5px;
 }
-.fat-content-small {
+.base-de-conhecimento-itens {
 	font-size: 14px;
 	white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.fat-content-small i {
+.base-de-conhecimento-itens i {
 	margin-right: 5px;
 }
-.fat-content-small ul {
+.base-de-conhecimento-itens ul {
 	margin-left: 0;
 	padding-left: 0;
 	list-style-type: none;
 	text-align: left;
 }
-.fat-content-small ul li {
+.base-de-conhecimento-itens ul li {
 	padding: 4px 5px 4px 0px;
 }
-.fat-content-small ul li a {
+.base-de-conhecimento-itens ul li a {
 	color: #666666;
+  font-size: 20px;
 }
-.fat-content-small ul li a:hover {
+.base-de-conhecimento-itens ul li a:hover {
 	color: #155469;
 	text-decoration: none;
+  font-size: 20px;
 }
 .fat-heading-abb {
 	font-size: 16px;
