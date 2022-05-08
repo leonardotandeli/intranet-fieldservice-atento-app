@@ -104,7 +104,7 @@ func CarregarPaginaInicialBase(w http.ResponseWriter, r *http.Request) {
 		Cookies    modelos.PageCookies
 		Pagina     string
 	}{
-		PostsLimit: posts[0:25],
+		PostsLimit: posts,
 		Cliente:    cliente,
 		Categoria:  categoria,
 		Cookies:    cookies,
@@ -343,7 +343,7 @@ func CarregarPaginaBuscaCategoria(w http.ResponseWriter, r *http.Request) {
 	strClienteNoSpace := strings.ReplaceAll(strCliente, " ", "+")
 
 	// define urls das api
-	url := fmt.Sprintf("%s/base/busca?categoria=%s&cliente=%s", config.APIURL, strCategoriaNoSpace, strClienteNoSpace)
+	url := fmt.Sprintf("%s/base/busca-cat-cliente?categoria=%s&cliente=%s", config.APIURL, strCategoriaNoSpace, strClienteNoSpace)
 	urlClientes := fmt.Sprintf("%s/clientes", config.APIURL)
 	urlCategorias := fmt.Sprintf("%s/categorias", config.APIURL)
 	urlSites := fmt.Sprintf("%s/sites", config.APIURL)
@@ -554,7 +554,7 @@ func CarregarTelaDeCriarPublicacao(w http.ResponseWriter, r *http.Request) {
 		Categoria: categoria,
 		Site:      site,
 		Cookies:   cookies,
-		Pagina:    "Criar nova postagem",
+		Pagina:    "Criar novo artigo",
 	})
 }
 
@@ -923,6 +923,9 @@ func CarregarPaginaDeEdicaoDeCategorias(w http.ResponseWriter, r *http.Request) 
 
 	// define urls da api
 	url := fmt.Sprintf("%s/categorias/%d", config.APIURL, catID)
+	urlClientes := fmt.Sprintf("%s/clientes", config.APIURL)
+	urlSites := fmt.Sprintf("%s/sites", config.APIURL)
+
 	response, erro := requisicoes.FazerRequisicaoComAutenticacao(r, http.MethodGet, url, nil)
 	if erro != nil {
 		respostas.JSON(w, http.StatusInternalServerError, respostas.ErroAPI{Erro: erro.Error()})
@@ -941,17 +944,53 @@ func CarregarPaginaDeEdicaoDeCategorias(w http.ResponseWriter, r *http.Request) 
 		return
 	}
 
+	//requisição para a api dos clientes
+	responseClientes, erro := requisicoes.FazerRequisicaoComAutenticacao(r, http.MethodGet, urlClientes, nil)
+	if erro != nil {
+		respostas.JSON(w, http.StatusInternalServerError, respostas.ErroAPI{Erro: erro.Error()})
+		return
+	}
+	if responseClientes.StatusCode >= 400 {
+		respostas.TratarStatusCodeDeErro(w, responseClientes)
+		return
+	}
+	var cliente []modelos.Cliente
+	if erro = json.NewDecoder(responseClientes.Body).Decode(&cliente); erro != nil {
+		respostas.JSON(w, http.StatusUnprocessableEntity, respostas.ErroAPI{Erro: erro.Error()})
+		return
+	}
+
+	//requisição para a api dos Sites
+	responseSites, erro := requisicoes.FazerRequisicaoComAutenticacao(r, http.MethodGet, urlSites, nil)
+	if erro != nil {
+		respostas.JSON(w, http.StatusInternalServerError, respostas.ErroAPI{Erro: erro.Error()})
+		return
+	}
+	if responseSites.StatusCode >= 400 {
+		respostas.TratarStatusCodeDeErro(w, responseSites)
+		return
+	}
+	var site []modelos.Site
+	if erro = json.NewDecoder(responseSites.Body).Decode(&site); erro != nil {
+		respostas.JSON(w, http.StatusUnprocessableEntity, respostas.ErroAPI{Erro: erro.Error()})
+		return
+	}
+
 	//função para inserir dados dos cookies armazenados durante o login
 	cookies, _ := cookies.InserirDadosNaPagina(r)
 
 	utils.ExecutarTemplate(w, "editar-categoria.html", struct {
 		Categoria modelos.Post_Categoria
 		Cookies   modelos.PageCookies
+		Cliente   []modelos.Cliente
+		Site      []modelos.Site
 		Pagina    string
 	}{
 		Categoria: categoria,
 		Cookies:   cookies,
-		Pagina:    "Edição de categoria",
+		Cliente:   cliente,
+		Site:      site,
+		Pagina:    "Editar Categoria",
 	})
 }
 
