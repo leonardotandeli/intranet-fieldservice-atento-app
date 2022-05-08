@@ -25,9 +25,27 @@ var rotasBaseDeConhecimento = []Rota{
 		RequerAutenticacao: true,
 	},
 	{
+		URI:                "/formulario/cliente",
+		Metodo:             http.MethodGet,
+		Funcao:             controllers.CarregarTelaDeCriarCliente,
+		RequerAutenticacao: true,
+	},
+	{
 		URI:                "/base/busca",
 		Metodo:             http.MethodGet,
+		Funcao:             controllers.CarregarPaginaBusca,
+		RequerAutenticacao: true,
+	},
+	{
+		URI:                "/base/cliente",
+		Metodo:             http.MethodGet,
 		Funcao:             controllers.CarregarPaginaBuscaCatOuCliente,
+		RequerAutenticacao: true,
+	},
+	{
+		URI:                "/base/categoria",
+		Metodo:             http.MethodGet,
+		Funcao:             controllers.CarregarPaginaBuscaCategoria,
 		RequerAutenticacao: true,
 	},
 	{

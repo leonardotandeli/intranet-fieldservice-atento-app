@@ -1,29 +1,35 @@
 {{ template "head" .}}
-
 {{ template "header" .}}
+<style>
+  .padd-title-page {
+      margin-top: -30px;
+  
+  }
+</style>
+
+
 <main role="main" class="flex-shrink-0">
     <div class="container">
-        <div class="row">
-            <div class="col-md-12 titulo-paginas">
-
-                <div
-                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2  border-bottom">
-                    <h1 class="h2">Adicionar nova operação</h1>
-                    <div class="btn-toolbar mb-2 mb-md-0">
-                        <div class="btn-group mr-2">
-
-
-                        </div>
-
-                    </div>
-                </div>
-            </div>
+      <div class="row">
+        <div class="col-md-12 padd-title-page mb-3">
+  
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2  border-bottom">
+      <h1 class="h2">Adicionar Operação</h1>
+      <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group mr-2">
+  
+  
         </div>
-        <div class="card">
-            <div class="row">
-                <div class="col-lg-12">
+  
+      </div>
+    </div>
+  </div>
+  </div>
 
-                    <div class="card-body">
+  <div class="row">
+    <div class="col-12">
+        <div class="card">
+          <div class="card card-body">
 
 
                         <form id="formulario-mapa">
@@ -171,7 +177,7 @@
                                 </div>
                                   <div class="col-2 mb-3">
                                     <label>Gravador*:</label>
-                                    <input type="text"  name="gravador" id="gravador" maxlength="25" class="form-control">
+                                    <input type="text"  name="gravador" id="gravador" maxlength="25" class="form-control" required="">
                                     <div class="invalid-feedback" style="width: 100%;">
                                        O Gravador é opcional.
                                       </div>
@@ -186,7 +192,7 @@
                                 </div>
                                 <div class="col-6 mb-3">
                                     <label>Observações:</label>
-                                    <textarea class="form-control" id="observacoes"  maxlength="80" name="observacoes" rows="3" placeholder="Observações" required=""></textarea>
+                                    <textarea class="form-control" id="observacoes"  maxlength="30" name="observacoes" rows="3" placeholder="Observações" required=""></textarea>
                                 </div>
 
                                 <hr class="mb-4">

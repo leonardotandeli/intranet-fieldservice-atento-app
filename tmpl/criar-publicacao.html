@@ -11,9 +11,9 @@
 
 {{ template "sidebar-base" .}}
 
-    <main role="main" class="col-md-9 ml-sm-auto mt-5 col-lg-10 ">
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 mt-3 border-bottom">
-        <h1 class="h2">Criar Post</h1>
+    <main role="main" class="col-md-9 ml-sm-auto mt-5 pt-2 col-lg-10 ">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 mt-1 pb-2 mb-3 border-bottom">
+        <h1 class="h2">Criar Artigo</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group mr-2">
   
@@ -23,47 +23,23 @@
         </div>
       </div>
 
-
-
-
-
-
-
-
-<main role="main" class="flex-shrink-0">
   <div class="container-fluid">
-
-
-
-
-
-</script>
-  <script>
-    function alerta() {
-      Swal.fire('Sucesso!', 'Publicação criada com sucesso!', 'success')
-      window.location.href = "/docs";
-    }
-    </script>
-
-
-
-
 
 
   <div class="card">
     <div class="row">        
-        <div class="card-body">
+        <div class="card card-body">
           <form id="nova-publicacao">
             <div class="col-12">
               <div class="form-group">
-                  <label for="titulo">Título</label>
+                <h5>Título</h5>
                   <input type="text" class="form-control mt-2" id="titulo" name="titulo" required>
                 </div>
               </div>
 
               <div class="col-3">
                 <div class="form-group">
-                    <label for="titulo">Categoria</label>
+                  <h5>Categoria</h5>
                     <select id="id_categoria" name="id_categoria" class="form-control" required="">
                       <option value="" selected >Escolha...</option>
   
@@ -75,7 +51,7 @@
                 </div>
                 <div class="col-3">
                   <div class="form-group">
-                      <label for="titulo">Cliente</label>
+                    <h5>Cliente</h5>
                       <select id="id_cliente" name="id_cliente" class="form-control" required="">
                         <option value="" selected>Escolha...</option>
     
@@ -127,7 +103,7 @@
 <hr>
 
 <button onclick="criarPublicacao()" class="btn btn-block btn-outline-secondary">
-  Criar Publicação
+  Criar
 </button>
 </form>
               </div>

@@ -35,10 +35,12 @@ function fazerLogin(evento) {
     }).fail(function(){
 
         $('#alertd').fadeIn(1000);
-        $('#alertd').text("Algo deu errado! O login ou a senha que você inseriu não estão corretos.");
+        $('#alertd').text(message);
 
         })
 }
+
+
 
 
 $('#formulario-impressora').on('submit', criarImpressora);
@@ -705,7 +707,7 @@ function consultaIMDB(evento) {
                     title: 'Usuário criado com sucesso!!',
                     showConfirmButton: false,
                     timer: 1500
-                  })
+                  }).then(function() {window.location = '/usuarios'})
             }).fail(function(erro){
                 console.log(erro)
                 Swal.fire({

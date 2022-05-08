@@ -1,6 +1,7 @@
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+  <meta charset="ISO-8859-1">
+
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Atento Field Service - Login </title>
@@ -207,6 +208,7 @@ image-rendering: -webkit-optimize-contrast;
 </style>
 <body>
   <div class="container">
+
     <div class="row">
       
       <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
@@ -217,7 +219,7 @@ image-rendering: -webkit-optimize-contrast;
             <img class="mb-3" src="/assets/images/logoblue.png" width="150px">
             <h2 class="h3-portal mb-3 font-weight-normal">Portal do Field Service</h2>
 
-            <form id="login" class="form-signin">
+            <form id="logi2n" action="/login" method="post" class="form-signin">
 
               <div class="alert alert-danger" id="alertd" style="display: none;" role="alert"></div>
  
@@ -246,9 +248,7 @@ image-rendering: -webkit-optimize-contrast;
 
 
 
-
   
-
 
 
 
@@ -258,5 +258,24 @@ image-rendering: -webkit-optimize-contrast;
   <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/7.26.12/sweetalert2.all.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@7/dist/polyfill.min.js"></script>
       <script src="/assets/js/scripts.js"></script>
+      
+<script>
+$.urlParam = function (name) {
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)')
+                      .exec(window.location.search);
+
+    return (results !== null) ? results[1] || 0 : false;
+}
+
+var mensagem = $.urlParam('message').replace(/%20/g, ' ');;
+
+  if (mensagem == false) {
+      console.log("nenhuma mensagem impressa")
+  } else {
+      console.log("imprime mensagem")
+      $('#alertd').fadeIn(1000);
+      $('#alertd').text(mensagem);
+  }
+  </script>
 </body>
 </html>

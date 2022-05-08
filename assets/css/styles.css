@@ -1,16 +1,16 @@
 
 body {
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  
   font-size: 14px;
   line-height: 1.5;
-  color: #1b2e4b;
+  color: #003760;
   font-weight: 400;
   -webkit-font-smoothing: antialiased;
   line-height: 1.5;
   text-rendering: optimizeLegibility;
   text-align: left;
-  background-color: #f8f9fa;
+  background-color: #f3f5f7;
 }
 
 /*HOME*/
@@ -20,25 +20,24 @@ body {
   margin-top: 40px;
 }
 
-.core-features {
-  background-color: #0f4d72;
+.icons-atento {
   border-radius: 5px;
   box-shadow: 0px 5px 30px 0px rgba(0, 0, 30, 0.15);
   margin-bottom: 30px;
   text-align: center;
   transition: all 0.1s;
-  border: 1px solid #0f4d72;
+  border: none;
 }
 
-.core-features:hover {
+.icons-atento:hover {
   transition: all 0.1s;
   transform: scale(1.1);
 }
 
-.core-features circle {
+.icons-atento icons-img-atento {
 margin-bottom: 3px;
 }
-.core-features .circle img {
+.icons-atento .icons-img-atento img {
   display: table;
   margin: 0 auto;
   border-radius: 5px;
@@ -187,15 +186,20 @@ margin-bottom: 3px;
 
  
 .card {
-  word-wrap: break-word;
-  background-clip: border-box;
-  background-color: #fff;
-  border: 1px solid #edf2f9;
-  border-radius: 0.5rem;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
   flex-direction: column;
   min-width: 0;
-  position: relative;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 0 solid #f6f6f6;
+  border-radius: 0.25rem;
 }
 *, :after, :before {
   box-sizing: border-box;
@@ -232,13 +236,17 @@ div {
 }
 
 .table thead th {
-    background-color: #fafafa;
+
     color: #959ac9;
+    vertical-align: bottom;
+    border-bottom: 2px solid #eff2f7;
+    border-top: 0px solid #dee2e6; 
     font-size: .8125rem;
     font-weight: 600;
     letter-spacing: .08em;
     text-transform: uppercase;
 }
+
 
 .card-title {
   font-size: 15px;
@@ -265,14 +273,20 @@ div {
 
 
 .btn-consulta {
-  background-color: #28A745;   
+  background-color: #fff;   
   font-size: 16px;
-  font-family: "Nunito", sans-serif;
-  font-weight: bold;
-  color: #fff;
+  border-color: #6c757d;
+  color: #6c757d;
   margin-top: 11px;
 }
 
+.btn-consulta:hover {
+  background-color: #6c757d;   
+  font-size: 16px;
+  border-color: #6c757d;
+  color: #fff;
+  margin-top: 11px;
+}
 .table {
   width: 100%;
   margin-bottom: 1rem;
@@ -280,10 +294,7 @@ div {
   border-spacing: 2px;
   border-color: grey;
 }
-.table thead th {
-  vertical-align: bottom;
-  border-bottom: 2px solid #eff2f7;
-}
+
 
 main > .container {
   padding: 30px 15px 0;
@@ -333,7 +344,7 @@ main > .container {
 
 
 .form label {
-  font-family: "Roboto", sans-serif;
+  
   font-weight: bold;
 }
 
@@ -345,14 +356,14 @@ main > .container {
 }
 
 .nome_pagina {
-  font-family: "Roboto", sans-serif;
+  
   font-weight: bold;
   color: #00416A;
   padding-left: 6px;
 }
 
 .status_pagina {
-  font-family: "Roboto", sans-serif;
+  
   font-weight: bold;
   color: #00416A;
   padding-left: 14px;
@@ -364,7 +375,7 @@ margin-top: -20px;
 }
 
 .text-sidebar {
-  font-family: "Roboto", sans-serif;
+  
   font-weight: bold;
   color: #00416A;
   margin-top: -17px;
@@ -373,7 +384,7 @@ margin-top: -20px;
   margin-top: 25px;
   color: #fff;
   background-color: #00416A;
-  font-family: "Roboto", sans-serif;
+  
   border-color: #00416A ;
 
 }
@@ -381,7 +392,7 @@ margin-top: -20px;
   margin-top: 25px;
   color: #fff;
   background-color: #003353;
-  font-family: "Roboto", sans-serif;
+  
   border-color: #00416A ;
 }
 .btn-editar-danger {
@@ -389,7 +400,7 @@ margin-top: -20px;
   color: #fff;
   margin-right: 3px;
   background-color: #d61b1b;
-  font-family: "Roboto", sans-serif;
+  
   border-color: #a51313 ;
 
 }
@@ -398,33 +409,33 @@ margin-top: -20px;
   color: #fff;
   background-color: #b30000;
   margin-right: 3px;
-  font-family: "Roboto", sans-serif;
+  
   border-color: #6a0000 ;
 }
 
 .servicedesk-link a {
   color: #fff;
-  font-family: "Roboto", sans-serif;
+  
   text-decoration: none;
   font-weight: bold;
 }
 
 .base-links {
-  font-family: "Roboto", sans-serif;
+  
   text-decoration: none;
   font-weight: bold;
   color: #00416A ;
 }
 
 .base-links:hover {
-  font-family: "Roboto", sans-serif;
+  
   text-decoration: none;
   font-weight: bold;
   color: #00558a ;
 }
 .card-title-h3 {
   font-size: 25px;
-  font-family: "Roboto", sans-serif;
+  
   text-decoration: none;
   font-weight: bold;
   margin: 0 0 7px 0;
@@ -434,7 +445,7 @@ margin-top: -20px;
 .btn-user {
   color: #fff;
  /* background-color: #00416A;*/
-  font-family: "Roboto", sans-serif;
+  
   /*border-color: #00416A;*/
   margin-left: 37px;
 
@@ -442,7 +453,7 @@ margin-top: -20px;
 .btn-user:hover {
   color: #fff;
   background-color: #003353;
-  font-family: "Roboto", sans-serif;
+  
   border-color: #00416A ;
   margin-left: 37px;
 }
@@ -455,7 +466,7 @@ margin-top: -20px;
 .card-title-docs a {
   color: #00416A;
   font-size: 20px;
-  font-family: "Roboto", sans-serif;
+  
   text-decoration:none
 }
 .categoria {
@@ -544,30 +555,32 @@ margin-top: -14px;
 .fat-content-tags a {
 	margin-top: 5px;
 }
-.fat-content-small {
+.base-de-conhecimento-itens {
 	font-size: 14px;
 	white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-.fat-content-small i {
+.base-de-conhecimento-itens i {
 	margin-right: 5px;
 }
-.fat-content-small ul {
+.base-de-conhecimento-itens ul {
 	margin-left: 0;
 	padding-left: 0;
 	list-style-type: none;
 	text-align: left;
 }
-.fat-content-small ul li {
+.base-de-conhecimento-itens ul li {
 	padding: 4px 5px 4px 0px;
 }
-.fat-content-small ul li a {
+.base-de-conhecimento-itens ul li a {
 	color: #666666;
+  font-size: 20px;
 }
-.fat-content-small ul li a:hover {
+.base-de-conhecimento-itens ul li a:hover {
 	color: #155469;
 	text-decoration: none;
+  font-size: 20px;
 }
 .fat-heading-abb {
 	font-size: 16px;
