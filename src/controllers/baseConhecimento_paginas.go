@@ -907,7 +907,7 @@ func CarregarPaginaDeEdicaoDePublicacao(w http.ResponseWriter, r *http.Request) 
 		Categoria: categoria,
 		Site:      site,
 		Cookies:   cookies,
-		Pagina:    "Edição de postagem",
+		Pagina:    post.TITULO,
 	})
 }
 

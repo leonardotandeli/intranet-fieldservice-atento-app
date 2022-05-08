@@ -288,7 +288,7 @@ func CarregarTelaDoFormularioMapa(w http.ResponseWriter, r *http.Request) {
 		Dac:     dac,
 		Dominio: dominio,
 		Cookies: cookies,
-		Pagina:  "Criar nova operação",
+		Pagina:  "Adicionar Operação",
 	})
 }
 
@@ -411,6 +411,6 @@ func CarregarPaginaDeEdicaoMapa(w http.ResponseWriter, r *http.Request) {
 		Dac:             dac,
 		Dominio:         dominio,
 		Cookies:         cookies,
-		Pagina:          "Edição de Operação",
+		Pagina:          "Editar Operação",
 	})
 }
