@@ -1,6 +1,9 @@
 {{ template "head" .}}
 {{ template "header" .}}
 
+
+
+
 <main role="main" class="flex-shrink-0">
     <div class="container">
         <div class="row">
@@ -40,9 +43,9 @@
 
 
             <div class="input-group">
-                <input type="text" class="form-control"  id="myInput" value="\\atento.br\Administrativo\Tecnologia Informacao\Visao_Cliente" aria-describedby="button-addon4" readonly="readonly">
+                <input type="text" class="form-control" id="visao-geral" value="\\atento.br\Administrativo\Tecnologia Informacao\Visao_Cliente" aria-describedby="button-addon4" readonly="readonly">
                 <div class="input-group-append" id="button-addon4">
-                  <button class="btn btn-outline-secondary" type="button" onclick="myFunction()">Copiar</button>
+                  <button class="btn btn-outline-secondary" type="button" onclick="CopyToClippboardVisaoGeral()">Copiar</button>
                 </div>
               </div>
 
@@ -62,9 +65,7 @@
                     <li>
 
                    
-       <a id="mylink" href="#" data-toggle="modal" data-target="#exampleModal"
-                            
-                            class="nav-link-atento">Visão Geral</a>
+       <a  href="#" data-toggle="modal" data-target="#exampleModal" class="nav-link-atento">Visão Geral</a>
                     </li> 
                     <li>
                      <a target="_blank"
@@ -148,40 +149,7 @@
                 </ul>
 
 
-                <script>
-
-                //    try {
-                 //     eval("async function _(){}")
-                 //   }
-                   // catch (e) {
-//
-                   //   console.error('This browser is not up-to-date')
-                  // }
-                    
-                    
-                            function myFunction() {
-                              var copyText = document.getElementById("myInput");
-                              copyText.select();
-                              copyText.setSelectionRange(0, 99999);
-                              navigator.clipboard.writeText(copyText.value);
-                              
-                              var tooltip = document.getElementById("myTooltip");
-                              tooltip.innerHTML = "Copied: " + copyText.value;
-                            }
-                            
-                            function outFunc() {
-                              var tooltip = document.getElementById("myTooltip");
-                              tooltip.innerHTML = "Copy to clipboard";
-                            }
-                
-                       //     a = document.getElementById('mylink');
-                      //   a.removeAttribute("data-target");
-
-               // a.setAttribute("href", "file:\\atento.br\Administrativo\Tecnologia Informacao\Visao_Cliente");
-                            </script>
-
-
-                <h6 class="home-link-title"><i class="bi bi-info-circle"></i> Informações Úteis</h6>
+                <h6 class="home-link-title"><i class="bi bi-info-icons-img-atento"></i> Informações Úteis</h6>
                 <ul class="list-unstyled">
                     <li>
                         <a target="_blank"
@@ -199,8 +167,8 @@
 
                     <div class="col-6 col-sm-6 col-md-6 col-lg-4">
                         <a target="_blank" href="http://timesheet.atento.com.br">
-                            <div class="core-features">
-                                <div class="circle">
+                            <div class="icons-atento">
+                                <div class="icons-img-atento">
                                     <img src="/assets/images/icons/ts.png" alt="">
                                 </div>
 
@@ -210,8 +178,8 @@
 
                     <div class="col-6 col-sm-6 col-md-6 col-lg-4">
                         <a target="_blank" href="http://servicedesk.atento.com.br">
-                            <div class="core-features">
-                                <div class="circle">
+                            <div class="icons-atento">
+                                <div class="icons-img-atento">
                                     <img src="/assets/images/icons/sd.png" alt="">
                                 </div>
 
@@ -224,8 +192,8 @@
 
                     <div class="col-6 col-sm-4 col-md-4 col-lg-4">
                         <a target="_blank" href="https://siga-atento.softexpert.com/softexpert/login">
-                            <div class="core-features">
-                                <div class="circle">
+                            <div class="icons-atento">
+                                <div class="icons-img-atento">
                                     <img src="/assets/images/icons/siga.png" alt="">
                                 </div>
 
@@ -235,8 +203,8 @@
         
                     <div class="col-6 col-sm-4 col-md-4 col-lg-3">
                         <a target="_blank" href="/contatos/field">
-                            <div class="core-features">
-                                <div class="circle">
+                            <div class="icons-atento">
+                                <div class="icons-img-atento">
                                     <img src="/assets/images/icons/contatos-field.png" alt="">
                                 </div>
 
@@ -245,8 +213,8 @@
                     </div>
                     <div class="col-6 col-sm-4 col-md-4 col-lg-3">
                         <a target="_blank" href="/contatos/tsystems">
-                            <div class="core-features">
-                                <div class="circle">
+                            <div class="icons-atento">
+                                <div class="icons-img-atento">
                                     <img src="/assets/images/icons/tsystems.png" alt="">
                                 </div>
 
@@ -255,8 +223,8 @@
                     </div>
                     <div class="col-6 col-sm-4 col-md-4 col-lg-3">
                         <a target="_blank" href="https://pessoasonline.atento.com.br/pessoasonline">
-                            <div class="core-features">
-                                <div class="circle">
+                            <div class="icons-atento">
+                                <div class="icons-img-atento">
                                     <img src="/assets/images/icons/po.png" alt="">
                                 </div>
 
@@ -266,8 +234,8 @@
                     <div class="col-6 col-sm-4 col-md-4 col-lg-3">
                         <a target="_blank"
                             href="https://ejaj.login.la1.oraclecloud.com/oam/server/obrareq.cgi?encquery%3DViTvPsJG8LwHMjehDF%2F5VfVXBUbWv530O1qaItWcuvOV0TMKJHx4P2zQ6a4WE5thtW3Lnp4PbOM2D02%2BeLvJGcEsgofr8ArSwFdunKKdo%2BCRVW0SyL%2BjRNpFJ2HxbNhuUOJyQ%2BevpMi6feja%2FoQFL6NRZexx9tMk0Qky6dW8iXeTLGDaAxfWoOKwKDf5Jo4Ex4RzvSiz8e6jI7R9xScUIJ4L4Cv%2Bhka3jmmMIbF9GYZ7G1x8um%2Bf0dBWe9BcGfS3pffZHW7rhsTn6zS%2BMPB6JONtkrGBwPl1mv6unfXfV6wWzSLn2YufGQwmxvHkSQ99FmeSbLnKH5tWLI4f5q1VUNHR34tq0W2eXMjEE1If1gz%2FWp6okZ%2BQPzQYV2znCjJ159ME%2B0lKbR2%2Bi7ESDd0KX2wfsGX2oeKUYQLui10mqp1b3XXY0NeHfu2drp1FsoupE5WP2fE3J6cmH6yfiyMC%2BxO3jizcXoOYwJzq%2BXNzI9%2B%2F7tAb3VNtxAiRyPHBHmXV%20agentid%3DOraFusionApp_11AG%20ver%3D1%20crmethod%3D2%26cksum%3De39ded432240017f07048ad5afb816785baef225&ECID-Context=1.005i1QQmXqe6AT8LNiL6ie0005FJ0008yl%3BkXjE">
-                            <div class="core-features">
-                                <div class="circle">
+                            <div class="icons-atento">
+                                <div class="icons-img-atento">
                                     <img src="/assets/images/icons/ttt.png" alt="">
                                 </div>
 
@@ -276,8 +244,8 @@
                     </div>
                     <div class="col-6 col-sm-4 col-md-4 col-lg-3">
                         <a target="_blank" href="/salas-crise">
-                            <div class="core-features">
-                                <div class="circle">
+                            <div class="icons-atento">
+                                <div class="icons-img-atento">
                                     <img src="/assets/images/icons/sala-crise.png" alt="">
                                 </div>
 
@@ -289,8 +257,8 @@
                     <div class="col-4 col-sm-4 col-md-4 col-lg-3">
                         <a target="_blank"
                             href="https://atentoglobal.sharepoint.com/sites/BR-BR/SquadField/trs/Troca%20de%20Senhas/Forms/AllItems.aspx">
-                            <div class="core-features">
-                                <div class="circle">
+                            <div class="icons-atento">
+                                <div class="icons-img-atento">
                                     <img src="/assets/images/icons/spsenha.png" alt="">
                                 </div>
 
@@ -299,8 +267,8 @@
                     </div>
                     <div class="col-4 col-sm-4 col-md-4 col-lg-3">
                         <a target="_blank" href="/assets/uploads/organograma.pdf">
-                            <div class="core-features">
-                                <div class="circle">
+                            <div class="icons-atento">
+                                <div class="icons-img-atento">
                                     <img src="/assets/images/icons/organograma.png" alt="">
                                 </div>
 
@@ -311,8 +279,8 @@
                     <div class="col-4 col-sm-4 col-md-4 col-lg-3">
                         <a target="_blank"
                             href="https://a1.atento.com/br/documentos-normativos">
-                            <div class="core-features">
-                                <div class="circle">
+                            <div class="icons-atento">
+                                <div class="icons-img-atento">
                                     <img src="/assets/images/icons/ap.png" alt="">
                                 </div>
 
