@@ -14,13 +14,16 @@
     <div class="collapse navbar-collapse" id="navbarsExample07XL">
       <ul class="navbar-nav mr-auto space-menu">
         <li class="nav-item">
-          <a href="/home" class="nav-link px-2 menu-atento ">Home</a>
+          <a href="/home" class="nav-link px-2 menu-atento ">Início</a>
         </li>
+
         {{ if eq .Cookies.V_MAPA_OPERACIONAL "S" }}
         <li class="nav-item">
           <a href="/mapa/operacoes" class="nav-link px-2 menu-atento ">Mapa Operações</a>
         </li>
         {{ end }}
+
+  
         {{ if eq .Cookies.V_BDC_POSTS "S" }}
         <li class="nav-item">
           <a href="/base" class="nav-link px-2 menu-atento ">Base de Conhecimento</a>
@@ -37,10 +40,6 @@
         </li>
         {{ end }}
 
-        
-    
-        </li>
-
       </ul>
 
 
@@ -54,7 +53,7 @@
             <div class="input-group-prepend">
               <div class="input-group-text"><i class="bi bi-search"></i></div>
             </div>
-            <input type="text" class="form-control mr-sm-2"  style="font-size: 16px; border: none;" name="busca"  placeholder="Buscar na base de conhecimento..." aria-describedby="button-addon4"  required="required">
+            <input type="text" class="form-control mr-sm-2"  style="font-size: 16px; border: none;" name="busca"  placeholder="Buscar base de conhecimento..." aria-describedby="button-addon4"  required="required">
         
           </div>
 
