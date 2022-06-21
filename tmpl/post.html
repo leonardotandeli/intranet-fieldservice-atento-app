@@ -15,7 +15,10 @@
 
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-1 pb-2 mb-3 mt-3 border-bottom">
         <h1 class="h2">{{ .Post.TITULO }}</h1>
+      
+ 
         <div class="btn-toolbar mb-2 mb-md-0">
+
           <div class="btn-group mr-2">
   
             {{ if eq .Cookies.V_BDC_ADM "S" }}
@@ -23,8 +26,9 @@
          {{end}}
           </div>
         </div>
+     
       </div>
-
+      <p><a class="atento-breadcrumb-link" href="/base/cliente?cliente={{.Post.Cliente.IDCLIENTE}}">{{.Post.Cliente.NOME}}</a> / <a  class="atento-breadcrumb-link" href="/base/categoria?categoria={{.Post.Categoria.IDCATEGORIA}}&cliente={{.Post.Cliente.IDCLIENTE}}">{{.Post.Categoria.NOME}}</a> / <span>{{ .Post.TITULO }}</span></p>
 
 
 <style>.bg-blue-atento { background-color: #003760; }
@@ -69,11 +73,7 @@
 
           <div class="card">      
                 <div class="card-body">  
-                  <ul class="atento-breadcrumb">
-                    <li><a class="atento-breadcrumb-link" href="/base/cliente?cliente={{.Post.Cliente.IDCLIENTE}}">{{.Post.Cliente.NOME}}</a></li>
-                    <li><a  class="atento-breadcrumb-link" href="/base/categoria?categoria={{.Post.Categoria.IDCATEGORIA}}&cliente={{.Post.Cliente.IDCLIENTE}}">{{.Post.Categoria.NOME}}</a></li>
-                    <li><span>{{ .Post.TITULO }}</span></li>
-                  </ul>
+
                 {{ .Post.CONTEUDO }}
   </div>
 
