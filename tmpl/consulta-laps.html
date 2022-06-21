@@ -14,7 +14,7 @@
         <div class="col-md-12 padd-title-page mb-3">
   
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2  border-bottom">
-      <h1 class="h2">Consulta Senha DadosLAPS </h1>
+      <h1 class="h2">Consulta Senha LAPS </h1>
       <div class="btn-toolbar mb-2 mb-md-0">
   
   
@@ -22,6 +22,8 @@
     </div>
   </div>
   </div>
+
+  
 
 <div class="row">
     <div class="col-12">
@@ -31,20 +33,25 @@
                 <p class="card-title-desc">Informe o Ativo/Locador da CPU para realizar a busca.</p>
     <form action="/busca/lapsg">
                     <div class="row">
-                        <div class="col-6 col-sm-2">
+                        <div class="col-8 col-sm-2">
                             <label><strong>Ativo/Locador:</strong></label>
                              <input type="text" name="locador" maxlength="7" id="locador"  class="form-control">
                         </div>
                   
                         <div class="col-3">
-                           
+                           <p></p>
                                  <button class="btn btn-consulta" type="submit">Consultar</button>
                              </div>
                     
 
                     </div>
-                        
-               
+                    <p></p>
+                    <div class="alert alert-primary" role="alert">
+                    Senha encontrada.
+                    </div>
+
+                    <h4>{{.DadosLAPS.SENHA}}</h4>
+            
 
     
 
@@ -87,3 +94,4 @@
 
 </body>
 </html>
+                          

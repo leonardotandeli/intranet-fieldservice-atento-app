@@ -16,12 +16,12 @@ import (
 )
 
 //Carrega página principal
-func CarregarPaginaBuscaAD(w http.ResponseWriter, r *http.Request) {
+func CarregarPaginaConsultaAD(w http.ResponseWriter, r *http.Request) {
 
 	//função para inserir dados dos cookies armazenados durante o login
 	cookies, _ := cookies.InserirDadosNaPagina(r)
 
-	utils.ExecutarTemplate(w, "busca-ad-pagina.html", struct {
+	utils.ExecutarTemplate(w, "consulta-ad-pagina.html", struct {
 		Cookies modelos.PageCookies
 		Pagina  string
 	}{
@@ -32,12 +32,12 @@ func CarregarPaginaBuscaAD(w http.ResponseWriter, r *http.Request) {
 }
 
 //Carrega página principal
-func CarregarPaginaBuscaLAPS(w http.ResponseWriter, r *http.Request) {
+func CarregarPaginaConsultaLAPS(w http.ResponseWriter, r *http.Request) {
 
 	//função para inserir dados dos cookies armazenados durante o login
 	cookies, _ := cookies.InserirDadosNaPagina(r)
 
-	utils.ExecutarTemplate(w, "busca-laps-pagina.html", struct {
+	utils.ExecutarTemplate(w, "consulta-laps-pagina.html", struct {
 		Cookies modelos.PageCookies
 		Pagina  string
 	}{
@@ -48,7 +48,7 @@ func CarregarPaginaBuscaLAPS(w http.ResponseWriter, r *http.Request) {
 }
 
 //Carrega página principal
-func BuscaAD(w http.ResponseWriter, r *http.Request) {
+func ConsultaAD(w http.ResponseWriter, r *http.Request) {
 	//parametros recebe dados através da url
 	parametros := mux.Vars(r)
 	loginNT := parametros["login"]
@@ -78,7 +78,7 @@ func BuscaAD(w http.ResponseWriter, r *http.Request) {
 	//função para inserir dados dos cookies armazenados durante o login
 	cookies, _ := cookies.InserirDadosNaPagina(r)
 
-	utils.ExecutarTemplate(w, "busca-ad.html", struct {
+	utils.ExecutarTemplate(w, "consulta-ad.html", struct {
 		DadosAD modelos.DadosAD
 		RE      string
 		Cookies modelos.PageCookies
@@ -92,7 +92,7 @@ func BuscaAD(w http.ResponseWriter, r *http.Request) {
 }
 
 //Carrega página principal
-func BuscaLAPS(w http.ResponseWriter, r *http.Request) {
+func ConsultaLAPS(w http.ResponseWriter, r *http.Request) {
 	//parametros recebe dados através da url
 	//parametros := mux.Vars(r)
 	//locador := parametros["locador"]
@@ -104,7 +104,7 @@ func BuscaLAPS(w http.ResponseWriter, r *http.Request) {
 
 	response, erro := requisicoes.FazerRequisicaoComAutenticacao(r, http.MethodGet, url, nil)
 	if erro != nil {
-		http.Redirect(w, r, "/busca/laps", http.StatusFound)
+		http.Redirect(w, r, "/consulta/laps", http.StatusFound)
 	}
 
 	if response.StatusCode >= 400 {
@@ -113,13 +113,13 @@ func BuscaLAPS(w http.ResponseWriter, r *http.Request) {
 	}
 	var dados modelos.DadosLAPS
 	if erro = json.NewDecoder(response.Body).Decode(&dados); erro != nil {
-		http.Redirect(w, r, "/busca/laps", http.StatusFound)
+		http.Redirect(w, r, "/consulta/laps", http.StatusFound)
 	}
 
 	//função para inserir dados dos cookies armazenados durante o login
 	cookies, _ := cookies.InserirDadosNaPagina(r)
 
-	utils.ExecutarTemplate(w, "busca-laps.html", struct {
+	utils.ExecutarTemplate(w, "consulta-laps.html", struct {
 		DadosLAPS modelos.DadosLAPS
 		RE        string
 		Cookies   modelos.PageCookies

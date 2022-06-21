@@ -14,9 +14,12 @@
         <div class="col-md-12 padd-title-page mb-3">
   
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2  border-bottom">
-      <h1 class="h2">Consulta Senha LAPS </h1>
+      <h1 class="h2">Consulta Active Directory (AD)</h1>
       <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group mr-2">
   
+        
+        </div>
   
       </div>
     </div>
@@ -27,29 +30,24 @@
     <div class="col-12">
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Consultar Senha</h4>
-                <p class="card-title-desc">Informe o Ativo/Locador da CPU para realizar a busca.</p>
-    <form action="/busca/lapsg">
+
+                <p class="card-title-desc">Informe o Login NT no campo abaixo para realizar a busca.</p>
+    <form id="form-ativo">
                     <div class="row">
-                        <div class="col-8 col-sm-2">
-                            <label><strong>Ativo/Locador:</strong></label>
-                             <input type="text" name="locador" maxlength="7" id="locador"  class="form-control">
+                        <div class="col-6 col-sm-2">
+                            <label><strong>Login NT:</strong></label>
+                             <input type="text" name="login"  id="login"  class="form-control">
                         </div>
                   
                         <div class="col-3">
-                           <p></p>
+                            <p></p>
                                  <button class="btn btn-consulta" type="submit">Consultar</button>
                              </div>
                     
 
                     </div>
-                    <p></p>
-                    <div class="alert alert-primary" role="alert">
-                    Senha encontrada.
-                    </div>
-
-                    <h4>{{.DadosLAPS.SENHA}}</h4>
-            
+                        
+               
 
     
 
@@ -61,7 +59,12 @@
 }
 </style>
 
+<div id="diframeHolder" class="esconde">
+    <p> </p>
+                   <iframe id="iframeHolder"  src="" class="iframeHolder" width="100%" height="600"></iframe>
+     
 
+                </div>
 
 
 
@@ -92,4 +95,3 @@
 
 </body>
 </html>
-                          

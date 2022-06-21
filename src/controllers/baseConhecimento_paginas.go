@@ -33,6 +33,7 @@ func CarregarPaginaInicialBase(w http.ResponseWriter, r *http.Request) {
 	response, erro := requisicoes.FazerRequisicaoComAutenticacao(r, http.MethodGet, url, nil)
 	if erro != nil {
 		respostas.JSON(w, http.StatusInternalServerError, respostas.ErroAPI{Erro: erro.Error()})
+
 		return
 	}
 

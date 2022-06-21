@@ -116,27 +116,9 @@ var rotasBaseDeConhecimento = []Rota{
 		RequerAutenticacao: true,
 	},
 	{
-		URI:                "/busca/ad",
+		URI:                "/mapa/field",
 		Metodo:             http.MethodGet,
-		Funcao:             controllers.CarregarPaginaBuscaAD,
-		RequerAutenticacao: true,
-	},
-	{
-		URI:                "/busca/ad/{login}",
-		Metodo:             http.MethodGet,
-		Funcao:             controllers.BuscaAD,
-		RequerAutenticacao: true,
-	},
-	{
-		URI:                "/busca/lapsg",
-		Metodo:             http.MethodGet,
-		Funcao:             controllers.BuscaLAPS,
-		RequerAutenticacao: true,
-	},
-	{
-		URI:                "/busca/laps",
-		Metodo:             http.MethodGet,
-		Funcao:             controllers.CarregarPaginaBuscaLAPS,
+		Funcao:             controllers.CarregarPaginaMapaField,
 		RequerAutenticacao: true,
 	},
 }
