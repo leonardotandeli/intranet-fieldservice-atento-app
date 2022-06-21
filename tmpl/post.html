@@ -34,7 +34,7 @@
   .lh-150 { line-height: 1.5; }</style>
       
       <div class="d-flex align-items-center p-3 my-3 text-white-50 bg-blue-atento rounded shadow-sm">
-        <img class="mr-3" src="https://api-funcionario.atento.com.br/v3.0/funcionario/BRATE{{.Post.Usuario.RE}}/foto/url" alt="" width="48" height="48">
+        <img class="mr-3" src="https://api-funcionario.atento.com.br/v3.0/funcionario/BRATE{{.Post.Usuario.RE}}/foto/url" onerror="this.src='/assets/images/icons/user.png'" alt="" width="48" height="48">
         <div class="lh-100">
           <h5 class="mb-0 text-white lh-100">{{.Post.Categoria.NOME}}</h5>
           <h6>{{.Post.Cliente.NOME}}</h6>
