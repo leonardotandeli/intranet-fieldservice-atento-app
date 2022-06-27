@@ -53,9 +53,9 @@ func ConsultaAD(w http.ResponseWriter, r *http.Request) {
 
 	loginNT := strings.ToLower(r.URL.Query().Get("login"))
 	// define urls das api
-	url := fmt.Sprintf("%s/checkad/%s", config.APIURL, loginNT)
+	url := fmt.Sprintf("%s/ad/%s", config.APIURL, loginNT)
 
-	response, erro := requisicoes.FazerRequisicaoComAutenticacao(r, http.MethodGet, url, nil)
+	response, erro := requisicoes.FazerRequisicaoComAutenticacao(r, http.MethodPost, url, nil)
 	if erro != nil {
 		respostas.JSON(w, http.StatusInternalServerError, respostas.ErroAPI{Erro: erro.Error()})
 		return
@@ -99,9 +99,9 @@ func ConsultaLAPS(w http.ResponseWriter, r *http.Request) {
 	locador := strings.ToLower(r.URL.Query().Get("locador"))
 
 	// define urls das api
-	url := fmt.Sprintf("%s/checklaps/%s", config.APIURL, locador)
+	url := fmt.Sprintf("%s/laps/%s", config.APIURL, locador)
 
-	response, erro := requisicoes.FazerRequisicaoComAutenticacao(r, http.MethodGet, url, nil)
+	response, erro := requisicoes.FazerRequisicaoComAutenticacao(r, http.MethodPost, url, nil)
 	if erro != nil {
 		http.Redirect(w, r, "/consulta/laps", http.StatusFound)
 	}
