@@ -127,7 +127,7 @@ func AtualizarSenha(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	url := fmt.Sprintf("%s/atualizar-senha/%d", config.APIURL, usuarioID)
+	url := fmt.Sprintf("%s/usuarios/senha/%d", config.APIURL, usuarioID)
 	response, erro := requisicoes.FazerRequisicaoComAutenticacao(r, http.MethodPost, url, bytes.NewBuffer(usuario))
 	if erro != nil {
 		respostas.JSON(w, http.StatusInternalServerError, respostas.ErroAPI{Erro: erro.Error()})
