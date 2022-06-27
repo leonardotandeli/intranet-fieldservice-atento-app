@@ -28,13 +28,15 @@
 
          
             
-                                <div class="col-4 col-sm-3 col-md-2 col-lg-2">
-                                    <a href="/base/cliente?cliente={{.IDCLIENTE}}">
-                                        <div class="icons-atento">
+                                <div class="col-4 col-sm-3 col-md-2 col-lg-2 wrapper">
+                                    <a href="/base/cliente?cliente={{.IDCLIENTE}}" style="text-decoration: none;">
+                                        <div class="icons-atento fix-icon-base">
                                             <div class="icons-img-atento">
                                                 <img src="{{.LOGO_URL}}" alt="">
                                             </div>
-            
+                                            <div class="desc">
+                                              <p class="cliente-subtitle-atento">{{.NOME}}</p>
+                                          </div>
                                         </div>
                                     </a>
                                 </div>
@@ -50,8 +52,6 @@
                    
                             <p>Nenhum resultado...</p>
                      {{end}}
-
-
 
 
   </div>

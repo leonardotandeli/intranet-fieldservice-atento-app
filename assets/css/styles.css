@@ -290,7 +290,7 @@ div {
 .table {
   width: 100%;
   margin-bottom: 1rem;
-  color: #8687a7;
+  color: #12263fa1;
   border-spacing: 2px;
   border-color: grey;
 }
@@ -801,4 +801,21 @@ img {
 
   image-rendering: pixelated ;
   image-rendering: -webkit-optimize-contrast;
+}
+
+.fix-icon-base {
+  width:100%; 
+  padding:0px;
+}
+.cliente-subtitle-atento {
+    color: #003760;
+    font-family: "Nunito", sans-serif;
+    font-weight: bold;
+
+}
+.cliente-subtitle-atento:hover {
+    color: #00223b;
+    font-family: "Nunito", sans-serif;
+    font-weight: bold;
+
 }
