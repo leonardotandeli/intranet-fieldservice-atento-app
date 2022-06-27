@@ -61,8 +61,20 @@
                     </select>
                     </div>
                   </div>
-              <input type="hidden" name="id_site"  class="form-control" value="1" placeholder="Email" id="id_site">
-              <input type="hidden" name="id_usuario"  class="form-control" value="{{.Cookies.UsuarioID}}" placeholder="Email" id="id_usuario">
+                  <div class="col-3">
+                    <div class="form-group">
+                      <h5>Site</h5>
+                        <select id="id_site" name="id_site" class="form-control" required="">
+                          <option value="" selected>Escolha...</option>
+                          <option value="1" >GERAL</option>
+                          {{ range .Site}}
+                          <option value="{{.IDSITE}}">{{.NOME}}</option>
+                          {{end}}
+                      </select>
+                      </div>
+                    </div>
+      
+              <input type="hidden" name="id_usuario"  class="form-control" value="{{.Cookies.UsuarioID}}"  id="id_usuario">
             
 
 <!-- Button trigger modal -->

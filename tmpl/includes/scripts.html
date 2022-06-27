@@ -32,6 +32,14 @@ $("#id_dac").change(function() {
 }).trigger("change");
     
 
+
+var textareaText = $('#template').val();
+    textareaText = textareaText.replaceAll('<br />', '\n');
+    
+$("#template").val(textareaText)
+
+
+
 </script>
 
 {{ end }}

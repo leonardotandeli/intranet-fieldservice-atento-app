@@ -509,16 +509,16 @@ function criarPublicacao(evento) {
 
         Swal.fire({
             type: 'success',
-            title: 'Publicação criada com sucesso!',
+            title: 'Artigo criado com sucesso!',
             showConfirmButton: false,
             timer: 1500
-          }).then(function() {window.location = '/base';})
+          }).then(function() {window.location = '/base/cliente?cliente=1';})
      
     }).fail(function(erro){
         console.log(erro)
         Swal.fire({
             type: 'error',
-            title: 'Algo deu errado! Não foi possível criar a publicação.',
+            title: 'Algo deu errado! Não foi possível criar o artigo.',
             showConfirmButton: false,
             timer: 1500
           })
@@ -563,7 +563,7 @@ function atualizarPublicacao(evento) {
 
         Swal.fire({
             type: 'success',
-            title: 'Publicação atualizada com sucesso!!',
+            title: 'Artigo atualizado com sucesso!!',
             showConfirmButton: false,
             timer: 1500
           }).then(function() {window.location = '/base/'+publicacaoId;})
@@ -572,7 +572,7 @@ function atualizarPublicacao(evento) {
         console.log(erro)
         Swal.fire({
             type: 'error',
-            title: 'Algo deu errado! Não foi possível atualizar a publicação.',
+            title: 'Algo deu errado! Não foi possível atualizar o artigo.',
             showConfirmButton: false,
             timer: 1500
           })
@@ -586,7 +586,7 @@ function deletarPublicacao(evento) {
     const publicacaoId = $(this).data('publicacao-id');
     Swal.fire({
         title: "Atenção!",
-        text: "Tem certeza que deseja excluir essa publicação? Essa ação é irreversível!",
+        text: "Tem certeza que deseja excluir esse artigo? Essa ação é irreversível!",
         showCancelButton: true,
         cancelButtonText: "Cancelar",
         icon: "warning"
@@ -600,7 +600,7 @@ function deletarPublicacao(evento) {
         }).done(function() {
             window.location = '/base';
         }).fail(function() {
-            Swal.fire("Ops...", "Erro ao excluir a publicação!", "error");
+            Swal.fire("Ops...", "Erro ao excluir o artigo!", "error");
         });
     })
 }

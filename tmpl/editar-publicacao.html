@@ -79,7 +79,20 @@
                     </select>
                     </div>
                   </div>
-              <input type="hidden" name="id_site"  class="form-control" value="1"  id="id_site">
+                  <div class="col-6">
+                    <div class="form-group">
+                      <h5>Site</h5>
+                        <select id="id_site" name="id_site" class="form-control" required="">
+                          
+                          <option selected="selected" style="display:none;" value="{{.Post.Site.IDSITE}}">{{.Post.Site.NOME}}</option>
+                          {{ range .Site}}
+                          <option value="{{.IDSITE}}">{{.NOME}}</option>
+                          {{end}}
+                      </select>
+                      </div>
+                    </div>
+   
+
               <input type="hidden" name="id_usuario"  class="form-control" value="{{.Post.ID_USUARIO}}"  id="id_usuario">
               <div class="col-12">
                 <div class="form-group">
