@@ -9,5 +9,29 @@
 <script src="/assets/js/promise/promise-polyfill.js"></script>
 <script src="/assets/js/scripts.js"></script>
 
+<script>
+
+var conceptName = $('#aioConceptName').find(":selected").text();
+
+$('#site').on('change', function () {
+    $('#filtrar').prop('disabled', !$(this).val());
+}).trigger('change');
+
+$('#cliente').on('change', function () {
+    $('#filtrar').prop('disabled', !$(this).val());
+}).trigger('change');
+
+
+$("#id_dac").change(function() {
+  if ($(this).val() == 1) {
+    $('#gravador').val('CLIENTE');
+    $('#gravador').attr('readonly', true);
+  } else {
+    $('#gravador').prop('readonly', !$(this).val());
+  }
+}).trigger("change");
+    
+
+</script>
 
 {{ end }}
