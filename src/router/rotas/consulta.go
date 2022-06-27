@@ -32,7 +32,7 @@ var rotasConsultas = []Rota{
 		RequerAutenticacao: true,
 	},
 	{
-		URI:                "/consulta/ad/{login}",
+		URI:                "/consulta/adg",
 		Metodo:             http.MethodGet,
 		Funcao:             controllers.ConsultaAD,
 		RequerAutenticacao: true,

@@ -11,8 +11,6 @@ import (
 	"fmt"
 	"net/http"
 	"strings"
-
-	"github.com/gorilla/mux"
 )
 
 //Carrega página principal
@@ -27,7 +25,7 @@ func CarregarPaginaConsultaAD(w http.ResponseWriter, r *http.Request) {
 	}{
 
 		Cookies: cookies,
-		Pagina:  "Base de Conhecimento",
+		Pagina:  "ConsultaAD",
 	})
 }
 
@@ -43,16 +41,17 @@ func CarregarPaginaConsultaLAPS(w http.ResponseWriter, r *http.Request) {
 	}{
 
 		Cookies: cookies,
-		Pagina:  "Base de Conhecimento",
+		Pagina:  "Consulta LAPS",
 	})
 }
 
 //Carrega página principal
 func ConsultaAD(w http.ResponseWriter, r *http.Request) {
 	//parametros recebe dados através da url
-	parametros := mux.Vars(r)
-	loginNT := parametros["login"]
+	//parametros := mux.Vars(r)
+	//loginNT := parametros["login"]
 
+	loginNT := strings.ToLower(r.URL.Query().Get("login"))
 	// define urls das api
 	url := fmt.Sprintf("%s/checkad/%s", config.APIURL, loginNT)
 
