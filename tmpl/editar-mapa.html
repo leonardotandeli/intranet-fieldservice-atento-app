@@ -1,22 +1,17 @@
 {{ template "head" .}}
 {{ template "header" .}}
-<style>
-  .padd-title-page {
-      margin-top: -30px;
-  
-  }
-</style>
-
 
 <main role="main" class="flex-shrink-0">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 padd-title-page mb-3">
+  <div class="container-fluid">
+    <div class="col-md-12 ml-sm-auto">
+    <div class="row">
+      <div class="col-md-12">
+
   
 
 
-                <div
-                    class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2  border-bottom">
+        <div
+        class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2  border-bottom">
                     <h1 class="h2">{{.MapaOperacional.OPERACAO}} </h1>
                     <div class="btn-toolbar mb-2 mb-md-0">
                         <div class="btn-group mr-2">
@@ -38,14 +33,15 @@
         
 
 
-        <div class="row">
+        <div class="row mt-3">
             <div class="col-12">
                 <div class="card">
                   <div class="card card-body">
-
+                    <h1 class="h5 card-title">Atualizar informações</h1>
+                    <p class="mb-2">Utilize essa página para alterar as informações da operação.</p>
                         <div class="row">
-                        <div class="col-3">
-                            <label>Site:</label>
+                        <div class="col-2 mt-3">
+                            <label class="form-label">Site</label>
                             <select id="id_site" name="id_site" class="form-control">
                            <option selected="selected" style="display:none;" value="{{.MapaOperacional.ID_SITE}}">{{.MapaOperacional.Site.NOME}}</option>
              
@@ -55,7 +51,7 @@
                             </select>
 
                         </div>
-                        <div class="col-3">
+                        <div class="col-2 mt-3">
                             <label>Cliente:</label>
                             <select id="id_cliente" name="id_cliente" class="form-control">
                  <option  selected="selected" style="display:none;" value="{{.MapaOperacional.ID_CLIENTE}}">{{.MapaOperacional.Cliente.NOME}}</option>
@@ -67,11 +63,11 @@
 
                         </div>
 
-                        <div class="col-3">
+                        <div class="col-2 mt-3">
                             <label>Nome da Operação:</label>
                             <input type="text"  value="{{.MapaOperacional.OPERACAO}}" name="operacao" id="operacao" class="form-control" required="">
                         </div>
-                        <div class="col-3">
+                        <div class="col-2 mt-3">
                             <label>Config. CPU:</label>
 
                             <select id="config_contratual" name="config_contratual" class="form-control" value="{{.MapaOperacional.CONFIG_CONTRATUAL}}">
@@ -110,7 +106,7 @@
                             </select>
 
                         </div>
-                        <div class="col-3 mt-3">
+                        <div class="col-2 mt-3">
                             <label>Versão Windows:</label>
 
                             <select id="versao_windows" name="versao_windows" class="form-control">
@@ -124,15 +120,15 @@
                             </select>
 
                         </div>
-                        <div class="col-3 mt-3">
+                        <div class="col-2 mt-3">
                             <label>Nome da Imagem:</label>
                             <input type="text" value="{{.MapaOperacional.IMAGEM}}"  name="imagem" id="imagem" class="form-control" required="">
                         </div>
-                        <div class="col-3 mt-3">
-                            <label>Nome do Grupo no IMDB:</label>
+                        <div class="col-2 mt-3">
+                            <label>Grupo no IMDB:</label>
                             <input type="text" value="{{.MapaOperacional.GRUPO_IMDB}}" name="grupo_imdb" id="grupo_imdb" class="form-control" required="">
                         </div>
-                        <div class="col-3 mt-3">
+                        <div class="col-2 mt-3">
                             <label>Domínio:</label>
                             <select selected="selected" id="id_dominio" name="id_dominio" value="{{.MapaOperacional.ID_DOMINIO}}" class="form-control">
                              <!--        <option selected="selected" style="display:none;" value="{{.MapaOperacional.Dominio.IDDOMINIO}}">{{.MapaOperacional.Dominio.NOME}}</option> -->
@@ -143,8 +139,8 @@
                             </select>
                         </div>
 
-                        <div class="col-md-4 mt-3">
-                            <label for="username">Vlan de Dados*</label>
+                        <div class="col-md-2 mt-3">
+                            <label for="username">Range Vlan de Dados</label>
                             <div class="input-group">
                               <div class="input-group-prepend">
                                 <span class="input-group-text">VLAN DADOS</span>
@@ -155,8 +151,8 @@
                               </div>
                             </div>
                           </div>
-                          <div class="col-md-4 mt-3">
-                            <label for="username">Vlan de Voz*</label>
+                          <div class="col-md-2 mt-3">
+                            <label for="username">Range Vlan Voz</label>
                             <div class="input-group">
                               <div class="input-group-prepend">
                                 <span class="input-group-text">VLAN VOZ</span>
@@ -173,7 +169,7 @@
                             <label>DAC:</label>
 
                             <select id="id_dac" name="id_dac" class="form-control">
-                                   <!--        <option  selected="selected" style="display:none;" value="{{.MapaOperacional.Dac.IDDAC}}">{{.MapaOperacional.Dac.NOME}}</option>-->
+                    <option  selected="selected" style="display:none;" value="{{.MapaOperacional.ID_DAC}}">{{.MapaOperacional.Dac.NOME}}</option>
              
                                 {{ range .Dac}}
                                 <option value="{{.IDDAC}}">{{.NOME}}</option>
@@ -186,19 +182,23 @@
 
                         <div class="col-2 mt-3">
                             <label>Gravador:</label>
-                            <input type="text" value="{{.MapaOperacional.GRAVADOR}}" name="gravador" id="gravador" class="form-control" required="">
+                            <input type="text" value="{{.MapaOperacional.GRAVADOR}}" name="gravador" id="gravador" class="form-control" >
                         </div>
 
-                        <div class="col-6 mt-3">
-                            <label>Templates:</label>
+                        <div class="col-3 mt-3">
+                            <label>Templates (um por linha):</label>
                             <textarea class="form-control" placeholder="Insira um template por linha" maxlength="150" id="template" name="template" rows="3" required="" >{{.MapaOperacional.TEMPLATE}}</textarea>
 
 
                         </div>
-                        <div class="col-6 mt-3">
+               
+                    
+                     
+                        <div class="col-9 mt-3">
                             <label>Observações:</label>
                             <textarea class="form-control" id="observacoes" maxlength="30" name="observacoes" rows="3">{{.MapaOperacional.OBSERVACOES}}</textarea>
                         </div>
+            
                     </div>
 
             </div>
@@ -211,6 +211,26 @@
 <br />
 
 
+<script src="/assets/js/tinymce/tinymce.min.js"></script>
+<script>
+
+tinymce.init({
+  selector:'#observacoes',
+  convert_urls: false,
+  plugins: 'image code',
+  language: 'pt_BR',
+  images_upload_url: '/upload',
+//  images_upload_base_path: '/img',
+ // images_upload_credentials: true,
+  height : "440",
+  toolbar: 'undo redo | image code',
+    setup: function (editor) {
+        editor.on('change', function () {
+            editor.save();
+        });
+    }
+});
+</script>
 
 
 

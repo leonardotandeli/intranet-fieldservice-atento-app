@@ -1,17 +1,12 @@
 {{ template "head" .}}
 {{ template "header" .}}
-<style>
-  .padd-title-page {
-      margin-top: -30px;
-  
-  }
-</style>
-
 
 <main role="main" class="flex-shrink-0">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12 padd-title-page mb-3">
+  <div class="container-fluid">
+    <div class="col-md-12 ml-sm-auto">
+    <div class="row">
+      <div class="col-md-12">
+
   
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2  border-bottom">
       <h1 class="h2">Adicionar Operação</h1>
@@ -26,15 +21,16 @@
   </div>
   </div>
 
-  <div class="row">
+  <div class="row mt-3">
     <div class="col-12">
         <div class="card">
           <div class="card card-body">
 
-
+            <h1 class="h5 card-title">Adicionar operação</h1>
+            <p class="mb-2">Utilize essa página para adicionar uma nova operação no mapa operacional.</p>
                         <form id="formulario-mapa">
                             <div class="row">
-                                <div class="col-3 mb-3">
+                              <div class="col-2 mt-3">
                                     <label>Site*:</label>
                                     <select id="id_site" name="id_site" class="custom-select d-block w-100" required="">
                                         <option value="" selected>Escolha...</option>
@@ -46,7 +42,7 @@
                                         Por favor, selecione um site.
                                       </div>
                                 </div>
-                                <div class="col-3 mb-3">
+                                <div class="col-2 mt-3">
                                     <label>Cliente*:</label>
                                     <select id="id_cliente" name="id_cliente" class="custom-select d-block w-100" required="">
                                         <option value="" selected>Escolha...</option>
@@ -58,7 +54,7 @@
                                         Por favor, selecione um cliente.
                                       </div>
                                 </div>
-                                <div class="col-3 mb-3">
+                                <div class="col-2 mt-3">
                                     <label>Nome da Operação*:</label>
                                     <input type="text" placeholder="Ilha/Célula" maxlength="25" name="operacao" id="operacao" class="form-control" required="">
                                     <div class="invalid-feedback">
@@ -66,7 +62,7 @@
                                       </div>
                                 </div>
                   
-                                <div class="col-3 mb-3">
+                                <div class="col-2 mt-3">
                                     <label>Config. CPU*:</label>
 
                                     <select id="config_contratual" name="config_contratual" class="custom-select d-block w-100" required="">
@@ -98,7 +94,7 @@
                                     </select>
 
                                 </div>
-                                <div class="col-3 mb-3">
+                                <div class="col-2 mt-3">
                                     <label>Versão Windows*:</label>
 
                                     <select id="versao_windows" name="versao_windows" class="custom-select d-block w-100" required="">
@@ -110,7 +106,7 @@
                                     </select>
 
                                 </div>
-                                <div class="col-3 mb-3">
+                                <div class="col-2 mt-3">
                                     <label>Nome da Imagem*:</label>
                                     <input type="text" placeholder="Imagem Deploy" maxlength="20" name="imagem" id="imagem" class="form-control" required="">
                                     <div class="invalid-feedback">
@@ -118,14 +114,14 @@
                                       </div>
                                 </div>
                                 
-                                <div class="col-3 mb-3">
-                                    <label>Nome do Grupo no IMDB*:</label>
+                                <div class="col-2 mt-3">
+                                    <label>Grupo no IMDB*:</label>
                                     <input type="text" placeholder="Grupo de Acesso" name="grupo_imdb" id="grupo_imdb" maxlength="25" class="form-control" required="">
                                     <div class="invalid-feedback">
                                         O nome do grupo no IMDB é obrigatório.
                                       </div>
                                 </div>
-                                <div class="col-3 mb-3">
+                                <div class="col-2 mt-3">
                                     <label>Domínio*:</label>
                                     <select id="id_dominio" name="id_dominio" class="custom-select d-block w-100" required="required">
                                         <option value="" selected>Escolha...</option>
@@ -139,8 +135,9 @@
                                       </div>
                                 </div>
                                 
-                                <div class="col-md-4 mb-3">
-                                    <label for="username">Vlan de Dados*</label>
+         
+                                <div class="col-md-2 mt-3">
+                                  <label for="username">Range Vlan de Dados</label>
                                     <div class="input-group">
                                       <div class="input-group-prepend">
                                         <span class="input-group-text">VLAN DADOS</span>
@@ -151,8 +148,8 @@
                                       </div>
                                     </div>
                                   </div>
-                                  <div class="col-md-4 mb-3">
-                                    <label for="username">Vlan de Voz*</label>
+                                  <div class="col-md-2 mt-3">
+                                    <label for="username">Range Vlan Voz</label>
                                     <div class="input-group">
                                       <div class="input-group-prepend">
                                         <span class="input-group-text">VLAN VOZ</span>
@@ -163,7 +160,7 @@
                                       </div>
                                     </div>
                                   </div>
-                                  <div class="col-2 mb-3">
+                                  <div class="col-2 mt-3">
                                     <label>DAC*:</label>
                                     <select id="id_dac" name="id_dac" class="custom-select d-block w-100" required="">
                                         <option value="" selected>Escolha...</option>
@@ -175,27 +172,27 @@
                                         Por favor, selecione um DAC.
                                       </div>
                                 </div>
-                                  <div class="col-2 mb-3">
+                                <div class="col-2 mt-3">
                                     <label>Gravador*:</label>
-                                    <input type="text"  name="gravador" id="gravador" maxlength="25" class="form-control" required="">
+                                    <input type="text"  name="gravador" id="gravador" maxlength="25" class="form-control" placeholder="Gravador" required="">
                                     <div class="invalid-feedback" style="width: 100%;">
                                        O Gravador é opcional.
                                       </div>
                                 </div>
                     <hr>
                                
-                                <div class="col-6 mb-3">
+                    <div class="col-3 mt-3">
                                     <label>Templates*:</label>
                                     <textarea class="form-control" placeholder="Insira um template por linha" maxlength="150" id="template" name="template" rows="3" required="" ></textarea>
 
 
                                 </div>
-                                <div class="col-6 mb-3">
+                                <div class="col-9 mt-3 mb-4">
                                     <label>Observações:</label>
                                     <textarea class="form-control" id="observacoes"  maxlength="30" name="observacoes" rows="3" placeholder="Observações" required=""></textarea>
                                 </div>
 
-                                <hr class="mb-4">
+                                <hr class="mt-4">
                                 <div class="col-12 mb-3">
                                     <button onclick="criarMapa()" class="btn btn-block btn-outline-secondary" type="submit">Criar</button>
                                 </div>
@@ -214,7 +211,26 @@
 </div>
 
 
+<script src="/assets/js/tinymce/tinymce.min.js"></script>
+<script>
 
+tinymce.init({
+  selector:'#observacoes',
+  convert_urls: false,
+  plugins: 'image code',
+  language: 'pt_BR',
+  images_upload_url: '/upload',
+//  images_upload_base_path: '/img',
+ // images_upload_credentials: true,
+  height : "440",
+  toolbar: 'undo redo | image code',
+    setup: function (editor) {
+        editor.on('change', function () {
+            editor.save();
+        });
+    }
+});
+</script>
     {{ template "footer"}}
     {{ template "scripts"}}
     </body>

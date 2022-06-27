@@ -42,7 +42,7 @@
                 </select>
               </div>
 
-              <button type="submit" class="px-2 btn btn-md btn-outline-secondary"><i class="bi bi-arrow-right-square"></i> Filtrar</button>
+              <button type="submit" class="px-2 btn btn-md btn-outline-secondary" id="filtrar" disabled><i class="bi bi-arrow-right-square"></i> Filtrar</button>
               
               {{ if eq .Cookies.V_MAPA_OPERACIONAL_ADM "S" }}
 
@@ -64,8 +64,10 @@
                   <th scope="col">Site</th>
                   <th scope="col">Cliente</th>
                   <th scope="col">VLAN</th>
+                  <th scope="col">Domínio</th>
                   <th scope="col">Configuração</th>
                   <th scope="col">Template</th>
+                  <th scope="col">IMDB</th>
                   <th scope="col">Telefonia</th>
                   <th scope="col">Observações</th>
                   <th scope="col"></th>
@@ -75,12 +77,41 @@
                 {{ range .MapaOperacional}}
                 <tr>
                   <th scope="row">{{ .Site.NOME }}</th>
-                  <td><i class="bi bi-box-seam"></i> <strong>Cliente:</strong> {{ .Cliente.NOME }} <br/><i class="bi bi-boxes"></i>  <strong>Operação:</strong> {{ .OPERACAO }} <br/><i class="bi bi-wifi"></i> <strong>IMDB:</strong> {{ .GRUPO_IMDB }} <br/><i class="bi bi-globe"></i> <strong>Domínio:</strong> {{ .Dominio.NOME }}</td>
+                  <td><i class="bi bi-box-seam"></i> <strong>Cliente:</strong> {{ .Cliente.NOME }} <br/><i class="bi bi-boxes"></i>  <strong>Operação:</strong> {{ .OPERACAO }}</td>
                   <td><strong><i class="bi bi-ethernet"></i> Dados:</strong> {{.VLAN_DADOS}} <br/><i class="bi bi-volume-up"></i> <strong>Voz:</strong> {{.VLAN_VOZ}}</td>
+                  <td><i class="bi bi-globe"></i> {{ .Dominio.NOME }} </td>
+
+
+               
                   <td><i class="bi bi-hdd"></i> <strong>CPU:</strong> {{ .CONFIG_CONTRATUAL }} <br/> <i class="bi bi-windows"></i> <strong>Versão:</strong> {{ .VERSAO_WINDOWS }} <br/><i class="bi bi-window-dock"></i> <strong>Imagem:</strong> {{.IMAGEM}}</td>
                   <td> {{ .TEMPLATE }}</td>
+                  <td><i class="bi bi-wifi"></i> {{ .GRUPO_IMDB }}</td>
                   <td><i class="bi bi-telephone-outbound"></i> <strong>DAC:</strong> {{ .Dac.NOME }} <br/><i class="bi bi-vinyl"></i> <strong>Gravador:</strong> {{ .GRAVADOR }}</td>
-                  <td width="80px"> {{ .OBSERVACOES }}</td>
+                
+                  <td>  <button type="button" class="btn btn-md btn-outline-secondary"  data-toggle="modal" data-target="#Modal{{ .IDMAPA }}"><i class="bi bi-clipboard"></i></button></td>
+                
+<!--MODAL-->
+                  <div class="modal fade" id="Modal{{ .IDMAPA }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Observações</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                  <p>{{ .OBSERVACOES }}</p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Fechar</button>
+                    
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                <!-- FIM MODAL-->
+                
                   {{ if eq $.Cookies.V_MAPA_OPERACIONAL_ADM "S" }}
                   <td><a href="/mapa/operacoes/{{ .IDMAPA }}" class="btn btn-md btn-outline-secondary"><i class="bi bi-pencil-square"></i></a></td>
 {{end}}
