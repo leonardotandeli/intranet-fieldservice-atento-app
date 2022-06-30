@@ -4,3 +4,7 @@ github.com/gorilla/securecookie v1.1.1 h1:miw7JPhV+b/lAHSXz4qd/nN9jRiAFV5FwjeKyC
 github.com/gorilla/securecookie v1.1.1/go.mod h1:ra0sb63/xPlUeL+yeDciTfxMRAA+MP+HVt/4epWDjd4=
 github.com/joho/godotenv v1.3.0 h1:Zjp+RcGpHhGlrMbJzXTrZZPrWj+1vfm90La1wgB6Bhc=
 github.com/joho/godotenv v1.3.0/go.mod h1:7hK45KPybAkOC6peb+G5yklZfMxEjkZhHbwpqxOKXbg=
+github.com/szyhf/go-convert v1.0.0 h1:L49o5JLMPzXYRggFqwNEzDw1gAQktpyWfKZqcPzEmX8=
+github.com/szyhf/go-convert v1.0.0/go.mod h1:BgotSGjAF33Z4fcU/fe8OPYZoo6mKiBiKvJ+FVih5UM=
+github.com/szyhf/go-excel v1.5.1 h1:LfTRZc4PS/mmei7wNdeKkC52GJi7fSPpYFhMBgKEnGw=
+github.com/szyhf/go-excel v1.5.1/go.mod h1:W7GkeorrNkBXQRwwY66+fuH9sJqcU8ahcBMJF5A64pY=

@@ -1,6 +1,7 @@
 package respostas
 
 import (
+	"app/src/cookies"
 	"encoding/json"
 	"log"
 	"net/http"
@@ -25,7 +26,17 @@ func JSON(w http.ResponseWriter, statusCode int, dados interface{}) {
 
 // TratarStatusCodeDeErro trata as requisições com status code 400 ou superior
 func TratarStatusCodeDeErro(w http.ResponseWriter, r *http.Response) {
+
 	var erro ErroAPI
 	json.NewDecoder(r.Body).Decode(&erro)
+
+	if erro.Erro == "Token não está válido!" {
+		RedirectLogoff(w, r.Request)
+	}
 	JSON(w, r.StatusCode, erro)
+}
+
+func RedirectLogoff(w http.ResponseWriter, r *http.Request) {
+	cookies.Deletar(w)
+	http.Redirect(w, r, "/login", http.StatusFound)
 }

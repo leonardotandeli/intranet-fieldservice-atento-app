@@ -4,6 +4,7 @@ import (
 	"app/src/config"
 	"app/src/cookies"
 	"app/src/modelos"
+	"app/src/requisicoes"
 	"app/src/respostas"
 	"app/src/utils"
 	"bytes"
@@ -74,6 +75,23 @@ func FazerLogin(w http.ResponseWriter, r *http.Request) {
 }
 
 func Deslogar(w http.ResponseWriter, r *http.Request) {
+
+	//função para inserir dados dos cookies armazenados durante o login
+	cookiesLoad, _ := cookies.InserirDadosNaPagina(r)
+	userID := cookiesLoad.UsuarioID
+
+	url := fmt.Sprintf("%s/usuarios/deslogar/%d", config.APIURL, userID)
+	response, erro := requisicoes.FazerRequisicaoComAutenticacao(r, http.MethodDelete, url, nil)
+	if erro != nil {
+		respostas.JSON(w, http.StatusInternalServerError, respostas.ErroAPI{Erro: erro.Error()})
+		return
+	}
+
+	if response.StatusCode >= 400 {
+		respostas.TratarStatusCodeDeErro(w, response)
+		return
+	}
+
 	cookies.Deletar(w)
 	http.Redirect(w, r, "/login", http.StatusFound)
 }
