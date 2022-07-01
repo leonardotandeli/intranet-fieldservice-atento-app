@@ -30,9 +30,13 @@ func TratarStatusCodeDeErro(w http.ResponseWriter, r *http.Response) {
 	var erro ErroAPI
 	json.NewDecoder(r.Body).Decode(&erro)
 
-	if erro.Erro == "Token não está válido!" {
+	if erro.Erro == "TOKEN NÃO ESTÁ VÁLIDO" {
 		RedirectLogoff(w, r.Request)
 	}
+	if erro.Erro == "Token is expired" {
+		RedirectLogoff(w, r.Request)
+	}
+
 	JSON(w, r.StatusCode, erro)
 }
 
