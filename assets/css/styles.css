@@ -237,11 +237,11 @@ div {
 
 .table thead th {
 
-    color: #959ac9;
+    color: #01426a;
     vertical-align: bottom;
     border-bottom: 2px solid #eff2f7;
     border-top: 0px solid #dee2e6; 
-    font-size: .8125rem;
+    font-size: .8825rem;
     font-weight: 600;
     letter-spacing: .08em;
     text-transform: uppercase;
@@ -517,14 +517,14 @@ margin-top: -14px;
 }
 
 .nav-link-atento:hover {
-  color: rgb(10, 107, 181);
+  color: #02508b;
   font-family: "Nunito", sans-serif;
   font-weight: bold;
   text-decoration: none;
 }
 
 .home-link-title {
-  color: rgb(14, 119, 199);
+  color: #02508b;
   font-family: "Nunito", sans-serif;
   font-weight: bold;
 }
