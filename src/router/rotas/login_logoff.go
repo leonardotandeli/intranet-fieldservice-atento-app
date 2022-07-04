@@ -5,6 +5,7 @@ import (
 	"net/http"
 )
 
+//rotasLogin define as rotas de login e logoff
 var rotasLogin = []Rota{
 	{
 		URI:                "/",

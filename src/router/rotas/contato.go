@@ -5,6 +5,7 @@ import (
 	"net/http"
 )
 
+//rotasContatos define as rotas das páginas de telefones de contato
 var rotasContatos = []Rota{
 	{
 		URI:                "/contatos/field",

@@ -5,6 +5,7 @@ import (
 	"net/http"
 )
 
+//rotaHome define a rota da página inicial
 var rotaHome = []Rota{
 
 	{

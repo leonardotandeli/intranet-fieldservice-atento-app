@@ -12,13 +12,13 @@ import (
 
 var s *securecookie.SecureCookie
 
-// configura a sessão cookies
+//Configurar configura a sessão com cookies
 func Configurar() {
 	s = securecookie.New(config.HashKey, config.BlockKey)
 }
 
-//registra autenticacao
-func Salvar(w http.ResponseWriter, ID, token, NOME, LOGIN_NT, RE, CARGO, V_HOMEOFFICE, V_HOMEOFFICE_CHAMADOS, V_HOMEOFFICE_CHAMADOS_MUDAR_ANALISTA, V_USUARIOS, V_IMPRESSORAS, V_BDC_POSTS, V_BDC_ADM, V_IMDB, V_GSA, V_CATRACA, V_BH, V_CEP, V_MAPA_OPERACIONAL, V_MAPA_OPERACIONAL_ADM, Site string) error {
+//Salvar registra autenticacao
+func Salvar(w http.ResponseWriter, ID, token, NOME, LOGIN_NT, RE, CARGO, V_HOMEOFFICE, V_HOMEOFFICE_CHAMADOS, V_HOMEOFFICE_CHAMADOS_MUDAR_ANALISTA, V_USUARIOS, V_IMPRESSORAS, V_BDC_POSTS, V_BDC_ADM, V_IMDB, V_GSA, V_CATRACA, V_BH, V_CEP, V_MAPA_OPERACIONAL, V_MAPA_OPERACIONAL_ADM, STATUS, Site string) error {
 	dados := map[string]string{
 		"id":                                   ID,
 		"token":                                token,
@@ -40,6 +40,7 @@ func Salvar(w http.ResponseWriter, ID, token, NOME, LOGIN_NT, RE, CARGO, V_HOMEO
 		"v_cep":                                V_CEP,
 		"v_mapa_operacional":                   V_MAPA_OPERACIONAL,
 		"v_mapa_operacional_adm":               V_MAPA_OPERACIONAL_ADM,
+		"status":                               STATUS,
 		"Site":                                 Site,
 	}
 	dadosCodificados, erro := s.Encode("IntraFieldCookie", dados)
@@ -51,7 +52,7 @@ func Salvar(w http.ResponseWriter, ID, token, NOME, LOGIN_NT, RE, CARGO, V_HOMEO
 		Value:    dadosCodificados,
 		Path:     "/",
 		HttpOnly: true,
-		MaxAge:   43150, //definido para 12 horas
+		MaxAge:   43150, //definido para expirar em 12 horas
 	})
 	return nil
 }
@@ -103,6 +104,7 @@ func InserirDadosNaPagina(r *http.Request) (modelos.PageCookies, error) {
 	c.V_BH = cookie["v_bh"]
 	c.V_MAPA_OPERACIONAL = cookie["v_mapa_operacional"]
 	c.V_MAPA_OPERACIONAL_ADM = cookie["v_mapa_operacional_adm"]
+	c.STATUS = cookie["status"]
 	c.SiteNome = cookie["Site"]
 
 	return c, nil

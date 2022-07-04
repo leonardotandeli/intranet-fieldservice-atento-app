@@ -98,7 +98,7 @@ func CarregarPaginaInicialBase(w http.ResponseWriter, r *http.Request) {
 	//função para inserir dados dos cookies armazenados durante o login
 	cookies, _ := cookies.InserirDadosNaPagina(r)
 
-	utils.ExecutarTemplate(w, "base.html", struct {
+	utils.ExecutarTemplate(w, "baseDeConhecimento.html", struct {
 		PostsLimit []modelos.Post
 		Cliente    []modelos.Cliente
 		Categoria  []modelos.Post_Categoria
@@ -113,7 +113,7 @@ func CarregarPaginaInicialBase(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
-//Carrega página principal
+//CarregarPaginaBusca carrega página de busca
 func CarregarPaginaBusca(w http.ResponseWriter, r *http.Request) {
 	//recupera url query strings
 	strBusca := strings.ToLower(r.URL.Query().Get("busca"))
@@ -193,7 +193,7 @@ func CarregarPaginaBusca(w http.ResponseWriter, r *http.Request) {
 	//função para inserir dados dos cookies armazenados durante o login
 	cookies, _ := cookies.InserirDadosNaPagina(r)
 
-	utils.ExecutarTemplate(w, "base_busca.html", struct {
+	utils.ExecutarTemplate(w, "searchBaseDeConhecimento.html", struct {
 		Posts []modelos.Post
 
 		Cliente   []modelos.Cliente
@@ -210,7 +210,7 @@ func CarregarPaginaBusca(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
-//Carrega página principal
+//CarregarPaginaBuscaCatOuCliente carrega a pagina de busca por fltro de cliente ou categoria
 func CarregarPaginaBuscaCatOuCliente(w http.ResponseWriter, r *http.Request) {
 	//recupera url query strings
 	strCategoria := strings.ToLower(r.URL.Query().Get("categoria"))
@@ -318,7 +318,7 @@ func CarregarPaginaBuscaCatOuCliente(w http.ResponseWriter, r *http.Request) {
 	//função para inserir dados dos cookies armazenados durante o login
 	cookies, _ := cookies.InserirDadosNaPagina(r)
 
-	utils.ExecutarTemplate(w, "base_busca_cliente.html", struct {
+	utils.ExecutarTemplate(w, "baseDeConhecimentoCliente.html", struct {
 		Posts         []modelos.Post
 		ClienteUnique modelos.Cliente
 		Cliente       []modelos.Cliente
@@ -335,7 +335,7 @@ func CarregarPaginaBuscaCatOuCliente(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
-//Carrega página principal
+//arregarPaginaBuscaCategoria carrega página de busca por categoria
 func CarregarPaginaBuscaCategoria(w http.ResponseWriter, r *http.Request) {
 	//recupera url query strings
 	strCategoria := strings.ToLower(r.URL.Query().Get("categoria"))
@@ -465,7 +465,7 @@ func CarregarPaginaBuscaCategoria(w http.ResponseWriter, r *http.Request) {
 	//função para inserir dados dos cookies armazenados durante o login
 	cookies, _ := cookies.InserirDadosNaPagina(r)
 
-	utils.ExecutarTemplate(w, "base_busca_categoria.html", struct {
+	utils.ExecutarTemplate(w, "baseDeConhecimentoCategoria.html", struct {
 		Posts         []modelos.Post
 		ClienteUnique modelos.Cliente
 		CatUnique     modelos.Post_Categoria
@@ -484,7 +484,7 @@ func CarregarPaginaBuscaCategoria(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
-//Carrega tela do formulario de criação de publicação.
+//CarregarTelaDeCriarPublicacao carrega a página da publicação
 func CarregarTelaDeCriarPublicacao(w http.ResponseWriter, r *http.Request) {
 
 	// define urls das api
@@ -543,7 +543,7 @@ func CarregarTelaDeCriarPublicacao(w http.ResponseWriter, r *http.Request) {
 	//função para inserir dados dos cookies armazenados durante o login
 	cookies, _ := cookies.InserirDadosNaPagina(r)
 
-	utils.ExecutarTemplate(w, "criar-publicacao.html", struct {
+	utils.ExecutarTemplate(w, "adicionarPublicacao.html", struct {
 		Cliente   []modelos.Cliente
 		Categoria []modelos.Post_Categoria
 		Site      []modelos.Site
@@ -559,7 +559,7 @@ func CarregarTelaDeCriarPublicacao(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
-//Carrega tela do formulario de criação de publicação.
+//CarregarTelaDeCriarCategoria carrega a página de formulario de criação de categoria.
 func CarregarTelaDeCriarCategoria(w http.ResponseWriter, r *http.Request) {
 
 	// define urls das api
@@ -618,7 +618,7 @@ func CarregarTelaDeCriarCategoria(w http.ResponseWriter, r *http.Request) {
 	//função para inserir dados dos cookies armazenados durante o login
 	cookies, _ := cookies.InserirDadosNaPagina(r)
 
-	utils.ExecutarTemplate(w, "criar-categoria.html", struct {
+	utils.ExecutarTemplate(w, "adicionarCategoria.html", struct {
 		Cliente   []modelos.Cliente
 		Categoria []modelos.Post_Categoria
 		Site      []modelos.Site
@@ -634,7 +634,7 @@ func CarregarTelaDeCriarCategoria(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
-//Carrega tela do formulario de criação de publicação.
+//CarregarTelaDeCriarCliente carrega tela de criação de cliente.
 func CarregarTelaDeCriarCliente(w http.ResponseWriter, r *http.Request) {
 
 	// define urls das api
@@ -693,7 +693,7 @@ func CarregarTelaDeCriarCliente(w http.ResponseWriter, r *http.Request) {
 	//função para inserir dados dos cookies armazenados durante o login
 	cookies, _ := cookies.InserirDadosNaPagina(r)
 
-	utils.ExecutarTemplate(w, "criar-cliente.html", struct {
+	utils.ExecutarTemplate(w, "adicionarCliente.html", struct {
 		Cliente   []modelos.Cliente
 		Categoria []modelos.Post_Categoria
 		Site      []modelos.Site
@@ -709,7 +709,7 @@ func CarregarTelaDeCriarCliente(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
-//Carrega pagina de edição
+//CarregarPaginaDePublicacao carrega pagina da publicação
 func CarregarPaginaDePublicacao(w http.ResponseWriter, r *http.Request) {
 	//recebe id através da url
 	parametros := mux.Vars(r)
@@ -795,7 +795,7 @@ func CarregarPaginaDePublicacao(w http.ResponseWriter, r *http.Request) {
 	//função para inserir dados dos cookies armazenados durante o login
 	cookies, _ := cookies.InserirDadosNaPagina(r)
 
-	utils.ExecutarTemplate(w, "post.html", struct {
+	utils.ExecutarTemplate(w, "publicacao.html", struct {
 		Post      modelos.Post
 		Cliente   []modelos.Cliente
 		Categoria []modelos.Post_Categoria
@@ -810,7 +810,7 @@ func CarregarPaginaDePublicacao(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
-//Carrega pagina de edição
+//CarregarPaginaDeEdicaoDePublicacao carrega pagina de alterar publicação
 func CarregarPaginaDeEdicaoDePublicacao(w http.ResponseWriter, r *http.Request) {
 	//recebe id através da url
 	parametros := mux.Vars(r)
@@ -895,7 +895,7 @@ func CarregarPaginaDeEdicaoDePublicacao(w http.ResponseWriter, r *http.Request) 
 	//função para inserir dados dos cookies armazenados durante o login
 	cookies, _ := cookies.InserirDadosNaPagina(r)
 
-	utils.ExecutarTemplate(w, "editar-publicacao.html", struct {
+	utils.ExecutarTemplate(w, "alterarPublicacao.html", struct {
 		Post      modelos.Post
 		Cliente   []modelos.Cliente
 		Categoria []modelos.Post_Categoria
@@ -912,7 +912,7 @@ func CarregarPaginaDeEdicaoDePublicacao(w http.ResponseWriter, r *http.Request) 
 	})
 }
 
-//Carrega pagina de edição
+//CarregarPaginaDeEdicaoDeCategorias carrega pagina de alterar categorias
 func CarregarPaginaDeEdicaoDeCategorias(w http.ResponseWriter, r *http.Request) {
 	//recebe id através da url
 	parametros := mux.Vars(r)
@@ -980,7 +980,7 @@ func CarregarPaginaDeEdicaoDeCategorias(w http.ResponseWriter, r *http.Request) 
 	//função para inserir dados dos cookies armazenados durante o login
 	cookies, _ := cookies.InserirDadosNaPagina(r)
 
-	utils.ExecutarTemplate(w, "editar-categoria.html", struct {
+	utils.ExecutarTemplate(w, "alterarCategoria.html", struct {
 		Categoria modelos.Post_Categoria
 		Cookies   modelos.PageCookies
 		Cliente   []modelos.Cliente
@@ -995,7 +995,7 @@ func CarregarPaginaDeEdicaoDeCategorias(w http.ResponseWriter, r *http.Request) 
 	})
 }
 
-//Carrega pagina de edição
+//CarregarPaginaDeEdicaoDeClientes carrega pagina de alterar clientes
 func CarregarPaginaDeEdicaoDeClientes(w http.ResponseWriter, r *http.Request) {
 	//recebe id através da url
 	parametros := mux.Vars(r)
@@ -1028,7 +1028,7 @@ func CarregarPaginaDeEdicaoDeClientes(w http.ResponseWriter, r *http.Request) {
 	//função para inserir dados dos cookies armazenados durante o login
 	cookies, _ := cookies.InserirDadosNaPagina(r)
 
-	utils.ExecutarTemplate(w, "editar-cliente.html", struct {
+	utils.ExecutarTemplate(w, "alterarCliente.html", struct {
 		Cliente modelos.Cliente
 		Cookies modelos.PageCookies
 		Pagina  string

@@ -24,5 +24,6 @@ type DadosAutenticacao struct {
 	V_CEP                                string `json:"v_cep,omitempty"`
 	V_MAPA_OPERACIONAL                   string `json:"v_mapa_operacional,omitempty"`
 	V_MAPA_OPERACIONAL_ADM               string `json:"v_mapa_operacional_adm,omitempty"`
+	STATUS                               string `json:"status,omitempty"`
 	Site                                 Site
 }

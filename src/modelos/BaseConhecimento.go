@@ -2,13 +2,13 @@ package modelos
 
 import "time"
 
-// Struct dos chamados
+// Post_Categoria representa uma categoria de posts cadastrado em sistema
 type Post_Categoria struct {
 	IDCATEGORIA uint64 `json:"idcategoria,omitempty"`
 	NOME        string `json:"NOME,omitempty"`
 }
 
-// Struct dos chamados
+// Post representa uma publicação feita por um usuário
 type Post struct {
 	IDPOST       uint64    `json:"idpost,omitempty"`
 	TITULO       string    `json:"titulo,omitempty"`

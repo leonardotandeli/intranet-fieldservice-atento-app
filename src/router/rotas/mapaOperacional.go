@@ -5,6 +5,7 @@ import (
 	"net/http"
 )
 
+//rotasMapaOperacional define as rotas do mapa operacional
 var rotasMapaOperacional = []Rota{
 	{
 		URI:                "/mapa/operacoes",
@@ -13,7 +14,7 @@ var rotasMapaOperacional = []Rota{
 		RequerAutenticacao: true,
 	},
 	{
-		URI:                "/mapa/operacoes/busca",
+		URI:                "/mapa/busca/operacoes",
 		Metodo:             http.MethodGet,
 		Funcao:             controllers.CarregarPaginaMapaString,
 		RequerAutenticacao: true,
@@ -26,14 +27,14 @@ var rotasMapaOperacional = []Rota{
 		RequerAutenticacao: true,
 	},
 	{
-		URI:                "/formulario/mapa",
+		URI:                "/mapa/adicionar/operacoes",
 		Metodo:             http.MethodGet,
 		Funcao:             controllers.CarregarTelaDoFormularioMapa,
 		RequerAutenticacao: true,
 	},
 
 	{
-		URI:                "/formulario/mapa",
+		URI:                "/mapa/adicionar/operacoes",
 		Metodo:             http.MethodPost,
 		Funcao:             controllers.CriarMapa,
 		RequerAutenticacao: true,

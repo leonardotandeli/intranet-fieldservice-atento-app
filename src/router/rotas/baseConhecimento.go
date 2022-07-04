@@ -5,112 +5,58 @@ import (
 	"net/http"
 )
 
+//rotasBaseDeConhecimento define as rotas da base de conhecimento
 var rotasBaseDeConhecimento = []Rota{
 	{
-		URI:                "/base",
+		URI:                "/base-de-conhecimento",
 		Metodo:             http.MethodGet,
 		Funcao:             controllers.CarregarPaginaInicialBase,
 		RequerAutenticacao: true,
 	},
 	{
-		URI:                "/formulario/base",
+		URI:                "/base-de-conhecimento/adicionar",
 		Metodo:             http.MethodGet,
 		Funcao:             controllers.CarregarTelaDeCriarPublicacao,
 		RequerAutenticacao: true,
 	},
 	{
-		URI:                "/formulario/categoria",
-		Metodo:             http.MethodGet,
-		Funcao:             controllers.CarregarTelaDeCriarCategoria,
-		RequerAutenticacao: true,
-	},
-	{
-		URI:                "/formulario/cliente",
-		Metodo:             http.MethodGet,
-		Funcao:             controllers.CarregarTelaDeCriarCliente,
-		RequerAutenticacao: true,
-	},
-	{
-		URI:                "/base/busca",
+		URI:                "/base-de-conhecimento/busca",
 		Metodo:             http.MethodGet,
 		Funcao:             controllers.CarregarPaginaBusca,
 		RequerAutenticacao: true,
 	},
 	{
-		URI:                "/base/cliente",
-		Metodo:             http.MethodGet,
-		Funcao:             controllers.CarregarPaginaBuscaCatOuCliente,
-		RequerAutenticacao: true,
-	},
-	{
-		URI:                "/base/categoria",
-		Metodo:             http.MethodGet,
-		Funcao:             controllers.CarregarPaginaBuscaCategoria,
-		RequerAutenticacao: true,
-	},
-	{
-		URI:                "/base/{postId}",
+		URI:                "/base-de-conhecimento/{postId}",
 		Metodo:             http.MethodGet,
 		Funcao:             controllers.CarregarPaginaDePublicacao,
 		RequerAutenticacao: true,
 	},
 	{
-		URI:                "/base/{postId}/editar",
+		URI:                "/base-de-conhecimento/{postId}/alterar",
 		Metodo:             http.MethodGet,
 		Funcao:             controllers.CarregarPaginaDeEdicaoDePublicacao,
 		RequerAutenticacao: true,
 	},
 	{
-		URI:                "/base",
+		URI:                "/base-de-conhecimento",
 		Metodo:             http.MethodPost,
 		Funcao:             controllers.CriarPublicacao,
 		RequerAutenticacao: true,
 	},
 	{
-		URI:                "/base/{publicacaoId}",
+		URI:                "/base-de-conhecimento/{publicacaoId}",
 		Metodo:             http.MethodPut,
 		Funcao:             controllers.AtualizarPublicacao,
 		RequerAutenticacao: true,
 	},
 	{
-		URI:                "/base/{publicacaoId}",
+		URI:                "/base-de-conhecimento/{publicacaoId}",
 		Metodo:             http.MethodDelete,
 		Funcao:             controllers.DeletarPublicacao,
 		RequerAutenticacao: true,
 	},
 	{
-		URI:                "/base/editar/categoria/{catId}",
-		Metodo:             http.MethodGet,
-		Funcao:             controllers.CarregarPaginaDeEdicaoDeCategorias,
-		RequerAutenticacao: true,
-	},
-	{
-		URI:                "/base/editar/categoria/{catId}",
-		Metodo:             http.MethodPut,
-		Funcao:             controllers.AtualizarCategoria,
-		RequerAutenticacao: true,
-	},
-	{
-		URI:                "/base/editar/categoria/{catId}",
-		Metodo:             http.MethodDelete,
-		Funcao:             controllers.DeletarCategoria,
-		RequerAutenticacao: true,
-	},
-	{
-		URI:                "/base/editar/categoria",
-		Metodo:             http.MethodPost,
-		Funcao:             controllers.CriarCategoria,
-		RequerAutenticacao: true,
-	},
-	{
-		URI:                "/base/editar/cliente/{clienteId}",
-		Metodo:             http.MethodGet,
-		Funcao:             controllers.CarregarPaginaDeEdicaoDeClientes,
-		RequerAutenticacao: true,
-	},
-
-	{
-		URI:                "/upload",
+		URI:                "/base-de-conhecimento/upload",
 		Metodo:             http.MethodPost,
 		Funcao:             controllers.UploadFile,
 		RequerAutenticacao: true,

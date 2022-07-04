@@ -83,7 +83,7 @@ func CarregarPaginaMapa(w http.ResponseWriter, r *http.Request) {
 
 	//condicional de acesso a página
 	if cookies.V_MAPA_OPERACIONAL == "S" {
-		utils.ExecutarTemplate(w, "mapa.html", struct {
+		utils.ExecutarTemplate(w, "mapaOperacional.html", struct {
 			MapaOperacional []modelos.MapaOperacional
 			Site            []modelos.Site
 			Cliente         []modelos.Cliente
@@ -99,7 +99,7 @@ func CarregarPaginaMapa(w http.ResponseWriter, r *http.Request) {
 		})
 		//executa template da página de acesso negado.
 	} else {
-		utils.ExecutarTemplate(w, "acesso-negado.html", struct {
+		utils.ExecutarTemplate(w, "acessoNegado.html", struct {
 			Pagina string
 		}{
 			Pagina: "Acesso Negado",
@@ -174,7 +174,7 @@ func CarregarPaginaMapaString(w http.ResponseWriter, r *http.Request) {
 
 	//condicional de acesso a página
 	if cookies.V_MAPA_OPERACIONAL == "S" {
-		utils.ExecutarTemplate(w, "mapa-string.html", struct {
+		utils.ExecutarTemplate(w, "mapaOperacionalString.html", struct {
 			MapaOperacional []modelos.MapaOperacional
 			Site            []modelos.Site
 			Cliente         []modelos.Cliente
@@ -190,7 +190,7 @@ func CarregarPaginaMapaString(w http.ResponseWriter, r *http.Request) {
 		})
 		//executa template da página de acesso negado.
 	} else {
-		utils.ExecutarTemplate(w, "acesso-negado.html", struct {
+		utils.ExecutarTemplate(w, "acessoNegado.html", struct {
 			Pagina string
 		}{
 			Pagina: "Acesso Negado",
@@ -274,7 +274,7 @@ func CarregarTelaDoFormularioMapa(w http.ResponseWriter, r *http.Request) {
 	//função para inserir dados dos cookies armazenados durante o login
 	cookies, _ := cookies.InserirDadosNaPagina(r)
 
-	utils.ExecutarTemplate(w, "formulario-mapa.html", struct {
+	utils.ExecutarTemplate(w, "adicionarOperacao.html", struct {
 		Site    []modelos.Site
 		Cliente []modelos.Cliente
 		Dac     []modelos.Dac
@@ -396,7 +396,7 @@ func CarregarPaginaDeEdicaoMapa(w http.ResponseWriter, r *http.Request) {
 	//função para inserir dados dos cookies armazenados durante o login
 	cookies, _ := cookies.InserirDadosNaPagina(r)
 
-	utils.ExecutarTemplate(w, "editar-mapa.html", struct {
+	utils.ExecutarTemplate(w, "alterarOperacao.html", struct {
 		MapaOperacional modelos.MapaOperacional
 		Site            []modelos.Site
 		Cliente         []modelos.Cliente

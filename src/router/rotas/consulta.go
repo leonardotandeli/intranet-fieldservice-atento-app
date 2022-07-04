@@ -5,11 +5,12 @@ import (
 	"net/http"
 )
 
+//rotasConsultas define as páginas de consultas
 var rotasConsultas = []Rota{
 	{
 		URI:                "/consulta/ativo",
 		Metodo:             http.MethodGet,
-		Funcao:             controllers.CarregarPaginaDeConsultaDeAtivo,
+		Funcao:             controllers.CarregarPaginaDeConsultaGSA,
 		RequerAutenticacao: true,
 	},
 	{

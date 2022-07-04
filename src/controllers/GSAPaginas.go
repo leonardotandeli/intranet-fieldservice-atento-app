@@ -7,30 +7,29 @@ import (
 	"net/http"
 )
 
-//Carrega página do mapa de operações
-func CarregarPaginaDeSalasDeCrise(w http.ResponseWriter, r *http.Request) {
-
+//Carrega página de usuario
+func CarregarPaginaDeConsultaGSA(w http.ResponseWriter, r *http.Request) {
 	//função para inserir dados dos cookies armazenados durante o login
 	cookies, _ := cookies.InserirDadosNaPagina(r)
 
-	if cookies.V_MAPA_OPERACIONAL == "S" {
+	//condicional de acesso a página
+	if cookies.V_GSA == "S" {
 
-		utils.ExecutarTemplate(w, "salas-crise.html", struct {
+		utils.ExecutarTemplate(w, "consultaGSA.html", struct {
 			Cookies modelos.PageCookies
 			Pagina  string
 		}{
-
 			Cookies: cookies,
-			Pagina:  "Salas de Crise",
+			Pagina:  "Consulta GSA",
 		})
 	} else {
 
-		utils.ExecutarTemplate(w, "acesso-negado.html", struct {
+		utils.ExecutarTemplate(w, "acessoNegado.html", struct {
 			Cookies modelos.PageCookies
 			Pagina  string
 		}{
 			Cookies: cookies,
-			Pagina:  "Acesso Negado",
+			Pagina:  "Página Inicial",
 		})
 	}
 }

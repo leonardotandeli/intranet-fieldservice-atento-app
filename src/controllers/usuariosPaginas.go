@@ -54,7 +54,7 @@ func CarregarPaginaDeEdicaoDeSenha(w http.ResponseWriter, r *http.Request) {
 	//condicional de acesso a página
 	if usuariocID == cookies.UsuarioID {
 
-		utils.ExecutarTemplate(w, "editar-senha-usuario.html", struct {
+		utils.ExecutarTemplate(w, "alterarSenhaUsuario.html", struct {
 			Usuario modelos.Usuario
 			Cookies modelos.PageCookies
 			Pagina  string
@@ -64,7 +64,7 @@ func CarregarPaginaDeEdicaoDeSenha(w http.ResponseWriter, r *http.Request) {
 			Pagina:  "Alterar Senha",
 		})
 	} else if cookies.V_USUARIOS == "S" {
-		utils.ExecutarTemplate(w, "editar-senha-usuario.html", struct {
+		utils.ExecutarTemplate(w, "alterarSenhaUsuario.html", struct {
 			Usuario modelos.Usuario
 			Cookies modelos.PageCookies
 			Pagina  string
@@ -75,7 +75,7 @@ func CarregarPaginaDeEdicaoDeSenha(w http.ResponseWriter, r *http.Request) {
 		})
 	} else {
 
-		utils.ExecutarTemplate(w, "acesso-negado.html", struct {
+		utils.ExecutarTemplate(w, "acessoNegado.html", struct {
 			Cookies modelos.PageCookies
 			Pagina  string
 		}{
@@ -126,7 +126,7 @@ func CarregarPaginaDeUsuarios(w http.ResponseWriter, r *http.Request) {
 
 	} else {
 
-		utils.ExecutarTemplate(w, "acesso-negado.html", struct {
+		utils.ExecutarTemplate(w, "acessoNegado.html", struct {
 			Cookies modelos.PageCookies
 			Pagina  string
 		}{
@@ -193,7 +193,7 @@ func CarregarPaginaDeEdicaoDeUsuarios(w http.ResponseWriter, r *http.Request) {
 	//condicional de acesso a página
 	if cookies.V_USUARIOS == "S" {
 
-		utils.ExecutarTemplate(w, "editar-usuario.html", struct {
+		utils.ExecutarTemplate(w, "alterarUsuario.html", struct {
 			Usuario modelos.Usuario
 			Site    []modelos.Site
 			Cookies modelos.PageCookies
@@ -207,7 +207,7 @@ func CarregarPaginaDeEdicaoDeUsuarios(w http.ResponseWriter, r *http.Request) {
 		})
 
 	} else {
-		utils.ExecutarTemplate(w, "acesso-negado.html", struct {
+		utils.ExecutarTemplate(w, "acessoNegado.html", struct {
 			Cookies modelos.PageCookies
 			Pagina  string
 		}{
@@ -247,7 +247,7 @@ func CarregarPaginaDeCadastroDeUsuarios(w http.ResponseWriter, r *http.Request) 
 	//condicional de acesso a página
 	if cookies.V_USUARIOS == "S" {
 
-		utils.ExecutarTemplate(w, "criar-usuario.html", struct {
+		utils.ExecutarTemplate(w, "adicionarUsuario.html", struct {
 			Site    []modelos.Site
 			Cookies modelos.PageCookies
 			Pagina  string
@@ -259,7 +259,7 @@ func CarregarPaginaDeCadastroDeUsuarios(w http.ResponseWriter, r *http.Request) 
 		})
 
 	} else {
-		utils.ExecutarTemplate(w, "acesso-negado.html", struct {
+		utils.ExecutarTemplate(w, "acessoNegado.html", struct {
 			Cookies modelos.PageCookies
 			Pagina  string
 		}{
@@ -279,7 +279,7 @@ func CarregarPaginaDeCadastroDeUsuariosExcel(w http.ResponseWriter, r *http.Requ
 	//condicional de acesso a página
 	if cookies.V_USUARIOS == "S" {
 
-		utils.ExecutarTemplate(w, "criar-usuario-excel.html", struct {
+		utils.ExecutarTemplate(w, "adicionarUsuarioEmMassa.html", struct {
 			Cookies modelos.PageCookies
 			Pagina  string
 		}{
@@ -289,7 +289,7 @@ func CarregarPaginaDeCadastroDeUsuariosExcel(w http.ResponseWriter, r *http.Requ
 		})
 
 	} else {
-		utils.ExecutarTemplate(w, "acesso-negado.html", struct {
+		utils.ExecutarTemplate(w, "acessoNegado.html", struct {
 			Cookies modelos.PageCookies
 			Pagina  string
 		}{

@@ -7,7 +7,7 @@ import (
 	"net/http"
 )
 
-//Carrega página do mapa de operações
+//CarregarPaginaDeContatosField página de contatos do Field
 func CarregarPaginaDeContatosField(w http.ResponseWriter, r *http.Request) {
 
 	//função para inserir dados dos cookies armazenados durante o login
@@ -16,7 +16,7 @@ func CarregarPaginaDeContatosField(w http.ResponseWriter, r *http.Request) {
 	//condicional de acesso a página
 	if cookies.V_MAPA_OPERACIONAL == "S" {
 
-		utils.ExecutarTemplate(w, "contatos-field.html", struct {
+		utils.ExecutarTemplate(w, "contatosField.html", struct {
 			Cookies modelos.PageCookies
 			Pagina  string
 		}{
@@ -26,7 +26,7 @@ func CarregarPaginaDeContatosField(w http.ResponseWriter, r *http.Request) {
 		})
 	} else {
 
-		utils.ExecutarTemplate(w, "acesso-negado.html", struct {
+		utils.ExecutarTemplate(w, "acessoNegado.html", struct {
 			Cookies modelos.PageCookies
 			Pagina  string
 		}{
@@ -36,7 +36,7 @@ func CarregarPaginaDeContatosField(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-//Carrega página do mapa de operações
+//CarregarPaginaDeContatosTsystems carrega página de contatos Tsystems
 func CarregarPaginaDeContatosTsystems(w http.ResponseWriter, r *http.Request) {
 
 	//função para inserir dados dos cookies armazenados durante o login
@@ -45,7 +45,7 @@ func CarregarPaginaDeContatosTsystems(w http.ResponseWriter, r *http.Request) {
 	//condicional de acesso a página
 	if cookies.V_MAPA_OPERACIONAL == "S" {
 
-		utils.ExecutarTemplate(w, "contatos-tsystems.html", struct {
+		utils.ExecutarTemplate(w, "contatosTsystems.html", struct {
 			Cookies modelos.PageCookies
 			Pagina  string
 		}{
@@ -54,7 +54,7 @@ func CarregarPaginaDeContatosTsystems(w http.ResponseWriter, r *http.Request) {
 		})
 	} else {
 
-		utils.ExecutarTemplate(w, "acesso-negado.html", struct {
+		utils.ExecutarTemplate(w, "acessoNegado.html", struct {
 			Cookies modelos.PageCookies
 			Pagina  string
 		}{

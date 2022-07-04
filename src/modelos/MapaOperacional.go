@@ -4,36 +4,7 @@ import (
 	"time"
 )
 
-// Publicacao representa uma publicação feita por um usuário
-type Dominio struct {
-	IDDOMINIO uint64 `json:"iddominio,omitempty"`
-	NOME      string `json:"nome,omitempty"`
-}
-
-// Publicacao representa uma publicação feita por um usuário
-type Dac struct {
-	IDDAC uint64 `json:"iddac,omitempty"`
-	NOME  string `json:"nome,omitempty"`
-}
-
-// Publicacao representa uma publicação feita por um usuário
-type Cliente struct {
-	IDCLIENTE uint64 `json:"idcliente,omitempty"`
-	NOME      string `json:"nome,omitempty"`
-	LOGO_URL  string `json:"logo_url,omitempty"`
-}
-
-// Struct dos Gerentes
-type Site struct {
-	IDSITE     uint64 `json:"idsite,omitempty"`
-	NOME       string `json:"nome,omitempty"`
-	SIGLA      string `json:"sigla,omitempty"`
-	UF         string `json:"uf,omitempty"`
-	ENDERECO   string `json:"endereco,omitempty"`
-	ID_USUARIO string `json:"id_usuario,omitempty"`
-}
-
-// Publicacao representa uma publicação feita por um usuário
+// MapaOperacional representa uma operação cadastrada no sistema
 type MapaOperacional struct {
 	IDMAPA            uint64    `json:"idmapa,omitempty"`
 	OPERACAO          string    `json:"operacao,omitempty"`
@@ -56,33 +27,3 @@ type MapaOperacional struct {
 	Dominio           Dominio
 	Dac               Dac
 }
-
-/*
-
-// Preparar vai chamar os métodos para validar e formatar a publicação recebida
-func (publicacao *Publicacao) Preparar() error {
-	if erro := publicacao.validar(); erro != nil {
-		return erro
-	}
-
-	publicacao.formatar()
-	return nil
-}
-
-func (publicacao *Publicacao) validar() error {
-	if publicacao.Titulo == "" {
-		return errors.New("O título é obrigatório e não pode estar em branco")
-	}
-
-	if publicacao.Conteudo == "" {
-		return errors.New("O conteúdo é obrigatório e não pode estar em branco")
-	}
-
-	return nil
-}
-
-func (publicacao *Publicacao) formatar() {
-	publicacao.Titulo = strings.TrimSpace(publicacao.Titulo)
-	publicacao.Conteudo = strings.TrimSpace(publicacao.Conteudo)
-}
-*/

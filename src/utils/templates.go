@@ -7,7 +7,7 @@ import (
 
 var templates *template.Template
 
-//Carrega os arquivos HTML na variavel templates
+//CarregarTemplates os arquivos HTML na variavel templates
 func CarregarTemplates() {
 	templates = template.Must(template.ParseGlob("tmpl/*.html"))
 	templates = template.Must(templates.ParseGlob("tmpl/includes/*.html"))

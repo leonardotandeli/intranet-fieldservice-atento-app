@@ -7,6 +7,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
+//Rota define a estrutura de uma rota.
 type Rota struct {
 	URI                string
 	Metodo             string
@@ -14,11 +15,14 @@ type Rota struct {
 	RequerAutenticacao bool
 }
 
+//Configurar inicializa as rotas com o middleware.
 func Configurar(router *mux.Router) *mux.Router {
 	rotas := rotasLogin
 	rotas = append(rotas, rotaHome...)
 	rotas = append(rotas, rotasUsuarios...)
 	rotas = append(rotas, rotasBaseDeConhecimento...)
+	rotas = append(rotas, rotasCategoriasBaseDeConhecimento...)
+	rotas = append(rotas, rotasClientesBaseDeConhecimento...)
 	rotas = append(rotas, rotasMapaOperacional...)
 	rotas = append(rotas, rotasSalaDeCrise...)
 	rotas = append(rotas, rotasConsultas...)
@@ -36,7 +40,7 @@ func Configurar(router *mux.Router) *mux.Router {
 		}
 
 	}
-
+	//fileServer define o caminho que ira servir os assets.
 	fileServer := http.FileServer(http.Dir("./assets/"))
 	router.PathPrefix("/assets/").Handler(http.StripPrefix("/assets/", fileServer))
 

@@ -18,7 +18,7 @@ import (
 	"github.com/szyhf/go-excel"
 )
 
-//chama a api para cadastrar o usuario no db
+//CriarUsuario chama a api para cadastrar o usuario no db
 func CriarUsuario(w http.ResponseWriter, r *http.Request) {
 
 	r.ParseForm()
@@ -36,6 +36,7 @@ func CriarUsuario(w http.ResponseWriter, r *http.Request) {
 		"v_gsa":                  r.FormValue("v_gsa"),
 		"v_mapa_operacional":     r.FormValue("v_mapa_operacional"),
 		"v_mapa_operacional_adm": r.FormValue("v_mapa_operacional_adm"),
+		"status":                 r.FormValue("status"),
 		"id_site":                r.FormValue("id_site"),
 		"senha":                  r.FormValue("senha"),
 	})
@@ -64,7 +65,7 @@ func CriarUsuario(w http.ResponseWriter, r *http.Request) {
 
 }
 
-// AtualizarPublicacao chama a API para atualizar uma publicação
+//AtualizarUsuario chama a API para alterar os dados de um usuário
 func AtualizarUsuario(w http.ResponseWriter, r *http.Request) {
 	parametros := mux.Vars(r)
 	usuarioID, erro := strconv.ParseUint(parametros["usuariocId"], 10, 64)
@@ -88,6 +89,7 @@ func AtualizarUsuario(w http.ResponseWriter, r *http.Request) {
 		"v_gsa":                  r.FormValue("v_gsa"),
 		"v_mapa_operacional":     r.FormValue("v_mapa_operacional"),
 		"v_mapa_operacional_adm": r.FormValue("v_mapa_operacional_adm"),
+		"status":                 r.FormValue("status"),
 		"id_site":                r.FormValue("id_site"),
 	})
 	if erro != nil {
@@ -113,7 +115,7 @@ func AtualizarUsuario(w http.ResponseWriter, r *http.Request) {
 
 }
 
-// AtualizarPublicacao chama a API para atualizar uma publicação
+//AtualizarSenha chama a API para alterar a senha de um usuário
 func AtualizarSenha(w http.ResponseWriter, r *http.Request) {
 	parametros := mux.Vars(r)
 	usuarioID, erro := strconv.ParseUint(parametros["usuariocId"], 10, 64)
@@ -150,7 +152,7 @@ func AtualizarSenha(w http.ResponseWriter, r *http.Request) {
 
 }
 
-//chama a api para cadastrar o usuario no db
+//UploadFileExcel chama a api para cadastrar o usuario no db utilizando a planilha do excel
 func UploadFileExcel(w http.ResponseWriter, r *http.Request) {
 
 	// limita o upload para menos de 10mb
@@ -165,14 +167,10 @@ func UploadFileExcel(w http.ResponseWriter, r *http.Request) {
 	}
 	defer file.Close()
 
-	//fmt.Printf("Nome do arquivo: %+v\n", handler.Filename)
-	//fmt.Printf("Tamanho do arquivo: %+v\n", handler.Size)
-	//fmt.Printf("MIME Header: %+v\n", handler.Header)
-
-	// variavel que junta o horário em unixnano com o nome do arquivo
+	// junta o horário no formato unixnano com o nome do arquivo
 	var nameFile = fmt.Sprintf("./uploads/%d%s", time.Now().UnixNano(), handler.Filename)
 
-	// função que cria o arquivo.
+	// cria o arquivo.
 	dst, err := os.Create(nameFile)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -185,15 +183,15 @@ func UploadFileExcel(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-
+	// inicia a conexão para leitura da planilha
 	conexao := excel.NewConnecter()
-	erro := conexao.Open(nameFile[2:])
+	erro := conexao.Open(nameFile[2:]) // abre a planilha no caminho do upload
 	if erro != nil {
 		fmt.Println(erro)
 
 	}
 	defer conexao.Close()
-
+	// define a leitura da sheet "users"
 	excel, erro := conexao.NewReader("users")
 	if erro != nil {
 		fmt.Println(erro)
@@ -312,20 +310,17 @@ func UploadFileExcel(w http.ResponseWriter, r *http.Request) {
 			respostas.JSON(w, http.StatusBadRequest, respostas.ErroAPI{Erro: erro.Error()})
 
 		}
-		fmt.Println(bytes.NewBuffer(usuario))
+		//escreve os dados no banco de dados
 		url := fmt.Sprintf("%s/usuarios", config.APIURL)
-
 		response, erro := requisicoes.FazerRequisicaoComAutenticacao(r, http.MethodPost, url, bytes.NewBuffer(usuario))
-
 		if erro != nil {
 			respostas.JSON(w, http.StatusInternalServerError, respostas.ErroAPI{Erro: erro.Error()})
 
 		}
-		defer response.Body.Close()
 
+		defer response.Body.Close()
 		if response.StatusCode >= 400 {
 			respostas.TratarStatusCodeDeErro(w, response)
-
 		}
 
 	}
