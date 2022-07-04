@@ -115,10 +115,4 @@ var rotasBaseDeConhecimento = []Rota{
 		Funcao:             controllers.UploadFile,
 		RequerAutenticacao: true,
 	},
-	{
-		URI:                "/mapa/field",
-		Metodo:             http.MethodGet,
-		Funcao:             controllers.CarregarPaginaMapaField,
-		RequerAutenticacao: true,
-	},
 }

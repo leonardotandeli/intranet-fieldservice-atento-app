@@ -790,7 +790,7 @@ function consultaIMDB(evento) {
                     title: 'Senha atualizada com sucesso!!',
                     showConfirmButton: false,
                     timer: 1500
-                  }).then(function() {window.location = '/usuarios'})
+                  }).then(function() {window.location = '/home'})
              
             }).fail(function(erro){
                 console.log(erro)

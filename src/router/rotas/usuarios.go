@@ -8,7 +8,7 @@ import (
 var rotasUsuarios = []Rota{
 
 	{
-		URI:                "/criar-usuario",
+		URI:                "/usuarios/novo",
 		Metodo:             http.MethodGet,
 		Funcao:             controllers.CarregarPaginaDeCadastroDeUsuarios,
 		RequerAutenticacao: true,
@@ -32,7 +32,7 @@ var rotasUsuarios = []Rota{
 		RequerAutenticacao: true,
 	},
 	{
-		URI:                "/usuarios/{usuariocId}/editar",
+		URI:                "/usuarios/{usuariocId}/alterar",
 		Metodo:             http.MethodGet,
 		Funcao:             controllers.CarregarPaginaDeEdicaoDeUsuarios,
 		RequerAutenticacao: true,
@@ -50,13 +50,13 @@ var rotasUsuarios = []Rota{
 		RequerAutenticacao: true,
 	},
 	{
-		URI:                "/usuariosExcel",
+		URI:                "/usuarios/massa",
 		Metodo:             http.MethodGet,
 		Funcao:             controllers.CarregarPaginaDeCadastroDeUsuariosExcel,
 		RequerAutenticacao: true,
 	},
 	{
-		URI:                "/uploadExcel",
+		URI:                "/upload/usuarios",
 		Metodo:             http.MethodPost,
 		Funcao:             controllers.UploadFileExcel,
 		RequerAutenticacao: true,

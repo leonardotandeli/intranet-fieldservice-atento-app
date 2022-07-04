@@ -13,7 +13,7 @@ func CarregarTemplates() {
 	templates = template.Must(templates.ParseGlob("tmpl/includes/*.html"))
 }
 
-//Executar template, renderiza a página html
+//ExecutarTemplate renderiza a página html
 func ExecutarTemplate(w http.ResponseWriter, template string, dados interface{}) {
 	templates.ExecuteTemplate(w, template, dados)
 

@@ -16,7 +16,7 @@ import (
 	"github.com/gorilla/mux"
 )
 
-//Carrega página principal
+//CarregarPaginaInicialBase carrega a página inicial da base de conhecimento
 func CarregarPaginaInicialBase(w http.ResponseWriter, r *http.Request) {
 	//recupera url query strings
 	strCategoria := strings.ToLower(r.URL.Query().Get("categoria"))
@@ -79,7 +79,7 @@ func CarregarPaginaInicialBase(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	//requisição para a api dos Sites
+	//requisição para a api dos sites
 	responseSites, erro := requisicoes.FazerRequisicaoComAutenticacao(r, http.MethodGet, urlSites, nil)
 	if erro != nil {
 		respostas.JSON(w, http.StatusInternalServerError, respostas.ErroAPI{Erro: erro.Error()})
