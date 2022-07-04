@@ -5,10 +5,9 @@ import (
 	"net/http"
 )
 
-//define as rotas das páginas das salas de crise.
 var rotasSalaDeCrise = []Rota{
 	{
-		URI:                "/salas",
+		URI:                "/salas-crise",
 		Metodo:             http.MethodGet,
 		Funcao:             controllers.CarregarPaginaDeSalasDeCrise,
 		RequerAutenticacao: true,

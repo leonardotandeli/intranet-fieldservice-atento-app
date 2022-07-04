@@ -8,7 +8,7 @@ import (
 )
 
 //Carrega página de usuario
-func CarregarPaginaDeConsultaDeIMDB(w http.ResponseWriter, r *http.Request) {
+func CarregarPaginaDeConsultaIMDB(w http.ResponseWriter, r *http.Request) {
 	//função para inserir dados dos cookies armazenados durante o login
 	cookies, _ := cookies.InserirDadosNaPagina(r)
 

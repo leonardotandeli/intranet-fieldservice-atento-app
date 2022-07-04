@@ -5,7 +5,7 @@ import "time"
 // Usuario representa um usuário cadastrado no sistema
 type Usuario struct {
 	IDUSUARIO              uint64    `json:"idusuario,omitempty"`
-	NOME                   string    `json:"nome,omitempty"  xlsx:"column(NOME)"`
+	NOME                   string    `json:"nome,omitempty"  xlsx:"column(NOME_ANALISTA)"`
 	LOGIN_NT               string    `json:"login_nt,omitempty"  xlsx:"column(LOGIN_NT)"`
 	RE                     string    `json:"re,omitempty"  xlsx:"column(RE)"`
 	CARGO                  string    `json:"cargo,omitempty"  xlsx:"column(CARGO)"`

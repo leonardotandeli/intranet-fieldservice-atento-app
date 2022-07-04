@@ -7,7 +7,7 @@
     <div class="row">
       <div class="col-md-12">
 
-        <form id="select-site-cliente" method="get" action="/mapa/busca/operacoes">
+        <form id="select-site-cliente" method="get" action="/mapa/operacoes/busca">
 
           <div
             class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2  border-bottom">
@@ -46,7 +46,7 @@
               
               {{ if eq .Cookies.V_MAPA_OPERACIONAL_ADM "S" }}
 
-                <a href="/mapa/adicionar/operacoes"> <button type="button" class="px-2 mt-2 mx-2 btn btn-md btn-outline-secondary"><i class="bi bi-plus-square"></i> Adicionar</button></a> 
+                <a href="/formulario/mapa"> <button type="button" class="px-2 mt-2 mx-2 btn btn-md btn-outline-secondary"><i class="bi bi-plus-square"></i> Adicionar</button></a> 
         
                 {{ end }}
         </form>

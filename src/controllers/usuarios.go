@@ -203,7 +203,7 @@ func UploadFileExcel(w http.ResponseWriter, r *http.Request) {
 		erro := excel.Read(&usuarios)
 		if erro != nil {
 
-			fmt.Println(erro)
+			http.Redirect(w, r, "/criar-usuario-massa"+"?message=Algo deu errado!", http.StatusFound)
 		}
 
 		if usuarios.CARGO == "M2" {
@@ -314,13 +314,13 @@ func UploadFileExcel(w http.ResponseWriter, r *http.Request) {
 		url := fmt.Sprintf("%s/usuarios", config.APIURL)
 		response, erro := requisicoes.FazerRequisicaoComAutenticacao(r, http.MethodPost, url, bytes.NewBuffer(usuario))
 		if erro != nil {
-			respostas.JSON(w, http.StatusInternalServerError, respostas.ErroAPI{Erro: erro.Error()})
+			http.Redirect(w, r, "/criar-usuario-massa"+"?message=Algo deu errado!", http.StatusFound)
 
 		}
 
 		defer response.Body.Close()
 		if response.StatusCode >= 400 {
-			respostas.TratarStatusCodeDeErro(w, response)
+			http.Redirect(w, r, "/criar-usuario-massa"+"?message=Planilha importada, por favor validar!.", http.StatusFound)
 		}
 
 	}
