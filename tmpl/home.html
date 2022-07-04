@@ -28,12 +28,12 @@
 
   
             
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <!-- Modal Visão Geral-->
+  <div class="modal fade" id="visao-geral" tabindex="-1" aria-labelledby="visaoModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Visão Geral Clientes</h5>
+          <h5 class="modal-title" id="visaoModalLabel">Visão Geral Clientes</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -58,6 +58,43 @@
     </div>
   </div>
 
+  <!-- Modal Sites-->
+  <div class="modal fade" id="sites" tabindex="-1" aria-labelledby="sitesModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="sitesModalLabel">Endereço Sites</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+    
+
+
+            {{range .Site}}
+    
+     
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3">{{.NOME}}</span>
+              </div>
+              <input type="text" class="form-control" value="{{.ENDERECO}}" aria-describedby="basic-addon2" disabled>
+            </div>
+    
+    
+            {{end}}
+    <!-- The button used to copy the text -->
+    
+          </div>
+  
+      </div>
+    </div>
+  </div>
+
+
+
 
                 <h6 class="home-link-title"><i class="bi bi-list-task"></i> Links Úteis</h6>
                 <ul class="list-unstyled">
@@ -65,7 +102,7 @@
                     <li>
 
                    
-       <a  href="#" data-toggle="modal" data-target="#exampleModal" class="nav-link-atento">Visão Geral</a>
+       <a  href="#" data-toggle="modal" data-target="#visao-geral" class="nav-link-atento">Visão Geral</a>
                     </li> 
                     <li>
                      <a target="_blank"
@@ -114,6 +151,11 @@
                     </li>
                     <li>
                         <a target="_blank"
+                            href="https://app.powerbi.com/reportEmbed?reportId=8e806ec8-3206-44d5-b436-f4b569e14e51&autoAuth=true&ctid=1356d054-fb0c-45c9-9663-087c278bbf18&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLWJyYXppbC1zb3V0aC1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldC8ifQ%3D%3D"
+                            class="nav-link-atento">BI Chat TI</a>
+                    </li>
+                    <li>
+                        <a target="_blank"
                             href="https://app.powerbi.com/groups/me/reports/a960dafd-28b9-4eb6-b8f1-2e538ad0be9a/ReportSection?ctid=1356d054-fb0c-45c9-9663-087c278bbf18&openReportSource=ReportInvitation"
                             class="nav-link-atento">BI Mapa Head Count</a>
                     </li>
@@ -151,6 +193,11 @@
 
                 <h6 class="home-link-title"><i class="bi bi-info-icons-img-atento"></i> Informações Úteis</h6>
                 <ul class="list-unstyled">
+                    <li>
+
+                   
+                        <a  href="#" data-toggle="modal" data-target="#sites" class="nav-link-atento">Endereço Sites</a>
+                                     </li> 
                     <li>
                         <a target="_blank"
                             href="http://sharepointti.atento.net/sites/especialistas/Networking/projetos/_layouts/xlviewer.aspx?id=/sites/especialistas/Networking/projetos/Sites%20e%20Endereamentos/Sites%20e%20Endere%C3%A7amentos.xlsx&Source=http%3A%2F%2Fsharepointti%2Eatento%2Enet%2Fsites%2Fespecialistas%2FNetworking%2Fprojetos%2FSites%2520e%2520Endereamentos%2FForms%2FAllItems%2Easpx&DefaultItemOpen=1"
