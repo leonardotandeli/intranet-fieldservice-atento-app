@@ -49,4 +49,16 @@ var rotasUsuarios = []Rota{
 		Funcao:             controllers.AtualizarSenha,
 		RequerAutenticacao: true,
 	},
+	{
+		URI:                "/usuariosExcel",
+		Metodo:             http.MethodGet,
+		Funcao:             controllers.CarregarPaginaDeCadastroDeUsuariosExcel,
+		RequerAutenticacao: true,
+	},
+	{
+		URI:                "/uploadExcel",
+		Metodo:             http.MethodPost,
+		Funcao:             controllers.UploadFileExcel,
+		RequerAutenticacao: true,
+	},
 }

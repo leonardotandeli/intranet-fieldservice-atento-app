@@ -269,3 +269,33 @@ func CarregarPaginaDeCadastroDeUsuarios(w http.ResponseWriter, r *http.Request) 
 
 	}
 }
+
+//Carrega página de usuario
+func CarregarPaginaDeCadastroDeUsuariosExcel(w http.ResponseWriter, r *http.Request) {
+
+	//função para inserir dados dos cookies armazenados durante o login
+	cookies, _ := cookies.InserirDadosNaPagina(r)
+
+	//condicional de acesso a página
+	if cookies.V_USUARIOS == "S" {
+
+		utils.ExecutarTemplate(w, "criar-usuario-excel.html", struct {
+			Cookies modelos.PageCookies
+			Pagina  string
+		}{
+
+			Cookies: cookies,
+			Pagina:  "Criar novo usuário",
+		})
+
+	} else {
+		utils.ExecutarTemplate(w, "acesso-negado.html", struct {
+			Cookies modelos.PageCookies
+			Pagina  string
+		}{
+			Cookies: cookies,
+			Pagina:  "Página Inicial",
+		})
+
+	}
+}

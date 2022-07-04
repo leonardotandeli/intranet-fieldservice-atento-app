@@ -22,6 +22,7 @@ func JSON(w http.ResponseWriter, statusCode int, dados interface{}) {
 			log.Fatal(erro)
 		}
 	}
+
 }
 
 // TratarStatusCodeDeErro trata as requisições com status code 400 ou superior
@@ -38,6 +39,7 @@ func TratarStatusCodeDeErro(w http.ResponseWriter, r *http.Response) {
 	}
 
 	JSON(w, r.StatusCode, erro)
+
 }
 
 func RedirectLogoff(w http.ResponseWriter, r *http.Request) {
