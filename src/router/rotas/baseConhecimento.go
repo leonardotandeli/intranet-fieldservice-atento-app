@@ -13,6 +13,12 @@ var rotasBaseDeConhecimento = []Rota{
 		RequerAutenticacao: true,
 	},
 	{
+		URI:                "/base-posts",
+		Metodo:             http.MethodGet,
+		Funcao:             controllers.CarregarPaginaPostsBase,
+		RequerAutenticacao: true,
+	},
+	{
 		URI:                "/formulario/base",
 		Metodo:             http.MethodGet,
 		Funcao:             controllers.CarregarTelaDeCriarPublicacao,
