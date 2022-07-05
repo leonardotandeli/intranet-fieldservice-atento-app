@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"app/src/config"
+	"app/src/modelos"
 	"app/src/requisicoes"
 	"app/src/respostas"
 	"bytes"
@@ -33,6 +34,7 @@ func CriarPublicacao(w http.ResponseWriter, r *http.Request) {
 		respostas.JSON(w, http.StatusBadRequest, respostas.ErroAPI{Erro: erro.Error()})
 		return
 	}
+
 	//	fmt.Println(bytes.NewBuffer(publicacao))
 
 	url := fmt.Sprintf("%s/base", config.APIURL)
@@ -45,10 +47,16 @@ func CriarPublicacao(w http.ResponseWriter, r *http.Request) {
 	defer response.Body.Close()
 
 	if response.StatusCode >= 400 {
-		respostas.TratarStatusCodeDeErro(w, response)
+		//respostas.TratarStatusCodeDeErro(w, response)
+		http.Redirect(w, r, "/formulario/base"+"?message=Algo deu errado! Tente novamente mais tarde...", http.StatusFound)
 		return
 	}
-
+	var post modelos.Post
+	if erro = json.NewDecoder(response.Body).Decode(&post); erro != nil {
+		respostas.JSON(w, http.StatusUnprocessableEntity, respostas.ErroAPI{Erro: erro.Error()})
+		return
+	}
+	http.Redirect(w, r, "/base/"+strconv.Itoa(int(post.IDPOST)), http.StatusFound)
 	respostas.JSON(w, response.StatusCode, nil)
 
 }

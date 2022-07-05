@@ -29,7 +29,8 @@
   <div class="card">
     <div class="row">        
         <div class="card card-body">
-          <form id="nova-publicacao">
+          <div class="alert alert-danger" id="alertd" style="display: none;" role="alert"></div>
+          <form method="post" action="/base">
             <div class="col-12">
               <div class="form-group">
                 <h5>Título</h5>
@@ -162,10 +163,29 @@ tinymce.init({
         });
     }
 });
-</script>
+</script>      
+
 
                                 {{ template "footer"}}
                                 {{ template "scripts"}}
+                                <script>
+                                  $.urlParam = function (name) {
+                                      var results = new RegExp('[\?&]' + name + '=([^&#]*)')
+                                                        .exec(window.location.search);
+                                  
+                                      return (results !== null) ? results[1] || 0 : false;
+                                  }
+                                  
+                                  var mensagem = $.urlParam('message').replace(/%20/g, ' ');;
+                                  
+                                    if (mensagem == false) {
+                                        console.log("nenhuma mensagem impressa")
+                                    } else {
+                                        console.log("imprime mensagem")
+                                        $('#alertd').fadeIn(1000);
+                                        $('#alertd').text(mensagem);
+                                    }
+                                    </script>
                                 </body>
                                 </html>
   
