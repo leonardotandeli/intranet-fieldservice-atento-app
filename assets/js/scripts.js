@@ -698,6 +698,7 @@ function consultaIMDB(evento) {
                     v_mapa_operacional: $('#v_mapa_operacional').val(),
                     v_mapa_operacional_adm: $('#v_mapa_operacional_adm').val(),
                     id_site: $('#id_site').val(),
+                    status: $('#status').val(),
                     senha: $('#senha').val()
                     
                 }
