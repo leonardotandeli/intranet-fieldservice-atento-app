@@ -91,7 +91,7 @@ func CarregarPaginaMapa(w http.ResponseWriter, r *http.Request) {
 			Pagina          string
 		}{
 			MapaOperacional: MapaOperacional,
-			Site:            site,
+			Site:            site[1:32],
 			Cliente:         cliente[1:],
 			Cookies:         cookies,
 
@@ -182,7 +182,7 @@ func CarregarPaginaMapaString(w http.ResponseWriter, r *http.Request) {
 			Pagina          string
 		}{
 			MapaOperacional: MapaOperacional,
-			Site:            site,
+			Site:            site[1:32],
 			Cliente:         cliente[1:],
 			Cookies:         cookies,
 
@@ -283,7 +283,7 @@ func CarregarTelaDoFormularioMapa(w http.ResponseWriter, r *http.Request) {
 		Pagina  string
 	}{
 
-		Site:    site,
+		Site:    site[1:32],
 		Cliente: cliente[1:],
 		Dac:     dac,
 		Dominio: dominio,
@@ -406,7 +406,7 @@ func CarregarPaginaDeEdicaoMapa(w http.ResponseWriter, r *http.Request) {
 		Pagina          string
 	}{
 		MapaOperacional: MapaOperacional,
-		Site:            site,
+		Site:            site[1:32],
 		Cliente:         cliente[1:],
 		Dac:             dac,
 		Dominio:         dominio,
