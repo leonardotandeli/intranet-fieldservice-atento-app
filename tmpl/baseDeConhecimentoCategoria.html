@@ -19,12 +19,18 @@
 
     <div class="btn-toolbar mb-2 mb-md-0">
       <div class="btn-group mr-2">
+        {{ if eq .Cookies.V_USUARIOS "S" }}
 
-        {{ if eq .Cookies.V_BDC_ADM "S" }}
-        <a href="/base/editar/categoria/{{ .CatUnique.IDCATEGORIA}}"> <button type="button" class="ml-2 btn btn-sm btn-outline-secondary"><i
-              class="bi bi-box-seam"></i> Editar Categoria</button></a>
         <a href="/formulario/categoria"> <button type="button" class="ml-2 btn btn-sm btn-outline-secondary"><i
-              class="bi bi-list-check"></i> Adicionar Categoria</button></a>
+                   class="bi bi-list-check"></i> Adicionar Categoria</button></a>
+   
+                   {{end}}
+        {{ if eq .Cookies.V_BDC_ADM "S" }}
+       <!-- <a href="/base/editar/categoria/{{ .CatUnique.IDCATEGORIA}}"> <button type="button" class="ml-2 btn btn-sm btn-outline-secondary"><i
+              class="bi bi-box-seam"></i> Editar Categoria</button></a>
+          <a href="/formulario/categoria"> <button type="button" class="ml-2 btn btn-sm btn-outline-secondary"><i
+                class="bi bi-list-check"></i> Adicionar Categoria</button></a>-->
+                
         <a href="/formulario/base"> <button type="button" class="ml-2 btn btn-sm btn-outline-secondary"><i
               class="bi bi-newspaper"></i> Adicionar Artigo</button></a>
         {{end}}
