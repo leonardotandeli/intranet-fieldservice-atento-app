@@ -9,7 +9,7 @@
 
         <div
           class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 border-bottom">
-          <h1 class="h2">Criar Usuário </h1>
+          <h1 class="h2">Criar Usuário em Massa</h1>
           <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group mr-2">
 
@@ -28,13 +28,13 @@
       <div class="col-lg-12">
 
         <div class="card card-body">
-          <h4 class="card-title mb-4">Dados do usuário</h4>
+          <h4 class="card-title mb-4">Importar planilha em formato .xlsx com os dados dos usuários.</h4>
          
 
 
           <form action="/uploadExcel" enctype="multipart/form-data" method="post">
-            <input type="file" id="file" name="file">
-            <input type="submit">
+            <input  class="form-control-file"  type="file" id="file" name="file" required>
+            <input class="btn btn-sm btn-outline-secondary mt-2" type="submit">
           </form>
           
 
