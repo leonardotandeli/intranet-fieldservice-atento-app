@@ -167,15 +167,22 @@ func UploadFileExcel(w http.ResponseWriter, r *http.Request) {
 	}
 	defer file.Close()
 
-	// junta o horário no formato unixnano com o nome do arquivo
-	var nameFile = fmt.Sprintf("./uploads/%d%s", time.Now().UnixNano(), handler.Filename)
+	//junta o horário em unixnano com o nome do arquivo
+	var nameFile = fmt.Sprintf("./assets/uploads/%d%s", time.Now().UnixNano(), handler.Filename)
 
-	// cria o arquivo.
+	//cria o arquivo.
 	dst, err := os.Create(nameFile)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
+	fmt.Println(nameFile[41:])
+	if nameFile[41:] != ".xlsx" {
+		fmt.Println("teste")
+		http.Redirect(w, r, "/criar-usuario-massa"+"?message=Erro ao ler o arquivo enviado. Por favor verifique a planilha e tente novamente.", http.StatusFound)
+		return
+	}
+
 	defer dst.Close()
 
 	// Copia o arquivo enviado para a pasta
@@ -183,28 +190,24 @@ func UploadFileExcel(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	// inicia a conexão para leitura da planilha
-	conexao := excel.NewConnecter()
-	erro := conexao.Open(nameFile[2:]) // abre a planilha no caminho do upload
-	if erro != nil {
-		fmt.Println(erro)
 
-	}
-	defer conexao.Close()
-	// define a leitura da sheet "users"
-	excel, erro := conexao.NewReader("users")
-	if erro != nil {
-		fmt.Println(erro)
-	}
+	//	fmt.Println(nameFile[1:])
 
-	for excel.Next() {
+	conexaoExcel := excel.NewConnecter()
+	conexaoExcel.Open(nameFile[2:])
+	defer conexaoExcel.Close()
+
+	leitor, erro := conexaoExcel.NewReader("usuarios")
+	if erro != nil {
+		fmt.Println("erro ao ler usuarios")
+	}
+	defer leitor.Close()
+
+	for leitor.Next() {
 		var usuarios modelos.Usuario
-
-		erro := excel.Read(&usuarios)
-		if erro != nil {
-
-			http.Redirect(w, r, "/criar-usuario-massa"+"?message=Algo deu errado!", http.StatusFound)
-		}
+		// Read a row into a struct.
+		leitor.Read(&usuarios)
+		//	fmt.Println(usuarios)
 
 		if usuarios.CARGO == "M2" {
 			usuarios.V_USUARIOS = "S"
@@ -275,6 +278,8 @@ func UploadFileExcel(w http.ResponseWriter, r *http.Request) {
 			usuarios.ID_SITE = "31"
 		case "ZL":
 			usuarios.ID_SITE = "32"
+		default:
+			usuarios.ID_SITE = "1"
 		}
 
 		usuarios.V_MAPA_OPERACIONAL_ADM = "S"
@@ -286,7 +291,7 @@ func UploadFileExcel(w http.ResponseWriter, r *http.Request) {
 		usuarios.STATUS = "PRIMEIRO_ACESSO"
 		usuarios.SENHA = "atento@22"
 
-		r.ParseForm()
+		/////////////////////
 
 		usuario, erro := json.Marshal(map[string]string{
 			"nome":                   usuarios.NOME,
@@ -308,23 +313,22 @@ func UploadFileExcel(w http.ResponseWriter, r *http.Request) {
 
 		if erro != nil {
 			respostas.JSON(w, http.StatusBadRequest, respostas.ErroAPI{Erro: erro.Error()})
-
+			return
 		}
-		//escreve os dados no banco de dados
+
 		url := fmt.Sprintf("%s/usuarios", config.APIURL)
 		response, erro := requisicoes.FazerRequisicaoComAutenticacao(r, http.MethodPost, url, bytes.NewBuffer(usuario))
+
 		if erro != nil {
-			http.Redirect(w, r, "/criar-usuario-massa"+"?message=Algo deu errado!", http.StatusFound)
-
+			respostas.JSON(w, http.StatusInternalServerError, respostas.ErroAPI{Erro: erro.Error()})
+			return
 		}
-
 		defer response.Body.Close()
-		if response.StatusCode >= 400 {
-			http.Redirect(w, r, "/criar-usuario-massa"+"?message=Planilha importada, por favor validar!.", http.StatusFound)
-		}
+
+		fmt.Println(strconv.Itoa(response.StatusCode) + usuarios.NOME)
 
 	}
 
-	//	respostas.JSON(w, response.StatusCode, nil)
+	http.Redirect(w, r, "/criar-usuario-massa"+"?message=Import realizado com sucesso! Por favor validar.", http.StatusFound)
 
 }

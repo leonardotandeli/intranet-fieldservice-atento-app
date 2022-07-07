@@ -29,8 +29,10 @@
 
         <div class="card card-body">
           <h4 class="card-title mb-4">Importar planilha em formato .xlsx com os dados dos usuários.</h4>
-         
-
+          <div class="alert alert-danger" id="alertd" style="display: none;" role="alert"></div>
+ 
+          <div class="alert alert-success" id="alertg" style="display: none;" role="alert"></div>
+ 
 
           <form action="/uploadExcel" enctype="multipart/form-data" method="post">
             <input  class="form-control-file"  type="file" id="file" name="file" required>
@@ -46,7 +48,29 @@
 
                               {{ template "footer"}}
                               {{ template "scripts"}}
-                              <script src="/assets/js/cadastro.js"></script>
+
+                              <script>
+                                $.urlParam = function (name) {
+                                    var results = new RegExp('[\?&]' + name + '=([^&#]*)')
+                                                      .exec(window.location.search);
+                                
+                                    return (results !== null) ? results[1] || 0 : false;
+                                }
+                                
+                                var mensagem = $.urlParam('message').replace(/%20/g, ' ');;
+                                
+                                  if (mensagem == false) {
+                                      console.log("nenhuma mensagem impressa")
+                                  } if (mensagem == "Import realizado com sucesso! Por favor validar.") {
+                                    console.log("imprime mensagem Green")
+                                      $('#alertg').fadeIn(1000);
+                                      $('#alertg').text(mensagem);
+                                  } else {
+                                      console.log("imprime mensagem")
+                                      $('#alertd').fadeIn(1000);
+                                      $('#alertd').text(mensagem);
+                                  }
+                                  </script>
                               </body>
                               </html>
 

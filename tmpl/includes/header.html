@@ -11,12 +11,25 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
+    {{ if eq .Cookies.STATUS "PRIMEIRO_ACESSO" }}
+    <script>
+      window.location.href = '/usuarios/{{.Cookies.UsuarioID}}/senha';
+    </script>
+        {{ end }}
+
+
+        {{ if eq .Cookies.STATUS "ALTERAR_SENHA" }}
+        <script>
+          window.location.href = '/usuarios/{{.Cookies.UsuarioID}}/senha';
+        </script>
+            {{ end }}
+
     <div class="collapse navbar-collapse" id="navbarsExample07XL">
       <ul class="navbar-nav mr-auto space-menu">
         <li class="nav-item">
-          <a href="/home" class="nav-link px-2 menu-atento ">Início</a>
+          <a href="/home" class="nav-link px-2 menu-atento ">Início </a>
         </li>
-
+      
         {{ if eq .Cookies.V_MAPA_OPERACIONAL "S" }}
         <li class="nav-item">
           <a href="/mapa/operacoes" class="nav-link px-2 menu-atento ">Mapa Operações</a>

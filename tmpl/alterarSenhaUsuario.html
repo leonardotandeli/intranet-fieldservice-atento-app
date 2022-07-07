@@ -1,5 +1,84 @@
 {{ template "head" .}}
-{{ template "header" .}}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-atento ">
+  <div class="container-fluid">
+     <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+        <img src="/assets/images/logo-light.png" height="25"></img>
+      </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample07XL" aria-controls="navbarsExample07XL" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExample07XL">
+      <ul class="navbar-nav mr-auto space-menu">
+        <li class="nav-item">
+          <a href="/home" class="nav-link px-2 menu-atento ">Início </a>
+        </li>
+      
+        {{ if eq .Cookies.V_MAPA_OPERACIONAL "S" }}
+        <li class="nav-item">
+          <a href="/mapa/operacoes" class="nav-link px-2 menu-atento ">Mapa Operações</a>
+        </li>
+        {{ end }}
+
+  
+        {{ if eq .Cookies.V_BDC_POSTS "S" }}
+        <li class="nav-item">
+          <a href="/base" class="nav-link px-2 menu-atento ">Base de Conhecimento</a>
+        </li>
+        {{ end }}
+        {{ if eq .Cookies.V_IMDB "S" }}
+        <li class="nav-item">
+          <a href="/consulta/imdb" class="nav-link px-2 menu-atento ">IMDB</a>
+        </li>
+        {{ end }}
+        {{ if eq .Cookies.V_GSA "S" }}
+        <li class="nav-item">
+          <a href="/consulta/ativo" class="nav-link px-2 menu-atento ">GSA</a>
+        </li>
+        {{ end }}
+      </div>
+            {{ if eq .Cookies.V_BDC_POSTS "S" }}
+      <div class="col-3 nav-item">
+        <form class=" my-2 my-lg-0" action="/base/busca" method="GET">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text"><i class="bi bi-search"></i></div>
+            </div>
+            <input type="text" class="form-control mr-sm-2"  style="font-size: 16px; border: none;" name="busca"  placeholder="Buscar base de conhecimento..." aria-describedby="button-addon4"  required="required">
+      
+          </div>
+          </form>
+      </div>
+      {{ end }}
+<style>
+.dropdown-menu {
+margin-left: -65px;
+  }
+</style>
+
+      <div class="dropdown">
+        <button  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="btn btn-sm btn-user"><img src="https://api-funcionario.atento.com.br/v3.0/funcionario/BRATE{{.Cookies.RE}}/foto/url" alt="avatar" onerror="this.src='/assets/images/icons/user.png'" height="31" class="fade-user rounded-circle"></button>
+
+
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          {{ if eq .Cookies.V_USUARIOS "S" }}
+      <a class="dropdown-item" href="/usuarios"><i class="bi-people"></i> Usuarios</a>
+      {{ end }}
+      <a class="dropdown-item" href="/usuarios/{{.Cookies.UsuarioID}}/senha"><i class="bi-lock"></i> Alterar Senha</a>
+      <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="/deslogar"><i class="bi-power"></i> Deslogar</a>
+
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+
 <style>
   .padd-title-page {
       margin-top: -30px;
@@ -59,13 +138,19 @@
           <label>Senha</label>
         <div class="form-label-group">
             <input type="password" name="nova" class="form-control" id="nova" required>
-        
+            <div class="meter-text" id="meter-text">
+              <span>Força da senha: </span>
+              <span class="meter-status" id="meter-status"></span>
+            </div>
+            <div class="meter" id="meter">
+              <div class="meter-bar" id="meter-bar"></div>
+            </div>
         </div>
         </div>
         <div class="col-lg-6">
           <label>Confirmar Senha</label>
         <div class="form-label-group">
-          <input type="password" name="confirmar-senha" class="form-control" id="confirmar-senha" required>
+          <input type="password" name="confirmar-senha" class="form-control" id="confirmar-senha" required disabled>
         
         </div>
         </div>
@@ -97,12 +182,107 @@ Alterar Senha
 
 </div>
 
+<style>
+.container .form-inline {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  overflow: hidden;
+}
+.container .form-inline .input-password {
+  border-radius: 3px;
+  border: 1px solid rgba(17, 17, 17, 0.2);
+  height: 20px;
+  font-size: 1.1rem;
+  padding: 0.7rem 1rem;
+  outline: none;
+  transition: border 0.4s ease-in-out;
+}
+.container .form-inline .meter-text {
+  display: flex;
+  width: 70%;
+  justify-content: space-between;
+  margin: 1rem 0 0.1rem 0;
+  color: rgba(17, 17, 17, 0.6);
+  text-transform: capitalize;
+}
+.container .form-inline .meter-text .meter-status {
+  text-transform: capitalize;
+}
+.container .form-inline .meter {
+  display: block;
+  width: 70%;
+  height: 10px;
+  border-radius: 3px;
+  background: rgba(17, 17, 17, 0.1);
+  overflow: hidden;
+}
+.container .form-inline .meter .meter-bar {
+  display: block;
+  width: 0;
+  height: 100%;
+  transition: width 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+</style>
+
+
 
 
                               {{ template "footer"}}
                               {{ template "scripts"}}
 
+                              <script>
+                                function checkStrength(password){
+                                let meterBar = $("#meter").find("#meter-bar");
+                                let meterStatus = $("#meter-text").find("#meter-status");
+                                let strength = 0;
+                                if(password.length < 6){
+                                  document.getElementById("confirmar-senha").disabled = true;
+                                   meterBar.css({
+                                    "background":"#6B778D",
+                                    "width":"10%"
+                                  });
+                                  meterStatus.css("color","#6B778D");
+                                  meterStatus.text("muito curta") ;
+                                }
+                                if(password.length > 7) strength += 1;
+                                if (password.match(/([a-z].*[A-Z])|([A-Z].*[a-z])/)) strength += 1
+                                if (password.match(/([a-zA-Z])/) && password.match(/([0-9])/)) strength += 1
+                                if (password.match(/([!,%,&,@,#,$,^,*,?,_,~])/)) strength += 1
+                                if(strength < 2){
+                                  document.getElementById("confirmar-senha").disabled = true;
+                                  meterBar.css({
+                                    "background":"#ff0000",
+                                    "width":"25%"
+                                  });
+                                  meterStatus.css("color","#ff0000");
+                                  meterStatus.text("fraca");
+
+                                }else if(strength == 2){
+                                  document.getElementById("confirmar-senha").disabled = false;
+                                  meterBar.css({
+                                    "background":"#00BCD4",
+                                    "width":"75%"
+                                  });
+                                  meterStatus.css("color","#00BCD4");
+                                  meterStatus.text("boa");
+                  
+                                }else{
+                                  document.getElementById("confirmar-senha").disabled = false;
+                                  meterBar.css({
+                                    "background":"#4CAF50",
+                                    "width":"100%"
+                                  });
+                                  meterStatus.css("color","#4CAF50");
+                                  meterStatus.text("forte");
+
+                                }
+                              }
                               
+                              $("#nova").on("keyup",function(){
+                               checkStrength($(this).val());
+                              });
+                              </script>
                               </body>
                               </html>
 

@@ -55,6 +55,7 @@ var rotasUsuarios = []Rota{
 		Funcao:             controllers.CarregarPaginaDeCadastroDeUsuariosExcel,
 		RequerAutenticacao: true,
 	},
+
 	{
 		URI:                "/uploadExcel",
 		Metodo:             http.MethodPost,

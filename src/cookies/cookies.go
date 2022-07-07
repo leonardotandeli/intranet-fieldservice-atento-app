@@ -18,7 +18,7 @@ func Configurar() {
 }
 
 //Salvar registra autenticacao
-func Salvar(w http.ResponseWriter, ID, token, NOME, LOGIN_NT, RE, CARGO, V_HOMEOFFICE, V_HOMEOFFICE_CHAMADOS, V_HOMEOFFICE_CHAMADOS_MUDAR_ANALISTA, V_USUARIOS, V_IMPRESSORAS, V_BDC_POSTS, V_BDC_ADM, V_IMDB, V_GSA, V_CATRACA, V_BH, V_CEP, V_MAPA_OPERACIONAL, V_MAPA_OPERACIONAL_ADM, STATUS, Site string) error {
+func Salvar(w http.ResponseWriter, ID, token, NOME, LOGIN_NT, RE, CARGO, V_HOMEOFFICE, V_HOMEOFFICE_CHAMADOS, V_HOMEOFFICE_CHAMADOS_MUDAR_ANALISTA, V_USUARIOS, V_IMPRESSORAS, V_BDC_POSTS, V_BDC_ADM, V_IMDB, V_GSA, V_CATRACA, V_BH, V_CEP, V_MAPA_OPERACIONAL, V_MAPA_OPERACIONAL_ADM, Site, STATUS string) error {
 	dados := map[string]string{
 		"id":                                   ID,
 		"token":                                token,
@@ -40,8 +40,8 @@ func Salvar(w http.ResponseWriter, ID, token, NOME, LOGIN_NT, RE, CARGO, V_HOMEO
 		"v_cep":                                V_CEP,
 		"v_mapa_operacional":                   V_MAPA_OPERACIONAL,
 		"v_mapa_operacional_adm":               V_MAPA_OPERACIONAL_ADM,
-		"status":                               STATUS,
 		"Site":                                 Site,
+		"status":                               STATUS,
 	}
 	dadosCodificados, erro := s.Encode("IntraFieldCookie", dados)
 	if erro != nil {
@@ -104,8 +104,7 @@ func InserirDadosNaPagina(r *http.Request) (modelos.PageCookies, error) {
 	c.V_BH = cookie["v_bh"]
 	c.V_MAPA_OPERACIONAL = cookie["v_mapa_operacional"]
 	c.V_MAPA_OPERACIONAL_ADM = cookie["v_mapa_operacional_adm"]
-	c.STATUS = cookie["status"]
 	c.SiteNome = cookie["Site"]
-
+	c.STATUS = cookie["status"]
 	return c, nil
 }

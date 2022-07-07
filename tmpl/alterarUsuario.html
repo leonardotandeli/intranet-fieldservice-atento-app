@@ -1,17 +1,15 @@
 {{ template "head" .}}
 {{ template "header" .}}
 
-
-
 <main role="main" class="flex-shrink-0">
-
-  <div class="container">
+  <div class="container-fluid">
+    <div class="col-md-12 ml-sm-auto">
     <div class="row">
-      <div class="col-md-12 titulo-paginas">
+      <div class="col-md-12">
 
         <div
           class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 border-bottom">
-          <h1 class="h2">Usuários </h1>
+          <h1 class="h2">Criar Usuário </h1>
           <div class="btn-toolbar mb-2 mb-md-0">
             <div class="btn-group mr-2">
 
@@ -25,238 +23,225 @@
     </div>
 
 
-    <div class="row">
+
+    <div class="row mt-3">
       <div class="col-lg-12">
 
         <div class="card card-body">
           <h4 class="card-title mb-4">Dados do usuário</h4>
+          <form id="formulario-cadastro" >
 
 
-          <div class="row">
-            <div class="col-lg-4">
-              <label>Nome</label>
-              <div class="form-label-group">
-                <input type="text" name="nome" class="form-control" value="{{.Usuario.NOME}}" id="nome" required>
-              </div>
-            </div>
-
-
-
-
-
-            <div class="col-lg-4">
-              <label>RE</label>
-              <div class="form-label-group">
-                <input type="text" name="re" class="form-control" value="{{.Usuario.RE}}" id="re" required>
-              </div>
-            </div>
-
-
-            <div class="col-lg-4">
-              <div class="form-label-group">
-                <label>Cargo</label>
-                <select class="custom-select" id="cargo" name="cargo">
-                  <option selected="selected" hidden value="{{.Usuario.CARGO}}">{{.Usuario.CARGO}}</option>
-                  <option value="M3">Gerente (M3)</option>
-                  <option value="M2">Gestor (M2)</option>
-                  <option value="P4">Consultor (P4)</option>
-                  <option value="P3">Analista SR (P3)</option>
-                  <option value="P2">Analista PL (P2)</option>
-                  <option value="P1">Analista JR (P1)</option>
-                  <option value="N2">Aprendiz (N2)</option>
-
-                </select>
-
-              </div>
-            </div>
-
-            <div class="col-lg-4 mt-1">
-              <label>Login NT</label>
-              <div class="form-label-group">
-                <input type="text" name="login_nt" class="form-control" value="{{.Usuario.LOGIN_NT}}"
-                  placeholder="Login NT" id="login_nt" required>
-
-              </div>
-            </div>
-
-            <div class="col-lg-4 mt-1">
-              <label>Email</label>
-              <div class="form-label-group">
-                <input type="email" name="email" class="form-control" value="{{.Usuario.EMAIL}}" placeholder="Email"
-                  id="email" required>
-              </div>
-
-            </div>
+      <div class="row">
+        <div class="col-lg-4">
+          <label>Nome</label>
+          <div class="form-label-group">
+            <input type="text" name="nome" class="form-control" value="{{.Usuario.NOME}}" id="nome" required>
+          </div>
+        </div>
 
 
 
-           
 
-            <div class="col-lg-4 mt-1">
-              <div class="form-label-group">
-                <label>Site</label>
-                <select class="custom-select" id="id_site" name="id_site">
-                  <option selected="selected" hidden value="{{.Usuario.ID_SITE}}">{{.Usuario.Site.NOME}}</option>
-                  {{ range .Site}}
-                  <option value="{{.IDSITE}}">{{.NOME}}</option>
-                  {{end}}
-                </select>
 
-              </div>
-            </div>
+        <div class="col-lg-4">
+          <label>RE</label>
+          <div class="form-label-group">
+            <input type="text" name="re" class="form-control" value="{{.Usuario.RE}}" id="re" required>
+          </div>
+        </div>
 
+
+        <div class="col-lg-4">
+          <div class="form-label-group">
+            <label>Cargo</label>
+            <select class="custom-select" id="cargo" name="cargo" required="">
+              <option selected="selected" hidden value="{{.Usuario.CARGO}}">{{.Usuario.CARGO}}</option>
+              <option value="M3">Gerente Sr (M4)</option>
+              <option value="M3">Gerente (M3)</option>
+              <option value="M2">Gestor (M2)</option>
+              <option value="P4">Consultor (P4)</option>
+              <option value="P3">Analista SR (P3)</option>
+              <option value="P2">Analista PL (P2)</option>
+              <option value="P1">Analista JR (P1)</option>
+              <option value="N2">Aprendiz (N2)</option>
+
+            </select>
 
           </div>
+        </div>
 
-
-          <hr>
-          <h4 class="card-title mb-4">Permissões de acesso </h4>
-          <div class="row">
-
-
-            <div class="col-lg-4">
-
-              <div class="form-label-group">
-                <label>Permitir Gerenciamento de Usuários</label>
-                <select class="custom-select" id="v_usuarios" name="v_usuarios">
-                  <option selected="selected" style="display:none;" value="{{.Usuario.V_USUARIOS}}">{{.Usuario.V_USUARIOS}}</option>
-                  <option value="S">S</option>
-                  <option value="N">N</option>
-                </select>
-
-              </div>
-            </div>
-
-
-            <div class="col-lg-4">
-              <div class="form-label-group">
-                <label>Permitir acesso a Base de Conhecimento</label>
-                <select class="custom-select" id="v_bdc_posts" name="v_bdc_posts">
-                  <option selected="selected" style="display:none;" value="{{.Usuario.V_BDC_POSTS}}">{{.Usuario.V_BDC_POSTS}}</option>
-                  <option value="S">S</option>
-                  <option value="N">N</option>
-                </select>
-
-              </div>
-            </div>
-
-
-            <div class="col-lg-4">
-              <div class="form-label-group">
-                <label>Administrador da Base de Conhecimento</label>
-                <select class="custom-select" id="v_bdc_adm" name="v_bdc_adm">
-                  <option selected="selected" style="display:none;" value="{{.Usuario.V_BDC_ADM}}">{{.Usuario.V_BDC_ADM}}</option>
-                  <option value="S">S</option>
-                  <option value="N">N</option>
-                </select>
-
-              </div>
-            </div>
-
-
-            <div class="col-lg-3 mt-2">
-              <div class="form-label-group">
-                <label>Permitir acesso ao IMDB</label>
-                <select class="custom-select" id="v_imdb" name="v_imdb">
-                  <option selected="selected" style="display:none;" value="{{.Usuario.V_IMDB}}">{{.Usuario.V_IMDB}}</option>
-                  <option value="S">S</option>
-                  <option value="N">N</option>
-                </select>
-
-              </div>
-            </div>
-
-
-
-            <div class="col-lg-3 mt-2">
-              <div class="form-label-group">
-                <label>Permitir acesso ao GSA</label>
-                <select class="custom-select" id="v_gsa" name="v_gsa">
-                  <option selected="selected" style="display:none;" value="{{.Usuario.V_GSA}}">{{.Usuario.V_GSA}}</option>
-                  <option value="S">S</option>
-                  <option value="N">N</option>
-                </select>
-
-              </div>
-            </div>
-
-
-            <div class="col-lg-3 mt-2">
-              <div class="form-label-group">
-                <label>Permitir acesso ao Mapa Operacional</label>
-                <select class="custom-select" id="v_mapa_operacional" name="v_mapa_operacional">
-                  <option selected="selected" style="display:none;" value="{{.Usuario.V_MAPA_OPERACIONAL}}">{{.Usuario.V_MAPA_OPERACIONAL}}</option>
-                  <option value="S">S</option>
-                  <option value="N">N</option>
-                </select>
-
-              </div>
-            </div>
-
-            
-        <div class="col-lg-3 mt-2">
+        <div class="col-lg-3 mt-1">
+          <label>Login NT</label>
           <div class="form-label-group">
-            <label>Administrador do Mapa Operacional</label>
-            <select class="custom-select" id="v_mapa_operacional_adm" name="v_mapa_operacional_adm">
-              <option selected="selected" style="display:none;" value="{{.Usuario.V_MAPA_OPERACIONAL_ADM}}">{{.Usuario.V_MAPA_OPERACIONAL_ADM}}</option>
-              <option value="S">S</option>
-              <option value="N">N</option>
+            <input type="text" name="login_nt" class="form-control"  value="{{.Usuario.LOGIN_NT}}"
+              placeholder="Login NT" id="login_nt" required>
+
+          </div>
+        </div>
+
+        <div class="col-lg-3 mt-1">
+          <label>Email</label>
+          <div class="form-label-group">
+            <input type="email" name="email" class="form-control" value="{{.Usuario.EMAIL}}"  placeholder="Email"
+              id="email" required>
+          </div>
+
+        </div>
+
+
+
+
+
+        <div class="col-lg-3 mt-1">
+          <div class="form-label-group">
+            <label>Site</label>
+            <select class="custom-select" id="id_site" name="id_site">
+              <option selected="selected" hidden value="{{.Usuario.ID_SITE}}">{{.Usuario.Site.NOME}}</option>
+              {{ range .Site}}
+              <option value="{{.IDSITE}}">{{.NOME}}</option>
+              {{end}}
             </select>
 
           </div>
         </div>
 
 
-<br>
-<div class="col-lg-12 mt-2">
-  <div class="form-label-group">
-    <br/>
-    <button id="atualizar-cadastro" data-usuario-id="{{.Usuario.IDUSUARIO}}"
-    class="btn btn-block btn-outline-secondary">
-  Alterar
-    </button>
-
-  </div>
-</div>
-
-
+        <div class="col-lg-3 mt-1">
+          <div class="form-label-group">
+            <label>Status</label>
+            <select class="custom-select" name="status" id="status">
+              <option selected="selected" hidden value="{{.Usuario.STATUS}}">{{.Usuario.STATUS}}</option>
+              <option value="ATIVO">ATIVO</option>
+              <option value="ALTERAR_SENHA">ALTERAR SENHA</option>
+              <option value="INATIVO">INATIVO</option>
+            </select>
 
           </div>
-
-
-
-
-
-
-
-
         </div>
-
-        <br />
-
-
-
-
-
-
-
-
-
 
 
       </div>
-    </div>
 
+
+
+    <hr>
+    <h4 class="card-title mb-4">Permissões de Visualização </h4>
+    
+
+      <div class="row">   
+        <div class="custom-control custom-checkbox">
+          <input  type="checkbox" id="v_mapa_operacional" name="v_mapa_operacional" value="{{.Usuario.V_MAPA_OPERACIONAL}}" onclick='handleCheckbox(this);'>
+          <label for="v_mapa_operacional">Mapa Operações</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input  type="checkbox" id="v_bdc_posts" name="v_bdc_posts" value="{{.Usuario.V_BDC_POSTS}}" onclick='handleCheckbox(this);'>
+          <label for="v_bdc_posts">Base de Conhecimento</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input  type="checkbox" id="v_gsa" name="v_gsa" value="{{.Usuario.V_GSA}}"  onclick='handleCheckbox(this);'>
+          <label for="v_gsa">GSA</label>
+        </div>
+
+
+
+
+        <div class="custom-control custom-checkbox">
+          <input  type="checkbox" id="v_imdb" name="v_imdb" value="{{.Usuario.V_IMDB}}" onclick='handleCheckbox(this);'>
+          <label for="v_imdb">IMDB</label>
+        </div>
+   
+
+
+
+    </div>
+    <hr>
+    <h4 class="card-title mb-4">Permissões de Gerenciamento</h4>
+<div class="row">
+  <div class="custom-control custom-checkbox">
+    <input  type="checkbox" id="v_mapa_operacional_adm" name="v_mapa_operacional_adm" value="{{.Usuario.V_MAPA_OPERACIONAL_ADM}}" onclick='handleCheckbox(this);'>
+    <label for="v_mapa_operacional_adm">Administrador do Mapa Operacional</label>
   </div>
 
+  <div class="custom-control custom-checkbox">
+    <input  type="checkbox" id="v_usuarios" name="v_usuarios" value="{{.Usuario.V_USUARIOS}}" onclick='handleCheckbox(this);'>
+    <label for="v_usuarios">Administrador de Usuários</label>
+  </div>
+
+  <div class="custom-control custom-checkbox">
+    <input  type="checkbox" id="v_bdc_adm" name="v_bdc_adm" value="{{.Usuario.V_BDC_ADM}}" onclick='handleCheckbox(this);'>
+    <label for="v_bdc_adm">Administrador da Base de Conhecimento</label>
+  </div>
+
+ 
 
 
 
 
-  {{ template "footer"}}
-  {{ template "scripts"}}
+</div>
+
+      <hr>
+     
 
 
-  </body>
+      <hr>
 
-  </html>
+      <button id="atualizar-cadastro" data-usuario-id="{{.Usuario.IDUSUARIO}}"
+      class="btn btn-block btn-outline-secondary">
+    Alterar
+      </button>
+  
+  </form>
+</div></div>
+
+</div>
+
+
+                              {{ template "footer"}}
+                              {{ template "scripts"}}
+                              <script>
+                                function handleCheckbox(cb) {
+                                cb.value = cb.checked ? "S" : "N";
+                                console.log(cb.value);
+                              }
+
+
+if ("{{.Usuario.V_MAPA_OPERACIONAL}}" == "S") {
+  $('#v_mapa_operacional').prop("checked", true);
+}
+                          
+
+if ("{{.Usuario.V_BDC_POSTS}}" == "S") {
+  $('#v_bdc_posts').prop("checked", true);
+}
+
+if ("{{.Usuario.V_GSA}}" == "S") {
+  $('#v_gsa').prop("checked", true);
+}
+
+if ("{{.Usuario.V_IMDB}}" == "S") {
+  $('#v_imdb').prop("checked", true);
+}
+
+if ("{{.Usuario.V_MAPA_OPERACIONAL_ADM}}" == "S") {
+  $('#v_mapa_operacional_adm').prop("checked", true);
+}
+
+if ("{{.Usuario.V_USUARIOS}}" == "S") {
+  $('#v_usuarios').prop("checked", true);
+}
+
+if ("{{.Usuario.V_BDC_ADM}}" == "S") {
+  $('#v_bdc_adm').prop("checked", true);
+}
+
+                              </script>
+                              </body>
+                              </html>
+
+
+
+
+
+
+
