@@ -1,0 +1,76 @@
+{{ template "head" .}}
+{{ template "header" .}}
+
+<main role="main" class="flex-shrink-0">
+  <div class="container-fluid">
+    <div class="col-md-12 ml-sm-auto">
+    <div class="row">
+      <div class="col-md-12">
+
+        <div
+          class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 border-bottom">
+          <h1 class="h2">Criar Operação em Massa</h1>
+          <div class="btn-toolbar mb-2 mb-md-0">
+            <div class="btn-group mr-2">
+
+              <!-- <span>18/03/2022 00:11</span> Incidente ambiente de e-mail Exchange 2013, Tsystems atuando.-->
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="row mt-3">
+      <div class="col-lg-12">
+
+        <div class="card card-body">
+          <h4 class="card-title mb-4">Importar planilha em formato .xlsx com os dados das operações.</h4>
+          <div class="alert alert-danger" id="alertd" style="display: none;" role="alert"></div>
+ 
+          <div class="alert alert-success" id="alertg" style="display: none;" role="alert"></div>
+ 
+
+          <form action="/mapa/uploadExcel" enctype="multipart/form-data" method="post">
+            <input  class="form-control-file"  type="file" id="file" name="file" required>
+            <input class="btn btn-sm btn-outline-secondary mt-2" type="submit">
+          </form>
+          
+
+
+
+</div></div>
+
+</div>
+
+                              {{ template "footer"}}
+                              {{ template "scripts"}}
+
+                              <script>
+                                $.urlParam = function (name) {
+                                    var results = new RegExp('[\?&]' + name + '=([^&#]*)')
+                                                      .exec(window.location.search);
+                                
+                                    return (results !== null) ? results[1] || 0 : false;
+                                }
+                                
+                                var mensagem = $.urlParam('message').replace(/%20/g, ' ');;
+                                
+                                  if (mensagem == false) {
+                                      console.log("nenhuma mensagem impressa")
+                                  } if (mensagem == "Import realizado com sucesso! Por favor validar.") {
+                                    console.log("imprime mensagem Green")
+                                      $('#alertg').fadeIn(1000);
+                                      $('#alertg').text(mensagem);
+                                  } else {
+                                      console.log("imprime mensagem")
+                                      $('#alertd').fadeIn(1000);
+                                      $('#alertd').text(mensagem);
+                                  }
+                                  </script>
+                              </body>
+                              </html>
+

@@ -51,4 +51,17 @@ var rotasMapaOperacional = []Rota{
 		Funcao:             controllers.DeletarMapa,
 		RequerAutenticacao: true,
 	},
+	{
+		URI:                "/criar-mapa-massa",
+		Metodo:             http.MethodGet,
+		Funcao:             controllers.CarregarPaginaDeCadastroDeOperacoesExcel,
+		RequerAutenticacao: true,
+	},
+
+	{
+		URI:                "/mapa/uploadExcel",
+		Metodo:             http.MethodPost,
+		Funcao:             controllers.UploadFileExcelMapa,
+		RequerAutenticacao: true,
+	},
 }

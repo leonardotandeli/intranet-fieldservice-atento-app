@@ -414,3 +414,33 @@ func CarregarPaginaDeEdicaoMapa(w http.ResponseWriter, r *http.Request) {
 		Pagina:          "Editar Operação",
 	})
 }
+
+//Carrega página de usuario
+func CarregarPaginaDeCadastroDeOperacoesExcel(w http.ResponseWriter, r *http.Request) {
+
+	//função para inserir dados dos cookies armazenados durante o login
+	cookies, _ := cookies.InserirDadosNaPagina(r)
+
+	//condicional de acesso a página
+	if cookies.V_USUARIOS == "S" {
+
+		utils.ExecutarTemplate(w, "adicionarOperacaoEmMassa.html", struct {
+			Cookies modelos.PageCookies
+			Pagina  string
+		}{
+
+			Cookies: cookies,
+			Pagina:  "Criar novo usuário",
+		})
+
+	} else {
+		utils.ExecutarTemplate(w, "acessoNegado.html", struct {
+			Cookies modelos.PageCookies
+			Pagina  string
+		}{
+			Cookies: cookies,
+			Pagina:  "Página Inicial",
+		})
+
+	}
+}
