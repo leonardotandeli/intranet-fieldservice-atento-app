@@ -94,7 +94,19 @@ margin-left: -65px;
 
                 <div
                     class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 border-bottom">
-                    <h1 class="h2">Alterar Senha </h1>
+
+                    {{ if eq .Cookies.STATUS "PRIMEIRO_ACESSO" }}
+
+                    <h1 class="h2">Primeiro Acesso - Alterar Senha</h1>
+
+                        {{else if eq .Cookies.STATUS "ALTERAR_SENHA" }}
+                        <h1 class="h2">Senha expirada! Criar Nova Senha</h1>
+                        {{else}}
+                        <h1 class="h2">Alterar Senha </h1>
+                            {{ end }}
+
+
+
                     <div class="btn-toolbar mb-2 mb-md-0">
                         <div class="btn-group mr-2">
 
