@@ -12,7 +12,8 @@
           <div
             class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2  border-bottom">
             <h1 class="h2">Mapa Operacões </h1>
-        
+
+
             <div class="btn-toolbar mb-2 mb-md-0">
 
 
@@ -135,11 +136,53 @@
                
            
                 {{ end }}
-                
-
+             
               </tbody>
             </table>
           </div>
+          <nav aria-label="...">
+            <ul class="pagination">
+
+              {{ if eq .PaginationPaginaAnterior 0 }} 
+              <li class="page-item disabled">
+                <a class="page-link" href="/mapa/operacoes?pagina={{.PaginationPaginaAnterior}}">Anterior</a>
+              </li>
+
+              {{else }}
+              <li class="page-item">
+                <a class="page-link" href="/mapa/operacoes?pagina={{.PaginationPaginaAnterior}}">Anterior</a>
+              </li>
+              {{end}}
+
+
+
+
+              {{ if eq .PaginationPaginaAnterior 0 }} 
+            
+
+              {{else }}
+              <li class="page-item"><a class="page-link" href="/mapa/operacoes?pagina={{.PaginationPaginaAnterior}}">{{.PaginationPaginaAnterior}}</a></li>
+              {{end}}
+              <li class="page-item disabled"><a class="page-link" href="#">{{.PaginationPagina}}</a></li>
+
+              {{ if eq .PaginationPagina .PaginationUltimaPagina }} 
+
+              {{else}}
+              <li class="page-item"><a class="page-link" href="/mapa/operacoes?pagina={{.PaginationProximaPagina}}">{{.PaginationProximaPagina}}</a></li>
+              {{end}}
+          
+
+              {{ if eq .PaginationPagina .PaginationUltimaPagina }} 
+              <li class="page-item disabled">
+                <a class="page-link" href="/mapa/operacoes?pagina={{.PaginationProximaPagina}}">Próxima</a>
+              </li>
+              {{else }}
+              <li class="page-item">
+                <a class="page-link" href="/mapa/operacoes?pagina={{.PaginationProximaPagina}}">Próxima</a>
+              </li>
+              {{end}}
+          
+            </ul>
         </div>
       </div>
     </div>

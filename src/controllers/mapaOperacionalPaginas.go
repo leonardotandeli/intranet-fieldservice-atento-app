@@ -23,9 +23,11 @@ func CarregarPaginaMapa(w http.ResponseWriter, r *http.Request) {
 	strSite := strings.ToLower(r.URL.Query().Get("site"))
 	strClienteNoSpace := strings.ReplaceAll(strCliente, " ", "+")
 	strSiteNoSpace := strings.ReplaceAll(strSite, " ", "+")
-
+	strPage := strings.ToLower(r.URL.Query().Get("pagina"))
+	strPageNoSpace := strings.ReplaceAll(strPage, " ", "+")
+	fmt.Println(strPageNoSpace)
 	// define urls das api
-	url := fmt.Sprintf("%s/mapa/operacoes?cliente=%s&site=%s", config.APIURL, strClienteNoSpace, strSiteNoSpace)
+	url := fmt.Sprintf("%s/mapa/operacoes?cliente=%s&site=%s&pagina=%s", config.APIURL, strClienteNoSpace, strSiteNoSpace, strPageNoSpace)
 	urlSites := fmt.Sprintf("%s/sites", config.APIURL)
 	urlClientes := fmt.Sprintf("%s/clientes", config.APIURL)
 
@@ -41,6 +43,7 @@ func CarregarPaginaMapa(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	var MapaOperacional []modelos.MapaOperacional
+
 	if erro = json.NewDecoder(response.Body).Decode(&MapaOperacional); erro != nil {
 		respostas.JSON(w, http.StatusUnprocessableEntity, respostas.ErroAPI{Erro: erro.Error()})
 		return
@@ -80,22 +83,31 @@ func CarregarPaginaMapa(w http.ResponseWriter, r *http.Request) {
 
 	//função para inserir dados dos cookies armazenados durante o login
 	cookies, _ := cookies.InserirDadosNaPagina(r)
+	pagination := MapaOperacional[0]
 
-	//condicional de acesso a página
 	if cookies.V_MAPA_OPERACIONAL == "S" {
 		utils.ExecutarTemplate(w, "mapaOperacional.html", struct {
-			MapaOperacional []modelos.MapaOperacional
-			Site            []modelos.Site
-			Cliente         []modelos.Cliente
-			Cookies         modelos.PageCookies
-			Pagina          string
+			MapaOperacional          []modelos.MapaOperacional
+			Site                     []modelos.Site
+			Cliente                  []modelos.Cliente
+			PaginationTotal          int
+			PaginationPagina         int
+			PaginationUltimaPagina   int
+			PaginationProximaPagina  int
+			PaginationPaginaAnterior int
+			Cookies                  modelos.PageCookies
+			Pagina                   string
 		}{
-			MapaOperacional: MapaOperacional,
-			Site:            site[1:32],
-			Cliente:         cliente[1:],
-			Cookies:         cookies,
-
-			Pagina: "Mapa Operações",
+			MapaOperacional:          MapaOperacional,
+			PaginationTotal:          pagination.Pagination.Total,
+			PaginationPagina:         pagination.Pagination.Pagina,
+			PaginationUltimaPagina:   int(pagination.Pagination.UltimaPagina),
+			PaginationPaginaAnterior: pagination.Pagination.Pagina - 1,
+			PaginationProximaPagina:  pagination.Pagination.Pagina + 1,
+			Site:                     site[1:32],
+			Cliente:                  cliente[1:],
+			Cookies:                  cookies,
+			Pagina:                   "Mapa Operações",
 		})
 		//executa template da página de acesso negado.
 	} else {
