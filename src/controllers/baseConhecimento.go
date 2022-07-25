@@ -23,12 +23,13 @@ func CriarPublicacao(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 
 	publicacao, erro := json.Marshal(map[string]string{
-		"titulo":       r.FormValue("titulo"),
-		"conteudo":     r.FormValue("conteudo"),
-		"id_categoria": r.FormValue("id_categoria"),
-		"id_usuario":   r.FormValue("id_usuario"),
-		"id_site":      r.FormValue("id_site"),
-		"id_cliente":   r.FormValue("id_cliente"),
+		"titulo":          r.FormValue("titulo"),
+		"conteudo":        r.FormValue("conteudo"),
+		"id_categoria":    r.FormValue("id_categoria"),
+		"id_subcategoria": r.FormValue("id_subcategoria"),
+		"id_usuario":      r.FormValue("id_usuario"),
+		"id_site":         r.FormValue("id_site"),
+		"id_cliente":      r.FormValue("id_cliente"),
 	})
 	if erro != nil {
 		respostas.JSON(w, http.StatusBadRequest, respostas.ErroAPI{Erro: erro.Error()})
@@ -48,7 +49,7 @@ func CriarPublicacao(w http.ResponseWriter, r *http.Request) {
 
 	if response.StatusCode >= 400 {
 		//respostas.TratarStatusCodeDeErro(w, response)
-		http.Redirect(w, r, "/formulario/base"+"?message=Algo deu errado! Tente novamente mais tarde...", http.StatusFound)
+		http.Redirect(w, r, "/base-de-conhecimento/"+"?message=Algo deu errado! Tente novamente mais tarde...", http.StatusFound)
 		return
 	}
 	var post modelos.Post
@@ -56,7 +57,7 @@ func CriarPublicacao(w http.ResponseWriter, r *http.Request) {
 		respostas.JSON(w, http.StatusUnprocessableEntity, respostas.ErroAPI{Erro: erro.Error()})
 		return
 	}
-	http.Redirect(w, r, "/base/"+strconv.Itoa(int(post.IDPOST)), http.StatusFound)
+	http.Redirect(w, r, "/base-de-conhecimento/"+strconv.Itoa(int(post.IDPOST)), http.StatusFound)
 	respostas.JSON(w, response.StatusCode, nil)
 
 }
@@ -73,12 +74,13 @@ func AtualizarPublicacao(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 
 	publicacao, erro := json.Marshal(map[string]string{
-		"titulo":       r.FormValue("titulo"),
-		"conteudo":     r.FormValue("conteudo"),
-		"id_categoria": r.FormValue("id_categoria"),
-		"id_usuario":   r.FormValue("id_usuario"),
-		"id_site":      r.FormValue("id_site"),
-		"id_cliente":   r.FormValue("id_cliente"),
+		"titulo":          r.FormValue("titulo"),
+		"conteudo":        r.FormValue("conteudo"),
+		"id_categoria":    r.FormValue("id_categoria"),
+		"id_subcategoria": r.FormValue("id_subcategoria"),
+		"id_usuario":      r.FormValue("id_usuario"),
+		"id_site":         r.FormValue("id_site"),
+		"id_cliente":      r.FormValue("id_cliente"),
 	})
 	if erro != nil {
 		respostas.JSON(w, http.StatusBadRequest, respostas.ErroAPI{Erro: erro.Error()})

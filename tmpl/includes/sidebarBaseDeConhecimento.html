@@ -141,7 +141,10 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/base-posts">ÚLTIMOS ARTIGOS</a>
+              <a class="nav-link" href="/base-de-conhecimento/posts">ÚLTIMOS ARTIGOS</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/base-de-conhecimento/cliente/1">INSTRUÇÕES GERAIS</a>
             </li>
 
 
@@ -159,7 +162,7 @@
   
   {{range .Cliente}}
             <li class="nav-item">
-              <a class="nav-link" href="/base/cliente?cliente={{.IDCLIENTE}}">{{ .NOME }}</a><!--<a href="/base/editar/cliente/{{.IDCLIENTE}}"><i style="color: black;" class="fa fa-pencil-alt" aria-hidden="true"></i></a>-->
+              <a class="nav-link" href="/base-de-conhecimento/cliente/{{.IDCLIENTE}}">{{ .NOME }}</a><!--<a href="/base/editar/cliente/{{.IDCLIENTE}}"><i style="color: black;" class="fa fa-pencil-alt" aria-hidden="true"></i></a>-->
             </li>
   {{end}}
           

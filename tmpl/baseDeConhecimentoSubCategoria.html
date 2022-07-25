@@ -13,72 +13,32 @@
     <h1 class="h2">
 
 
-      <a style="color: #003760; text-decoration: none;" href="/base-de-conhecimento/cliente/{{.ClienteUnique.IDCLIENTE}}"> {{ .ClienteUnique.NOME}} </a> / {{ .CatUnique.NOME}}
+      <a style="color: #003760; text-decoration: none;" href="/base-de-conhecimento/cliente/{{.ClienteUnique.IDCLIENTE}}"> {{ .ClienteUnique.NOME}} </a> / <a style="color: #003760; text-decoration: none;" href="/base-de-conhecimento/cliente/{{.ClienteUnique.IDCLIENTE}}/categoria/{{ .CatUnique.IDCATEGORIA}}">{{ .CatUnique.NOME}}</a>  / {{ .SubCatUnique.NOME}}       
     </h1>
-
-
-
-<!-- Modal -->
-<div class="modal fade" id="staticBackdrop"  data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Criar Sub-Categoria</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form class="mb-4" id="criar-subcategoria">
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Nome:</label>
-            <input type="text" class="form-control mt-2" id="nome" name="nome" required>
-          </div>
-      
-
-          <input type="hidden" value="{{.CategoriaID}}" class="form-control mt-2" id="id_categoria" name="id_categoria">
-
-          <p class="card-subtitle mb-2 text-muted">A sub-categoria será atrelada à: <strong> {{ .CatUnique.NOME}}</strong></p>
-<button onclick="criarSubCategoria()" class="btn btn-block btn-outline-secondary">
-Criar
-</button>     
-
-</form>
-
-      </div>
-  
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
 
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop2" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel2" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel2">Editar Categoria</h5>
+        <h5 class="modal-title" id="staticBackdropLabel2">Editar Sub-Categoria</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-   
+        <input type="hidden" value="{{.CategoriaID}}" name="id_categoria" id="id_categoria">
+
           <div class="mb-4 form-group">
             <label for="recipient-name" class="col-form-label">Nome:</label>
-            <input type="text"  value="{{.CatUnique.NOME}}" name="nomeupdate" id="nomeupdate" class="form-control" required="">
+            <input type="text"  value="{{.SubCatUnique.NOME}}" name="nomeupdate" id="nomeupdate" class="form-control" required="">
           </div>
       
       
 
       
 
-      <button type="submit" id="atualizar-categoria" data-cat-id="{{.CategoriaID}}" class="btn btn-block btn-outline-secondary">Salvar</button>
+      <button type="submit" id="atualizar-subcategoria" data-subcat-id="{{.SubCategoriaID}}" class="btn btn-block btn-outline-secondary">Salvar</button>
 
 
       </div>
@@ -86,33 +46,22 @@ Criar
     </div>
   </div>
 </div>
-
-
     <div class="btn-toolbar mb-2 mb-md-0">
       <div class="btn-group mr-2">
-
-
-
-
         <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
           <a href="/base-de-conhecimento/cliente/{{.ClienteUnique.IDCLIENTE}}/categoria/{{.CategoriaID}}/novo"> <button type="button" class="btn btn-sm btn-outline-secondary">Adicionar Publicação</button></a>
           <button type="button" data-toggle="modal" data-target="#staticBackdrop" class="btn btn-sm btn-outline-secondary">Adicionar Sub-Categoria</button>
         
           <div class="btn-group" role="group">
             <button type="button" class="btn btn-sm btn-secondary dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-              Editar Categoria
+              Editar Sub-Categoria
             </button>
             <div class="dropdown-menu">
               <button type="button" class="dropdown-item" data-toggle="modal" data-target="#staticBackdrop2">Alterar Nome</button>
-                <button type="button"class="btn btn-danger dropdown-item" id="deletar-categoria" data-categoria-id="{{.CategoriaID}}"  data-nomecategoria="{{ .CatUnique.NOME}}" data-cliente-id="{{.ClienteUnique.IDCLIENTE}}">Deletar Categoria</button>
+                <button type="button"class="btn btn-danger dropdown-item" id="deletar-subcategoria" data-subcategoria-id="{{.SubCategoriaID}}"  data-nomecategoria="{{ .CatUnique.NOME}}" data-cliente-id="{{ .ClienteUnique.IDCLIENTE}}">Deletar Sub-Categoria</button>
             </div>
           </div>
         </div>
-
-
-
-
-       
       </div>
     </div>
   </div>
@@ -134,7 +83,7 @@ Criar
             <div class="list-group list-group-horizontal gap-2 flex-wrap justify-content-center mb-0 border-0">
               {{range .SubCategoria}}
               <a class="btn btn-light btn-sm fw-light mt-2 mx-1"
-                href="/base-de-conhecimento/cliente/{{$.ClienteUnique.IDCLIENTE}}/categoria/{{.ID_CATEGORIA}}/subcategoria/{{.IDSUBCATEGORIA}}">{{ .NOME }}</a>
+              href="/base-de-conhecimento/cliente/{{$.ClienteUnique.IDCLIENTE}}/categoria/{{.ID_CATEGORIA}}/subcategoria/{{.IDSUBCATEGORIA}}">{{ .NOME }}</a>
               {{end}}
 
 
@@ -157,7 +106,7 @@ Criar
         <div class="col-12">
           <div class="card-body">
 
-
+            <h5 class="card-title">{{ .SubCatUnique.NOME}}  </h5>
             <div class="fat-heading-abb">
 
 
@@ -171,7 +120,7 @@ Criar
                 <li>
                   <a href="/base-de-conhecimento/{{.IDPOST}}">
                     <i class="bi bi-arrow-right" style="font-size: 18px; color: #003760;"></i> {{.TITULO}}</a>
-                  <p style="font-size:12px" class="mb-2"><i class="bi bi-list-check"></i> {{.Categoria.NOME}}  <i
+                  <p style="font-size:12px" class="mb-2"><i
                       class="bi bi-calendar3"></i> {{.DATA_CRIACAO.Format "02/01/2006" }}</p>
 
                 </li>

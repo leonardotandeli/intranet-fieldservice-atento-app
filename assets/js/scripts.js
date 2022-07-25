@@ -6,6 +6,7 @@
 jQuery(function($) {
     var path = window.location.href; 
     // because the 'href' property of the DOM element is the absolute path
+    console.log(path)
     $('ul a').each(function() {
       if (this.href === path) {
         $(this).addClass('active');
@@ -154,6 +155,12 @@ $('#atualizar-mapa').on('click', atualizarMapa);
 $('#atualizar-categoria').on('click', atualizarCategoria);
 $('#criar-usuario-usuario').on('click', criarUsuarioChamado);
 $('#criar-categoria').on('submit', criarCategoria);
+$('#criar-subcategoria').on('submit', criarSubCategoria);
+$('#deletar-categoria').on('click', DeletarCategoria);
+
+$('#atualizar-subcategoria').on('click', atualizarSubCategoria);
+$('#deletar-subcategoria').on('click', DeletarSubCategoria);
+
 function criarChamado(evento) {
     evento.preventDefault();
 
@@ -232,6 +239,59 @@ function DeletarMapa(evento) {
         });
     })
 }
+
+function DeletarCategoria(evento) {
+    evento.preventDefault();
+    const categoriaId = $(this).data('categoria-id');
+        const clienteId = $(this).data('cliente-id');
+        const nomecategoria = $(this).data('nomecategoria');
+    Swal.fire({
+        title: "Atenção!",
+        text: "Tem certeza que deseja excluir a categoria " + nomecategoria + "? Essa ação é irreversível!",
+        cancelButtonText: "Cancelar",
+        showCancelButton: true,
+        icon: "warning"
+    }).then(function(confirmacao) {
+        if (!confirmacao.value) return;
+
+    
+        $.ajax({
+            url: '/base/editar/categoria/'+categoriaId,
+            method: "DELETE"
+        }).done(function() {
+            window.location = '/base-de-conhecimento/cliente/'+clienteId;
+        }).fail(function() {
+            Swal.fire("Ops...", "Erro ao excluir a operação!", "error");
+        });
+    })
+}
+
+function DeletarSubCategoria(evento) {
+    evento.preventDefault();
+    const subcategoriaId = $(this).data('subcategoria-id');
+        const clienteId = $(this).data('cliente-id');
+        const nomecategoria = $(this).data('nomecategoria');
+    Swal.fire({
+        title: "Atenção!",
+        text: "Tem certeza que deseja excluir a categoria " + nomecategoria + "? Essa ação é irreversível!",
+        cancelButtonText: "Cancelar",
+        showCancelButton: true,
+        icon: "warning"
+    }).then(function(confirmacao) {
+        if (!confirmacao.value) return;
+
+    
+        $.ajax({
+            url: '/base/editar/subcategoria/'+subcategoriaId,
+            method: "DELETE"
+        }).done(function() {
+            window.location = '/base-de-conhecimento/cliente/'+clienteId;
+        }).fail(function() {
+            Swal.fire("Ops...", "Erro ao excluir a operação!", "error");
+        });
+    })
+}
+
 
 
 function criarMapa(evento) {
@@ -344,7 +404,7 @@ function atualizarCategoria() {
         url: '/base/editar/categoria/'+catId,
         method: "PUT",
         data: {
-            nome: $('#nome').val(),
+            nome: $('#nomeupdate').val(),
         }
     }).done(function() {
         Swal.fire({
@@ -352,7 +412,7 @@ function atualizarCategoria() {
             title: 'Informações atualizadas com sucesso!',
             showConfirmButton: false,
             timer: 2000
-          }).then(function() {window.location = '/base';})
+          }).then(function() {window.location.reload();})
     }).fail(function() {
         Swal.fire({
             type: 'error',
@@ -366,6 +426,39 @@ function atualizarCategoria() {
 }
 
 
+
+function atualizarSubCategoria() {
+    $(this).prop('disabled', true);
+
+    const subcatId = $(this).data('subcat-id');
+    console.log(subcatId)
+  
+    
+    $.ajax({
+        url: '/base/editar/subcategoria/'+subcatId,
+        method: "PUT",
+        data: {
+            nome: $('#nomeupdate').val(),
+            id_categoria: $('#id_categoria').val(),
+        }
+    }).done(function() {
+        Swal.fire({
+            type: 'success',
+            title: 'Informações atualizadas com sucesso!',
+            showConfirmButton: false,
+            timer: 2000
+          }).then(function() {window.location.reload();})
+    }).fail(function() {
+        Swal.fire({
+            type: 'error',
+            title: 'Algo deu errado! Não foi possível enviar a solicitação.',
+            showConfirmButton: false,
+            timer: 1500
+          })
+    }).always(function() {
+        $('#atualizar-subcategoria').prop('disabled', false);
+    })
+}
 
 
 
@@ -403,6 +496,10 @@ function criarUsuarioChamado(evento) {
     })
 }
 
+
+
+
+
 function criarCategoria(evento) {
     evento.preventDefault();
 
@@ -410,7 +507,8 @@ function criarCategoria(evento) {
         url: "/base/editar/categoria",
         method: "POST",
         data: {
-            nome: $('#nome').val()
+            nome: $('#nome').val(),
+            id_cliente: $('#id_cliente').val()
         }
     }).done(function() {
         Swal.fire({
@@ -418,7 +516,7 @@ function criarCategoria(evento) {
             title: 'Categoria criada com sucesso!',
             showConfirmButton: false,
             timer: 1500
-          }).then(function() {window.location = '/base';})
+          }).then(function() {window.location.reload();})
      
     }).fail(function(erro){
         console.log(erro)
@@ -432,6 +530,34 @@ function criarCategoria(evento) {
 }
 
 
+function criarSubCategoria(evento) {
+    evento.preventDefault();
+
+    $.ajax({
+        url: "/base-de-conhecimento/subcategorias",
+        method: "POST",
+        data: {
+            nome: $('#nome').val(),
+            id_categoria: $('#id_categoria').val()
+        }
+    }).done(function() {
+        Swal.fire({
+            type: 'success',
+            title: 'SubCategoria criada com sucesso!',
+            showConfirmButton: false,
+            timer: 1500
+          }).then(function() {window.location.reload();})
+     
+    }).fail(function(erro){
+        console.log(erro)
+        Swal.fire({
+            type: 'error',
+            title: 'Algo deu errado! Não foi possível enviar a solicitação.',
+            showConfirmButton: false,
+            timer: 1500
+          })
+    })
+}
 
 function atualizarChamado() {
     $(this).prop('disabled', true);
@@ -555,6 +681,7 @@ function atualizarPublicacao(evento) {
             titulo: $('#titulo').val(),
             conteudo: $('#conteudo').val(),
             id_categoria: $('#id_categoria').val(),
+            id_subcategoria: $('#id_subcategoria').val(),
             id_usuario: $('#id_usuario').val(),
             id_site: $('#id_site').val(),
             id_cliente: $('#id_cliente').val()
@@ -566,7 +693,7 @@ function atualizarPublicacao(evento) {
             title: 'Artigo atualizado com sucesso!!',
             showConfirmButton: false,
             timer: 1500
-          }).then(function() {window.location = '/base/'+publicacaoId;})
+          }).then(function() {window.location = '/base-de-conhecimento/'+publicacaoId;})
      
     }).fail(function(erro){
         console.log(erro)

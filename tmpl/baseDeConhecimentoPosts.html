@@ -14,7 +14,7 @@
 <main role="main" class="col-md-9 ml-sm-auto mt-5 pt-2 col-lg-10 ">
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 mt-1 pb-2 mb-3 border-bottom">
         <h1 class="h2">
-Últimos Artigos
+Últimas Publicações
 
 
 </h1>
@@ -22,15 +22,12 @@
   <div class="btn-group mr-2">
     {{ if eq .Cookies.V_USUARIOS "S" }}
 
-    <a href="/formulario/categoria"> <button type="button" class="ml-2 btn btn-sm btn-outline-secondary"><i
-               class="bi bi-list-check"></i> Adicionar Categoria</button></a>
-
+ 
                {{end}}
     {{ if eq .Cookies.V_BDC_ADM "S" }}
        <!--   <a href="/formulario/categoria"> <button type="button" class="ml-2 btn btn-sm btn-outline-secondary"><i
                 class="bi bi-list-check"></i> Adicionar Categoria</button></a>-->
-    <a href="/formulario/base"> <button type="button" class="ml-2 btn btn-sm btn-outline-secondary"><i
-          class="bi bi-newspaper"></i> Adicionar Artigo</button></a>
+
     {{end}}
   </div>
 </div>
@@ -54,7 +51,7 @@
   
   
                   <li>
-                    <a href="/base/{{.IDPOST}}">
+                    <a href="/base-de-conhecimento/{{.IDPOST}}">
                       <i class="bi bi-arrow-right" style="font-size: 18px; color: #003760;"></i> {{.TITULO}}</a>
                     <p style="font-size:12px" class="mb-2"><i class="bi bi-list-check"></i> {{.Categoria.NOME}}  <i
                         class="bi bi-calendar3"></i> {{.DATA_CRIACAO.Format "02/01/2006" }}</p>

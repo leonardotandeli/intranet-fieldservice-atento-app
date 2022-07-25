@@ -23,10 +23,8 @@
   <div class="btn-group mr-2">
 
     {{ if eq .Cookies.V_BDC_ADM "S" }}
-    <a href="/formulario/categoria"> <button type="button" class="ml-2 btn btn-sm btn-outline-secondary"><i
-          class="bi bi-list-check"></i> Adicionar Categoria</button></a>
-    <a href="/formulario/base"> <button type="button" class="ml-2 btn btn-sm btn-outline-secondary"><i
-          class="bi bi-newspaper"></i> Adicionar Artigo</button></a>
+
+
     {{end}}
   </div>
 </div>
@@ -45,14 +43,15 @@
               </div>
               <div class="base-de-conhecimento-itens padding-left-30">
                 <ul>
+
                   {{range .Posts}}
   
   
   
                   <li>
-                    <a href="/base/{{.IDPOST}}">
+                    <a href="/base-de-conhecimento/{{.IDPOST}}">
                       <i class="bi bi-arrow-right" style="font-size: 18px; color: #003760;"></i> {{.TITULO}}</a>
-                    <p style="font-size:12px" class="mb-2"><i class="bi bi-list-check"></i> {{.Categoria.NOME}}  <i
+                    <p style="font-size:12px" class="mb-2"><i class="bi bi-list-check"></i> {{.Categoria.NOME}} <i class="bi bi-bookmarks"></i>{{.SubCategoria.NOME}} <i
                         class="bi bi-calendar3"></i> {{.DATA_CRIACAO.Format "02/01/2006" }}</p>
   
                   </li>

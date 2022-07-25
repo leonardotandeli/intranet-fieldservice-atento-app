@@ -13,7 +13,7 @@
 
     <main role="main" class="col-md-9 ml-sm-auto mt-5 pt-2 col-lg-10 ">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 mt-1 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Criar Artigo</h1>
+        <h1 class="h2">{{.ClienteUnique.NOME}} / {{.CatUnique.NOME}} / Criar Publicação</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group mr-2">
   
@@ -27,90 +27,87 @@
 
 
   <div class="card">
+
     <div class="row">        
         <div class="card card-body">
           <div class="alert alert-danger" id="alertd" style="display: none;" role="alert"></div>
           <form method="post" action="/base">
             <div class="col-12">
-              <div class="form-group">
-                <h5>Título</h5>
+
+              <div class="form-row">
+                <div class="form-group col-md-12">
+                  <label for="inputEmail4">Título</label>
                   <input type="text" class="form-control mt-2" id="titulo" name="titulo" required>
+                </div>
+                
+              </div>
+
+
+
+
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputEmail4">Cliente</label>
+                  <input type="text" class="form-control mt-2" value="{{.ClienteUnique.NOME}}" readonly>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="inputPassword4">Categoria</label>
+                  <input type="text" class="form-control mt-2" value="{{.CatUnique.NOME}}" readonly>
                 </div>
               </div>
 
-              <div class="col-3">
-                <div class="form-group">
-                  <h5>Categoria</h5>
-                    <select id="id_categoria" name="id_categoria" class="form-control" required="">
-                      <option value="" selected >Escolha...</option>
-  
-                      {{ range .Categoria}}
-                      <option value="{{.IDCATEGORIA}}">{{.NOME}}</option>
-                      {{end}}
-                  </select>
-                  </div>
+
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="inputEmail4">Sub-Categoria </label>      
+                  <select id="id_subcategoria" name="id_subcategoria" class="form-control" required="">
+                    <option value="" selected >Escolha...</option>
+                    {{ range .SubCategoria}}
+                    <option value="{{.IDSUBCATEGORIA}}">{{.NOME}}</option>
+                    {{end}}
+                </select>
                 </div>
-                <div class="col-3">
-                  <div class="form-group">
-                    <h5>Cliente</h5>
-                      <select id="id_cliente" name="id_cliente" class="form-control" required="">
-                        <option value="" selected>Escolha...</option>
-    
-                        {{ range .Cliente}}
-                        <option value="{{.IDCLIENTE}}">{{.NOME}}</option>
-                        {{end}}
-                    </select>
-                    </div>
-                  </div>
-                  <div class="col-3">
-                    <div class="form-group">
-                      <h5>Site</h5>
-                        <select id="id_site" name="id_site" class="form-control" required="">
-                          <option value="" selected>Escolha...</option>
-                          <option value="1" >GERAL</option>
-                          {{ range .Site}}
-                          <option value="{{.IDSITE}}">{{.NOME}}</option>
-                          {{end}}
-                      </select>
-                      </div>
-                    </div>
+
+
+
+
+                <div class="form-group col-md-6">
+                  <label for="inputPassword4">Site</label>
+                  <select id="id_site" name="id_site" class="form-control" required="">
+                    <option value="" selected>Escolha...</option>
+                    {{ range .Site}}
+                    <option value="{{.IDSITE}}">{{.NOME}}</option>
+                    {{end}}
+                </select>
+                </div>
+              </div>
+
+
+
+
+<input type="hidden" value="{{.ClienteID}}" name="id_cliente" id="id_cliente">
+
+<input type="hidden" value="{{.CategoriaID}}" name="id_categoria" id="id_categoria">
+
+         
       
               <input type="hidden" name="id_usuario"  class="form-control" value="{{.Cookies.UsuarioID}}"  id="id_usuario">
             
 
-<!-- Button trigger modal -->
 
-<!--
+              <div class="form-row">
+                <div class="form-group col-md-12">
+                  <textarea id="conteudo" name="conteudo" required ></textarea>
+                </div>
+           
+              </div>
 
-<button type="button" class="btn btn-blue-atento" data-toggle="modal"  data-target="#exampleModal">
-  Fazer Upload de Arquivos
-</button>
 
 
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">    
-        <div class="modal-header">
-      <h5 class="modal-title">Fazer Upload de Arquivos</h5>
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-
-      <div class="modal-body">
-        <iframe src="/upload" width="100%" height="265" style="border:none;">
-        </iframe>
-      </div>
-  
-    </div>
-  </div>
-</div>
--->
-            
-<div class="col-12">
+          
  
                 
-                  <textarea id="conteudo" name="conteudo" required ></textarea>
+ 
 
 
 <hr>

@@ -7,59 +7,76 @@ import (
 
 var rotasBaseDeConhecimento = []Rota{
 	{
-		URI:                "/base",
+		URI:                "/base-de-conhecimento",
 		Metodo:             http.MethodGet,
 		Funcao:             controllers.CarregarPaginaInicialBase,
 		RequerAutenticacao: true,
 	},
 	{
-		URI:                "/base-posts",
+		URI:                "/base-de-conhecimento/cliente/{clienteId}",
 		Metodo:             http.MethodGet,
-		Funcao:             controllers.CarregarPaginaPostsBase,
+		Funcao:             controllers.CarregarPaginaBuscaCliente,
 		RequerAutenticacao: true,
 	},
 	{
-		URI:                "/formulario/base",
+		URI:                "/base-de-conhecimento/posts",
 		Metodo:             http.MethodGet,
-		Funcao:             controllers.CarregarTelaDeCriarPublicacao,
+		Funcao:             controllers.CarregarPaginaUltimosPosts,
+		RequerAutenticacao: true,
+	},
+	///////////////////////////////////////////////////////////////////////////////
+	{
+		URI:                "/base-de-conhecimento/cliente/{clienteId}/categoria/{catId}/novo",
+		Metodo:             http.MethodGet,
+		Funcao:             controllers.CarregarPaginaDeCriarPublicacao,
 		RequerAutenticacao: true,
 	},
 	{
-		URI:                "/formulario/categoria",
+		URI:                "/base-de-conhecimento/cliente/{clienteId}/categoria/novo",
 		Metodo:             http.MethodGet,
-		Funcao:             controllers.CarregarTelaDeCriarCategoria,
+		Funcao:             controllers.CarregarPaginaDeCriarCategoria,
 		RequerAutenticacao: true,
 	},
 	{
-		URI:                "/formulario/cliente",
+		URI:                "/base-de-conhecimento/cliente/{clienteId}/categoria/{catId}/subcategoria/novo",
 		Metodo:             http.MethodGet,
-		Funcao:             controllers.CarregarTelaDeCriarCliente,
+		Funcao:             controllers.CarregarPaginaDeCriarSubCategoria,
+		RequerAutenticacao: true,
+	},
+	/////////////////////////////////////////////////////////////////////////////////////////////
+	{
+		URI:                "/base-de-conhecimento/subcategorias",
+		Metodo:             http.MethodPost,
+		Funcao:             controllers.CriarSubCategoria,
 		RequerAutenticacao: true,
 	},
 	{
-		URI:                "/base/busca",
+		URI:                "/base-de-conhecimento/busca",
 		Metodo:             http.MethodGet,
 		Funcao:             controllers.CarregarPaginaBusca,
 		RequerAutenticacao: true,
 	},
 	{
-		URI:                "/base/cliente",
+		URI:                "/base-de-conhecimento/cliente/{clienteId}/categoria/{catId}/subcategoria/{subCatId}",
 		Metodo:             http.MethodGet,
-		Funcao:             controllers.CarregarPaginaBuscaCatOuCliente,
+		Funcao:             controllers.CarregarPaginaBuscaSubCategoria,
 		RequerAutenticacao: true,
 	},
+
 	{
-		URI:                "/base/categoria",
+		URI:                "/base-de-conhecimento/cliente/{clienteId}/categoria/{catId}",
 		Metodo:             http.MethodGet,
 		Funcao:             controllers.CarregarPaginaBuscaCategoria,
 		RequerAutenticacao: true,
 	},
 	{
-		URI:                "/base/{postId}",
+		URI:                "/base-de-conhecimento/{postId}",
 		Metodo:             http.MethodGet,
 		Funcao:             controllers.CarregarPaginaDePublicacao,
 		RequerAutenticacao: true,
 	},
+	/////////////////////
+
 	{
 		URI:                "/base/{postId}/editar",
 		Metodo:             http.MethodGet,
@@ -119,6 +136,19 @@ var rotasBaseDeConhecimento = []Rota{
 		URI:                "/upload",
 		Metodo:             http.MethodPost,
 		Funcao:             controllers.UploadFile,
+		RequerAutenticacao: true,
+	},
+
+	{
+		URI:                "/base/editar/subcategoria/{subCatId}",
+		Metodo:             http.MethodPut,
+		Funcao:             controllers.AtualizarSubCategoria,
+		RequerAutenticacao: true,
+	},
+	{
+		URI:                "/base/editar/subcategoria/{subCatId}",
+		Metodo:             http.MethodDelete,
+		Funcao:             controllers.DeletarSubCategoria,
 		RequerAutenticacao: true,
 	},
 }

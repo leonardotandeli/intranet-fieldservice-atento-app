@@ -69,6 +69,23 @@
                 </div>
                 <div class="col-6">
                   <div class="form-group">
+                    <h5>SubCategoria</h5>
+                      <select id="id_subcategoria" name="id_subcategoria" class="form-control" required="">
+  
+                        <option selected="selected" style="display:none;" value="{{.Post.SubCategoria.IDSUBCATEGORIA}}">{{.Post.SubCategoria.NOME}}</option>
+               
+                        {{ range .SubCategoria}}
+  
+                        <option value="{{.IDSUBCATEGORIA}}">{{.NOME}}</option>
+                        {{end}}
+                    </select>
+                    </div>
+                  </div>
+
+
+                  
+                <div class="col-6">
+                  <div class="form-group">
                     <h5>Cliente</h5>
                       <select id="id_cliente" name="id_cliente" class="form-control" required="">
                         

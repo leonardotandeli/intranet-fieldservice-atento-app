@@ -22,15 +22,11 @@
           <div class="btn-group mr-2">
             {{ if eq .Cookies.V_USUARIOS "S" }}
 
-            <a href="/formulario/categoria"> <button type="button" class="ml-2 btn btn-sm btn-outline-secondary"><i
-                       class="bi bi-list-check"></i> Adicionar Categoria</button></a>
         
                        {{end}}
             {{ if eq .Cookies.V_BDC_ADM "S" }}
             <!--   <a href="/formulario/categoria"> <button type="button" class="ml-2 btn btn-sm btn-outline-secondary"><i
                      class="bi bi-list-check"></i> Adicionar Categoria</button></a>-->
-         <a href="/formulario/base"> <button type="button" class="ml-2  btn btn-sm btn-outline-secondary"><i
-               class="bi bi-newspaper"></i> Adicionar Artigo</button></a>
     
          <a href="/base/{{ .Post.IDPOST }}/editar">  <button type="button" class="ml-2 btn btn-sm btn-outline-secondary"><i class="bi bi-pencil-square"></i> Editar</button></a>
          {{end}}
@@ -38,7 +34,7 @@
         </div>
      
       </div>
-      <p><a class="atento-breadcrumb-link" href="/base/cliente?cliente={{.Post.Cliente.IDCLIENTE}}">{{.Post.Cliente.NOME}}</a> / <a  class="atento-breadcrumb-link" href="/base/categoria?categoria={{.Post.Categoria.IDCATEGORIA}}&cliente={{.Post.Cliente.IDCLIENTE}}">{{.Post.Categoria.NOME}}</a> / <span>{{ .Post.TITULO }}</span></p>
+      <p><strong><a class="atento-breadcrumb-link" href="/base-de-conhecimento/cliente/{{.Post.Cliente.IDCLIENTE}}">{{.Post.Cliente.NOME}}</a> / <a  class="atento-breadcrumb-link" href="/base-de-conhecimento/cliente/{{.Post.Cliente.IDCLIENTE}}/categoria/{{.Post.Categoria.IDCATEGORIA}}">{{.Post.Categoria.NOME}}</a> / <a  class="atento-breadcrumb-link" href="/base-de-conhecimento/cliente/{{.Post.Cliente.IDCLIENTE}}/categoria/{{.Post.Categoria.IDCATEGORIA}}/subcategoria/{{.Post.SubCategoria.IDSUBCATEGORIA}}">{{.Post.SubCategoria.NOME}}</a> / </strong> <span>{{ .Post.TITULO }}</span></p>
 
 
 <style>.bg-blue-atento { background-color: #003760; }

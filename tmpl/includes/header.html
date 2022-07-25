@@ -39,7 +39,7 @@
   
         {{ if eq .Cookies.V_BDC_POSTS "S" }}
         <li class="nav-item">
-          <a href="/base" class="nav-link px-2 menu-atento ">Base de Conhecimento</a>
+          <a href="/base-de-conhecimento" class="nav-link px-2 menu-atento ">Base de Conhecimento</a>
         </li>
         {{ end }}
         {{ if eq .Cookies.V_IMDB "S" }}
@@ -55,10 +55,10 @@
       </div>
             {{ if eq .Cookies.V_BDC_POSTS "S" }}
       <div class="col-3 nav-item">
-        <form class=" my-2 my-lg-0" action="/base/busca" method="GET">
+        <form class=" my-2 my-lg-0" action="/base-de-conhecimento/busca" method="GET">
           <div class="input-group">
             <div class="input-group-prepend">
-              <div class="input-group-text"><i class="bi bi-search"></i></div>
+                          <div class="input-group-text"> <button style="background: none;color: inherit;border: none;padding: 0;font: inherit; cursor: pointer;outline: inherit;" type="submit"><i class="bi bi-search"></i></button></div>
             </div>
             <input type="text" class="form-control mr-sm-2"  style="font-size: 16px; border: none;" name="busca"  placeholder="Buscar base de conhecimento..." aria-describedby="button-addon4"  required="required">
       

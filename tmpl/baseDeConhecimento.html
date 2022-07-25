@@ -8,17 +8,13 @@
       <h1 class="h2">Base de Conhecimento</h1>
       <div class="btn-toolbar mb-2 mb-md-0">
         <div class="btn-group mr-2">
-          <a href="/base-posts"> <button type="button" class="ml-2 btn btn-sm btn-outline-secondary"><i
-            class="bi bi-list-check"></i> Últimos Artigos</button></a>
+       <a href="/base-de-conhecimento/posts"> <button type="button" class="ml-2 btn btn-sm btn-outline-secondary"><i
+            class="bi bi-list-check"></i> Últimas Publicações</button></a>
             {{ if eq .Cookies.V_USUARIOS "S" }}
-
-     <a href="/formulario/categoria"> <button type="button" class="ml-2 btn btn-sm btn-outline-secondary"><i
-                class="bi bi-list-check"></i> Adicionar Categoria</button></a>
 
                 {{end}}
                 {{ if eq .Cookies.V_BDC_ADM "S" }}
-                <a href="/formulario/base"> <button type="button" class="ml-2 btn btn-sm btn-outline-secondary"><i
-                class="bi bi-newspaper"></i> Adicionar Artigo</button></a>
+             
           {{end}}
         </div>
       </div>
@@ -35,7 +31,7 @@
          
             
                                 <div class="col-4 col-sm-3 col-md-2 col-lg-2 wrapper">
-                                    <a href="/base/cliente?cliente={{.IDCLIENTE}}" style="text-decoration: none;">
+                                    <a href="/base-de-conhecimento/cliente/{{.IDCLIENTE}}" style="text-decoration: none;">
                                         <div class="icons-atento fix-icon-base">
                                             <div class="icons-img-atento">
                                                 <img src="{{.LOGO_URL}}" alt="">
